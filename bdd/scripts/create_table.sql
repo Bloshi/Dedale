@@ -50,10 +50,12 @@ create table posts(
 
 create table comments(
 	id integer not null auto_increment primary key,
+	id_player varchar(255),
 	texte varchar(2400),
 	rep_date date,
 	post integer,
-	foreign key (post) references posts(id)
+	foreign key (post) references posts(id),
+	foreign key (id_player) references players(mail)
 );
 
 create table achievements(
