@@ -156,11 +156,6 @@ return [
         //
         // ---------------------
         //
-        Collective\Html\HtmlServiceProvider::class,
-        Laracasts\Flash\FlashServiceProvider::class,
-        Intervention\Image\Facades\Image::class,
-        Intervention\Image\ImageServiceProvider::class,
-        Jenssegers\Date\DateServiceProvider::class
     ],
     /*
     |--------------------------------------------------------------------------
@@ -210,14 +205,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
         //
-        // ----------------
-        //
-        'Form' => Collective\Html\FormFacade::class,
-        'Html' => Collective\Html\HtmlFacade::class,
-        'Input' => Illuminate\Support\Facades\Input::class,
-        'Carbon' => Carbon\Carbon::class,
-        'Image' => Intervention\Image\Facades\Image::class,
-        'Date' => Jenssegers\Date\Date::class
+        
     ],
 
 ];
