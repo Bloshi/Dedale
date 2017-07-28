@@ -1,0 +1,4 @@
+max -   installation de laravel dans le git 
+        - création des routes
+        - models
+        - controller 
