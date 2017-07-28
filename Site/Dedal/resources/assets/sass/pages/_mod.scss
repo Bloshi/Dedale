@@ -1,0 +1,56 @@
+@import "login";
+
+$navSize: 80;
+nav.main { @include size(100%, #{ $navSize }px); @include pos(f,0,0,auto); z-index: z(overlay);
+	.logo-block { @include size(200px, #{ $navSize }px); float: left; 
+		font-weight: 900; @include lH(#{ $navSize }); 
+		a { color: color(font, clear); }
+	}
+	ul { @include size(auto, 100%); float: right;
+		li { padding: 10px; float: left;
+			a { @include lH(60); color: color(font, p); 
+				&::first-letter { text-transform: uppercas; }
+			}
+			&:last-child { padding-right: 0; }
+		}
+	}
+}
+ 
+section { @include size(f, auto); padding: 80px 0; 
+	.elem { padding: 20px 0; }
+	&:first-child { padding-top:    20px; .elem { padding-top:    0; } }
+	&:last-child  { padding-bottom: 20px; .elem { padding-bottom: 0; } }
+
+	&.main-graph {
+		.first-graph { @include size(f, 500px); 
+			.ct-golden-section { @include size(auto, f); }
+		} 
+	}
+	
+	&.list-account {
+		ul { @include size(f, auto); 
+			li { @include size(25%, auto); float: left; 
+				padding: 10px 5px;
+				a { @include size(f, auto); display: block; 
+					.graph-box { @include size(200px); 
+						margin: 20px auto; margin-top: 0;
+						
+						.ct-chart { @include size(auto, f);
+							svg g path { stroke-width: 20px !important; }
+						}
+					}
+					h4 { text-align: center; color: color(font, p) }
+				}
+				@for $i from 1 through 4 {
+					&:nth-child(#{$i}) { padding-top: 0; }
+				}
+			}
+		}
+	}
+}
+
+.ct-chart {
+	span { color: color(font, clear); }
+}
+
+footer { @include size(f, auto); @include clearfix; padding: 60px 0; }
