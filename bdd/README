@@ -1,0 +1,13 @@
+Pour lancer un serveur avec une base de données : 
+
+1) compiler le serveur
+docker build -t bddedale .
+
+2) Lancer
+docker run bddedale
+
+La BD sera accessible sur le port 3306
+login : root
+mdp : dedale
+
+nom de la database : dedale
