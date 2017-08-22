@@ -67,7 +67,7 @@ return [
     | to any of the locales which will be supported by the application.
     |
     */
-    'locale' => 'en',
+    'locale' => 'fr',
     /*
     |--------------------------------------------------------------------------
     | Application Fallback Locale
@@ -78,7 +78,7 @@ return [
     | the language folders that are provided through your application.
     |
     */
-    'fallback_locale' => 'en',
+    'fallback_locale' => 'fr',
     /*
     |--------------------------------------------------------------------------
     | Encryption Key
@@ -156,6 +156,9 @@ return [
         //
         // ---------------------
         //
+        Collective\Html\HtmlServiceProvider::class,
+        Laracasts\Flash\FlashServiceProvider::class,
+        Jenssegers\Date\DateServiceProvider::class
     ],
     /*
     |--------------------------------------------------------------------------
@@ -205,7 +208,12 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
         //
-        
+        'Form' => Collective\Html\FormFacade::class,
+        'Html' => Collective\Html\HtmlFacade::class,
+        'Input' => Illuminate\Support\Facades\Input::class,
+        'Carbon' => Carbon\Carbon::class,
+        'Date' => Jenssegers\Date\Date::class
+
     ],
 
 ];
