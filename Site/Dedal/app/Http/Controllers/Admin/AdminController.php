@@ -13,6 +13,9 @@
     {
         public function addGame()
         {
-            # code...
+            $data = [
+                'page' => 'addGame'
+            ];
+            return view('admin/add-game', $data);
         }
     }

@@ -25,10 +25,10 @@
             if ( $pw == $this->pw ) {
                 session(['logged' => true]);
                 flash('Vous êtes bien connecté.')->success();
-                return Redirect::route('admin.add.event');
+                return Redirect::route('admin.addGame');
             } else {
                 flash('Mauvais mot de passe.')->error();
-                return Redirect::route('admin.log');
+                return Redirect::route('home');
             }
         }
     }

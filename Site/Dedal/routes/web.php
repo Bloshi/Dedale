@@ -21,6 +21,6 @@
             'namespave' => 'Admin',
             'middleware' => 'is-admin'
         ], function () {
-            Route::get('/admin/ajouter/un/jeu', 'AddGameAdminController@addGame')->name('addGame');
+            Route::get('/admin/ajouter/un/jeu', 'Admin\AddGameAdminController@addGame')->name('addGame');
         }
     );

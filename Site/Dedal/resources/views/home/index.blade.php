@@ -4,7 +4,7 @@
 
     <h1 class='h1'>Administration</h1>
 
-    {!! Form::open(['action' => route('signToAdmin'), 'class' => 'login']); !!}
+    {!! Form::open(['url' => route('signToAdmin'), 'class' => 'login']); !!}
 
         <legend>Zone administration</legend>
 
