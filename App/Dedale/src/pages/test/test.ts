@@ -3,7 +3,6 @@ import { NavController } from 'ionic-angular';
 
 import { LoginPage } from '../login/login';
 import { SignupPage } from '../signup/signup';
-import { TestPage } from '../test/test';
 
 /**
  * The Welcome Page is a splash page that quickly describes the app,
@@ -12,15 +11,18 @@ import { TestPage } from '../test/test';
  * we recommend not using the Welcome page.
 */
 @Component({
-  selector: 'page-welcome',
-  templateUrl: 'welcome.html'
+  selector: 'page-test',
+  templateUrl: 'test.html'
 })
-export class WelcomePage {
+export class TestPage {
 
   constructor(public navCtrl: NavController) { }
 
+  login() {
+    this.navCtrl.push(LoginPage);
+  }
 
-  test() {
-    this.navCtrl.push(TestPage);
+  signup() {
+    this.navCtrl.push(SignupPage);
   }
 }

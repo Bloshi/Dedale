@@ -20,7 +20,9 @@ import { WelcomePage } from '../pages/welcome/welcome';
 
 import { Settings } from '../providers/providers';
 
-import { TranslateService } from '@ngx-translate/core'
+import { TranslateService } from '@ngx-translate/core';
+
+import { TestPage } from '../pages/test/test';
 
 @Component({
   template: `<ion-menu [content]="content">
@@ -58,7 +60,9 @@ export class MyApp {
     { title: 'Master Detail', component: ListMasterPage },
     { title: 'Menu', component: MenuPage },
     { title: 'Settings', component: SettingsPage },
-    { title: 'Search', component: SearchPage }
+    { title: 'Search', component: SearchPage },
+
+    { title: 'Test', component: TestPage }
   ]
 
   constructor(private translate: TranslateService, private platform: Platform, settings: Settings, private config: Config, private statusBar: StatusBar, private splashScreen: SplashScreen) {
