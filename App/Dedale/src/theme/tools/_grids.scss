@@ -1,0 +1,47 @@
+@import "../../../node_modules/susy/sass/susy";
+@import "../../../node_modules/sass-mediaqueries/media-queries";
+
+$susy: (
+	flow: ltr,
+	container: 960px,
+	gutter-position: inside-static,
+	last-flow: to,
+	columns: 12,
+	column-width: 100px,
+	gutters: 5px/100px,
+	global-box-sieing: border-box
+);
+
+.wrap { @include container; position: relative;
+	@include max-screen(1200px) { @include padding(auto, 8); }
+}
+.row { width: 100%; @include clearfix;
+	.col {
+		&:first-child { padding-left: 0 !important; }
+		&:last-child { padding-right: 0 !important; }
+	}
+
+	$max: map-get($susy, columns);
+	@for $i from 1 through $max {
+		.col-#{$i} { @include span($i); margin-bottom: 5px;
+			&.ms {
+				@include max-screen(960px) {
+					@if $i < 6 {
+						@include span(6);
+					}
+				};
+				@include max-screen(800px) {
+					@if $i < 6 {
+						@include span(12);
+					}
+				};
+			}
+		}
+	}
+
+	* {
+		&.pull-l { float: left; }
+		&.pull-r { float: right !important; }
+	}
+}
+thead, tbody { tr { width: 100%; max-width: none !important; } }

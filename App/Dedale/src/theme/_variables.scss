@@ -1,6 +1,9 @@
 // Ionic Variables and Theming. For more info, please see:
 // http://ionicframework.com/docs/v2/theming/
-$font-path: "../assets/fonts";
+
+@import "tools/fonts";
+@import "tools/grids";
+@import "tools/mixins";
 
 @import "ionic.globals";
 

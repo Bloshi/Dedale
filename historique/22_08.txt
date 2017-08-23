@@ -1,0 +1,2 @@
+max - 	Création de l’espace admin sur le site laravel
+	mise a jours des différentes lib js et php du projet.
