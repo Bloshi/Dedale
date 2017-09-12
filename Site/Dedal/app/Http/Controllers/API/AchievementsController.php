@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Achievements;
+use App\Models\Players;
 use Illuminate\Http\Request;
 
 /**
@@ -24,6 +25,10 @@ class AchievementsController extends Controller
 			//Not found
 			return response()->json("", 404);
 		}
+	}
+
+	public function get_earned_achievement(Playsers $player){
+		return response()->json("not implemented yet", 501);
 	}
 
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Posts;
+use App\Models\Comments;
 use Illuminate\Http\Request;
 
 /**
@@ -25,5 +26,8 @@ class PostsController extends Controller
 		return response()->json("not implemented yet", 501);
 	}
 
+	public function get_comments(Posts $post){
+		return response()->json("not implemented yet", 501);
+	}
 }
 

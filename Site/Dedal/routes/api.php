@@ -21,10 +21,13 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 //Achievements endpoint
 Route::get('achievements', 'AchievementsController@get_all');
 Route::get('achievements/{achievement}', 'AchievementsController@get');
+Route::get('achievements/earned/{player}', 'AchievementsController@get_earned_achievement');
 
 
 //Posts endpoint
 Route::get('posts/{page}', 'PostsController@get');
+Route::get('posts/comments/{post}', 'PostsController@get');
+
 Route::post('post', 'PostsController@create');
 Route::delete('post/{post}', 'PostsController@remove');
 
