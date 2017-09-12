@@ -26,8 +26,11 @@ class PostsController extends Controller
 		return response()->json("not implemented yet", 501);
 	}
 
+
+	//Return 20 post per page.
 	public function get_comments(Posts $post){
-		return response()->json("not implemented yet", 501);
+		return response()->json($page, 501);
 	}
+
 }
 
