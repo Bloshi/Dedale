@@ -1,8 +1,8 @@
-App/Dedal/node_modules/
-App/Dedal/.tmp
-App/Dedal/.sass-cache
-App/Dedal/platforms
-App/Dedal/plugins
+App/Dedale/node_modules/
+App/Dedale/.tmp
+App/Dedale/.sass-cache
+App/Dedale/platforms
+App/Dedale/plugins
 App/node_modules/
 App/temp/
 *.DS_Store

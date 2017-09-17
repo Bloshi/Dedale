@@ -1,0 +1,31 @@
+<ion-menu [content]="content">
+
+  <ion-content>
+    <div class="profile">
+      <button class="item-icon-left" no-lines menuClose ion-item (click)="openPage(profile)">
+        <div class="stage up">
+          <ion-avatar item-center>
+            <img src="assets/img/avatar-finn.png" #ficheImg />
+          </ion-avatar>
+        </div>
+        <div class="stage down">
+          <h2 #ficheUser><a href="#">@Finn</a></h2>
+          <h3 #ficheTitle>Don't Know What To Do!</h3>
+        </div>
+      </button>
+    </div><!-- .search -->
+    <ion-list no-lines
+      *ngFor="let p of pages"
+      class='item-navMenu'
+      ng-class="{active: isItemActive(p)}"
+    >
+      <button class="item-icon-left nav-btn" menuClose ion-item (click)="openPage(p)">
+        <i class="{{ p.icon }}" aria-hidden="true"></i> {{ p.title }}
+      </button>
+    </ion-list>
+  </ion-content>
+
+</ion-menu>
+
+<!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>

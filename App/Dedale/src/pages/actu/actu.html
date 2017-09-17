@@ -1,0 +1,53 @@
+<!--
+  Generated template for the ActuPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+			<ion-icon name="menu"></ion-icon>
+		</button>
+    <ion-title>File d'actu</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+
+  <ion-list>
+    <ion-item-sliding *ngFor="let i of items" class="actu_fiche">
+      <ion-item (click)='openActuFocusPage()'>
+        <ion-avatar item-start>
+          <img src="assets/img/avatar-finn.png" #ficheImg />
+        </ion-avatar>
+        <h2 #ficheUser><a href="#">@Finn</a></h2>
+        <h3 #ficheTitle>Don't Know What To Do!</h3>
+        <p #ficheDescr>I've had a pretty messed up day. If we just...</p>
+        <small #ficheDate>ajouté il y à 2h</small>
+      </ion-item>
+      <ion-item-options side="left">
+        <button ion-button color="danger">
+          <ion-icon name="trash"></ion-icon>
+          Supprimer
+        </button>
+      </ion-item-options>
+      <ion-item-options side="right">
+        <button ion-button color="dark">
+          <ion-icon name="ios-more"></ion-icon>
+          Plus
+        </button>
+        <button ion-button color="secondary">
+          <ion-icon name="heart"></ion-icon>
+          Suivre
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
+  <ion-infinite-scroll (ionInfinite)="infinteScroll($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+</ion-content>

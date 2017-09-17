@@ -1,0 +1,37 @@
+<!--
+  Generated template for the ActuFocusPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>L'actu</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+  <div class="news-block" padding>
+    <div class="head-news">
+      <ion-list>
+        <ion-item (click)='openActuFocusPage()'>
+          <ion-avatar item-start>
+            <img src="assets/img/avatar-finn.png" #ficheImg />
+          </ion-avatar>
+          <h2 #ficheUser><a href="#">@Finn</a></h2>
+          <small>posté il y a 3jours</small>
+        </ion-item>
+      </ion-list>
+    </div><!-- .head-news -->
+    <div class="body-news">
+      <h3 #ficheTitle>Don't Know What To Do!</h3>
+      <p #ficheDescr>I've had a pretty messed up day. If we just...</p>
+      <img src="assets/img/stay-hungry-stay-foolish.jpg" alt="news image" />
+    </div>
+  </div><!-- .news-block -->
+
+</ion-content>
