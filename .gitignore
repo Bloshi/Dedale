@@ -1,3 +1,8 @@
+App/Dedal/node_modules/
+App/Dedal/.tmp
+App/Dedal/.sass-cache
+App/Dedal/platforms
+App/Dedal/plugins
 App/node_modules/
 App/temp/
 *.DS_Store
