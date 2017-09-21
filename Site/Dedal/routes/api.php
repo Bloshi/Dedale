@@ -25,18 +25,18 @@ Route::get('achievements/earned/{player}', 'AchievementsController@get_earned_ac
 
 
 //Posts endpoint
-Route::get('posts/{page}', 'PostsController@get');
-Route::get('posts/comments/{post}', 'PostsController@get_comments');
+Route::get('posts/{page}', 'API\PostsController@get');
+Route::get('posts/comments/{post}', 'API\PostsController@get_comments');
 
-Route::post('post', 'PostsController@create');
-Route::delete('post/{post}', 'PostsController@remove');
+Route::post('post', 'API\PostsController@create');
+Route::delete('post/{post}', 'API\PostsController@remove');
 
 
 //Games endpoint
-Route::get('games/{page}', 'GamesController@get');
-Route::get('games/{cat}/{page}', 'GamesController@get_category');
+Route::get('games/{page}', 'API\GamesController@get');
+Route::get('games/{cat}/{page}', 'API\GamesController@get_category');
 
 //This command return all the info of one game
-Route::get('games/display/{game}', 'GamesController@get_game');
+Route::get('games/display/{game}', 'API\GamesController@get_game');
 
 //Players endpoint
