@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API;
 
 use App\Models\Achievements;
 use App\Models\Players;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 /**
 *  API Endpoint for Achievments
