@@ -19,9 +19,9 @@ export class MyApp {
     *
   **/
   // si non loggé
-  rootPage: any = HomePage;
+  //rootPage: any = HomePage;
   // si loggé
-  //rootPage: any = ActuPage;
+  rootPage: any = ActuPage;
 
   pages: Array<{ title: string, component: any, icon: string}>;
 
