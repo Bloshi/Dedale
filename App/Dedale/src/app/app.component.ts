@@ -6,6 +6,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { HomePage } from '../pages/home/home';
 import { ActuPage } from '../pages/actu/actu';
 import { SearchPage } from '../pages/search/search';
+import { ToolsPage } from '../pages/tools/tools';
 
 @Component({
   templateUrl: 'app.html'
@@ -35,6 +36,7 @@ export class MyApp {
       { title: 'Jeux', component: ActuPage, icon: 'fa fa-gamepad' },
       { title: 'Carte événement', component: ActuPage, icon: 'fa fa-map-o' },
       { title: 'Profil', component: ActuPage, icon: 'fa fa-user-o' },
+      { title: 'Outils', component: ToolsPage, icon: 'fa fa-cog' },
     ];
 
   }
