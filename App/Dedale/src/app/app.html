@@ -19,7 +19,7 @@
       class='item-navMenu'
       ng-class="{active: isItemActive(p)}"
     >
-      <button class="item-icon-left nav-btn" menuClose ion-item (click)="openPage(p)">
+      <button class="item-icon-left nav-btn" menuClose ion-item (click)="openPage(p.component)">
         <i class="{{ p.icon }}" aria-hidden="true"></i> {{ p.title }}
       </button>
     </ion-list>

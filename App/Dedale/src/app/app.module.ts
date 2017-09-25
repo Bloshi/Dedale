@@ -10,6 +10,10 @@ import { SignInPage } from '../pages/sign-in/sign-in';
 import { ActuPage } from '../pages/actu/actu';
 import { ActuFocusPage } from '../pages/actu-focus/actu-focus';
 
+import { SearchPage } from '../pages/search/search';
+import { ToolsPage } from '../pages/tools/tools';
+import { MapPage } from '../pages/map/map';
+
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -22,7 +26,11 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     SignUpPage,
     SignInPage,
     ActuPage,
-    ActuFocusPage
+    ActuFocusPage,
+
+    SearchPage,
+    ToolsPage,
+    MapPage
   ],
   imports: [
     BrowserModule,
@@ -37,7 +45,11 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     SignUpPage,
     SignInPage,
     ActuPage,
-    ActuFocusPage
+    ActuFocusPage,
+
+    SearchPage,
+    ToolsPage,
+    MapPage
   ],
   providers: [
     StatusBar,
