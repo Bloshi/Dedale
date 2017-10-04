@@ -35,7 +35,7 @@ var ActuFocusPage = /** @class */ (function () {
     ActuFocusPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPage */])(),
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'page-actu-focus',template:/*ion-inline-start:"/Users/maximebartier/Sites/Client/BloshiCrop/Dedale/Dedale/App/Dedale/src/pages/actu-focus/actu-focus.html"*/'<!--\n  Generated template for the ActuFocusPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>L\'actu</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n\n  <div class="news-block" padding>\n    <div class="head-news">\n      <ion-list>\n        <ion-item (click)=\'openActuFocusPage()\'>\n          <ion-avatar item-start>\n            <img src="assets/img/avatar-finn.png" #ficheImg />\n          </ion-avatar>\n          <h2 #ficheUser><a href="#">@Finn</a></h2>\n          <small>posté il y a 3jours</small>\n        </ion-item>\n      </ion-list>\n    </div><!-- .head-news -->\n    <div class="body-news">\n      <h3 #ficheTitle>Don\'t Know What To Do!</h3>\n      <p #ficheDescr>I\'ve had a pretty messed up day. If we just...</p>\n      <img src="assets/img/stay-hungry-stay-foolish.jpg" alt="news image" />\n    </div>\n  </div><!-- .news-block -->\n\n</ion-content>\n'/*ion-inline-end:"/Users/maximebartier/Sites/Client/BloshiCrop/Dedale/Dedale/App/Dedale/src/pages/actu-focus/actu-focus.html"*/,
+            selector: 'page-actu-focus',template:/*ion-inline-start:"/Users/maximebartier/Sites/Client/BloshiCorp/Dedale/App/Dedale/src/pages/actu-focus/actu-focus.html"*/'<!--\n  Generated template for the ActuFocusPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>L\'actu</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n\n  <div class="news-block" padding>\n    <div class="head-news">\n      <ion-list>\n        <ion-item (click)=\'openActuFocusPage()\'>\n          <ion-avatar item-start>\n            <img src="assets/img/avatar-finn.png" #ficheImg />\n          </ion-avatar>\n          <h2 #ficheUser><a href="#">@Finn</a></h2>\n          <small>posté il y a 3jours</small>\n        </ion-item>\n      </ion-list>\n    </div><!-- .head-news -->\n    <div class="body-news">\n      <h3 #ficheTitle>Don\'t Know What To Do!</h3>\n      <p #ficheDescr>I\'ve had a pretty messed up day. If we just...</p>\n      <img src="assets/img/stay-hungry-stay-foolish.jpg" alt="news image" />\n    </div>\n  </div><!-- .news-block -->\n\n</ion-content>\n'/*ion-inline-end:"/Users/maximebartier/Sites/Client/BloshiCorp/Dedale/App/Dedale/src/pages/actu-focus/actu-focus.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */]])
     ], ActuFocusPage);
@@ -81,7 +81,7 @@ var SearchPage = /** @class */ (function () {
     SearchPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPage */])(),
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'page-search',template:/*ion-inline-start:"/Users/maximebartier/Sites/Client/BloshiCrop/Dedale/Dedale/App/Dedale/src/pages/search/search.html"*/'<!--\n  Generated template for the SearchPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>SearchPage</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n</ion-content>\n'/*ion-inline-end:"/Users/maximebartier/Sites/Client/BloshiCrop/Dedale/Dedale/App/Dedale/src/pages/search/search.html"*/,
+            selector: 'page-search',template:/*ion-inline-start:"/Users/maximebartier/Sites/Client/BloshiCorp/Dedale/App/Dedale/src/pages/search/search.html"*/'<!--\n  Generated template for the SearchPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n  	<button ion-button menuToggle>\n		<ion-icon name="menu"></ion-icon>\n	</button>\n    <ion-title>SearchPage</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n</ion-content>\n'/*ion-inline-end:"/Users/maximebartier/Sites/Client/BloshiCorp/Dedale/App/Dedale/src/pages/search/search.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */]])
     ], SearchPage);
@@ -127,11 +127,12 @@ var ToolsPage = /** @class */ (function () {
     ToolsPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPage */])(),
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'page-tools',template:/*ion-inline-start:"/Users/maximebartier/Sites/Client/BloshiCrop/Dedale/Dedale/App/Dedale/src/pages/tools/tools.html"*/'<!--\n  Generated template for the ToolsPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>ToolsPage</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n</ion-content>\n'/*ion-inline-end:"/Users/maximebartier/Sites/Client/BloshiCrop/Dedale/Dedale/App/Dedale/src/pages/tools/tools.html"*/,
+            selector: 'page-tools',template:/*ion-inline-start:"/Users/maximebartier/Sites/Client/BloshiCorp/Dedale/App/Dedale/src/pages/tools/tools.html"*/'<!--\n  Generated template for the ToolsPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n  	<button ion-button menuToggle>\n		<ion-icon name="menu"></ion-icon>\n	</button>\n    <ion-title>ToolsPage</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n	<h3>Liste d\'outils pour le jeu</h3>\n</ion-content>\n'/*ion-inline-end:"/Users/maximebartier/Sites/Client/BloshiCorp/Dedale/App/Dedale/src/pages/tools/tools.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */]) === "function" && _b || Object])
     ], ToolsPage);
     return ToolsPage;
+    var _a, _b;
 }());
 
 //# sourceMappingURL=tools.js.map
@@ -166,46 +167,49 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  */
 var MapPage = /** @class */ (function () {
     function MapPage(navCtrl, navParams, geo, platform) {
-        var _this = this;
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.geo = geo;
         this.platform = platform;
-        this.platform.ready().then(function () {
-            // construction de la localisation
-            var options = {
-                timeout: 5000
-            };
-            var currentPos;
-            _this.geo.getCurrentPosition(options).then(function (resp) {
-                console.log(resp.coords.latitude);
-                console.log(resp.coords.longitude);
-            }).catch(function (error) {
-                console.log('Error getting location', error);
-            });
-        });
     }
     MapPage.prototype.ionViewDidLoad = function () {
-        //console.log(this.mapRef);
-        this.showMap();
+        this.getUserPosition();
     };
-    MapPage.prototype.showMap = function () {
-        // Location - lat long
-        var location = new google.maps.LatLng(51.507351, -0.127758);
-        // Map options 
-        var options = {
-            center: location,
-            zoom: 10,
-            streetViewControl: false,
-            mapTypeId: 'roadmap'
+    MapPage.prototype.getUserPosition = function () {
+        var _this = this;
+        this.options = {
+            enableHighAccuracy: false
         };
-        var map = new google.maps.Map(this.mapRef.nativeElement, options);
-        this.addMarker(location, map);
+        this.geo.getCurrentPosition(this.options).then(function (pos) {
+            _this.currentPos = pos;
+            _this.addMap(pos.coords.latitude, pos.coords.longitude);
+        }, function (err) {
+            console.log("error : " + err.message);
+        });
     };
-    MapPage.prototype.addMarker = function (position, map) {
-        return new google.maps.Marker({
-            position: position,
-            map: map
+    MapPage.prototype.addMap = function (lat, lng) {
+        var latLng = new google.maps.LatLng(lat, lng);
+        var mapOptions = {
+            center: latLng,
+            zoom: 15,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        this.map = new google.maps.Map(this.mapRef.nativeElement, mapOptions);
+        this.addMarker();
+    };
+    MapPage.prototype.addMarker = function () {
+        var _this = this;
+        var marker = new google.maps.Marker({
+            map: this.map,
+            animation: google.maps.Animation.DROP,
+            position: this.map.getCenter()
+        });
+        var content = "<p>This is your current position !</p>";
+        var infoWindow = new google.maps.InfoWindow({
+            content: content
+        });
+        google.maps.event.addListener(marker, 'click', function () {
+            infoWindow.open(_this.map, marker);
         });
     };
     __decorate([
@@ -215,7 +219,7 @@ var MapPage = /** @class */ (function () {
     MapPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPage */])(),
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'page-map',template:/*ion-inline-start:"/Users/maximebartier/Sites/Client/BloshiCrop/Dedale/Dedale/App/Dedale/src/pages/map/map.html"*/'<!--\n  Generated template for the MapPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>MapPage</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n  <div id="map" #map></div>\n</ion-content>\n'/*ion-inline-end:"/Users/maximebartier/Sites/Client/BloshiCrop/Dedale/Dedale/App/Dedale/src/pages/map/map.html"*/,
+            selector: 'page-map',template:/*ion-inline-start:"/Users/maximebartier/Sites/Client/BloshiCorp/Dedale/App/Dedale/src/pages/map/map.html"*/'<!--\n  Generated template for the MapPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n  	<button ion-button menuToggle>\n		<ion-icon name="menu"></ion-icon>\n	</button>\n    <ion-title>MapPage</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n  <div id="map" #map></div>\n</ion-content>\n'/*ion-inline-end:"/Users/maximebartier/Sites/Client/BloshiCorp/Dedale/App/Dedale/src/pages/map/map.html"*/,
         }),
         __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2__ionic_native_geolocation__["a" /* Geolocation */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__ionic_native_geolocation__["a" /* Geolocation */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* Platform */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* Platform */]) === "function" && _e || Object])
     ], MapPage);
@@ -292,7 +296,7 @@ var SignUpPage = /** @class */ (function () {
     SignUpPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPage */])(),
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'page-sign-up',template:/*ion-inline-start:"/Users/maximebartier/Sites/Client/BloshiCrop/Dedale/Dedale/App/Dedale/src/pages/sign-up/sign-up.html"*/'<!--\n  Generated template for the SignUpPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>SignUp</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n  <p>Créer un compte</p>\n\n  <ion-list inset>\n\n    <ion-item>\n      <ion-label floating>Login</ion-label>\n      <ion-input type="text" #login></ion-input>\n    </ion-item>\n\n    <ion-item>\n      <ion-label floating>Email</ion-label>\n      <ion-input type="email" #email></ion-input>\n    </ion-item>\n\n    <ion-item>\n      <ion-label floating>Password</ion-label>\n      <ion-input type="password" #password></ion-input>\n    </ion-item>\n\n  </ion-list>\n\n  <div padding>\n    <button ion-button full margin-bottom color=\'primary\' (click)=\'SignUpAction()\'>Sign Up</button>\n    <button ion-button full color=\'facebook\'>avec facebook</button>\n  </div>\n\n</ion-content>\n'/*ion-inline-end:"/Users/maximebartier/Sites/Client/BloshiCrop/Dedale/Dedale/App/Dedale/src/pages/sign-up/sign-up.html"*/,
+            selector: 'page-sign-up',template:/*ion-inline-start:"/Users/maximebartier/Sites/Client/BloshiCorp/Dedale/App/Dedale/src/pages/sign-up/sign-up.html"*/'<!--\n  Generated template for the SignUpPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>SignUp</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n  <p>Créer un compte</p>\n\n  <ion-list inset>\n\n    <ion-item>\n      <ion-label floating>Login</ion-label>\n      <ion-input type="text" #login></ion-input>\n    </ion-item>\n\n    <ion-item>\n      <ion-label floating>Email</ion-label>\n      <ion-input type="email" #email></ion-input>\n    </ion-item>\n\n    <ion-item>\n      <ion-label floating>Password</ion-label>\n      <ion-input type="password" #password></ion-input>\n    </ion-item>\n\n  </ion-list>\n\n  <div padding>\n    <button ion-button full margin-bottom color=\'primary\' (click)=\'SignUpAction()\'>Sign Up</button>\n    <button ion-button full color=\'facebook\'>avec facebook</button>\n  </div>\n\n</ion-content>\n'/*ion-inline-end:"/Users/maximebartier/Sites/Client/BloshiCorp/Dedale/App/Dedale/src/pages/sign-up/sign-up.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */],
@@ -365,7 +369,7 @@ var SignInPage = /** @class */ (function () {
     SignInPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPage */])(),
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'page-sign-in',template:/*ion-inline-start:"/Users/maximebartier/Sites/Client/BloshiCrop/Dedale/Dedale/App/Dedale/src/pages/sign-in/sign-in.html"*/'<!--\n  Generated template for the SignInPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>SignIn</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n  <p>Se connecter à son compte</p>\n\n  <ion-list inset>\n\n    <ion-item>\n      <ion-label floating>Login</ion-label>\n      <ion-input type="text" #login></ion-input>\n    </ion-item>\n\n    <ion-item>\n      <ion-label floating>Password</ion-label>\n      <ion-input type="password" #password></ion-input>\n    </ion-item>\n\n  </ion-list>\n\n  <div padding>\n    <button ion-button full margin-bottom color=\'primary\' (click)=\'SignInAction()\'>Sign In</button>\n    <button ion-button full color=\'facebook\'>avec facebook</button>\n  </div>\n\n</ion-content>\n'/*ion-inline-end:"/Users/maximebartier/Sites/Client/BloshiCrop/Dedale/Dedale/App/Dedale/src/pages/sign-in/sign-in.html"*/,
+            selector: 'page-sign-in',template:/*ion-inline-start:"/Users/maximebartier/Sites/Client/BloshiCorp/Dedale/App/Dedale/src/pages/sign-in/sign-in.html"*/'<!--\n  Generated template for the SignInPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>SignIn</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n  <p>Se connecter à son compte</p>\n\n  <ion-list inset>\n\n    <ion-item>\n      <ion-label floating>Login</ion-label>\n      <ion-input type="text" #login></ion-input>\n    </ion-item>\n\n    <ion-item>\n      <ion-label floating>Password</ion-label>\n      <ion-input type="password" #password></ion-input>\n    </ion-item>\n\n  </ion-list>\n\n  <div padding>\n    <button ion-button full margin-bottom color=\'primary\' (click)=\'SignInAction()\'>Sign In</button>\n    <button ion-button full color=\'facebook\'>avec facebook</button>\n  </div>\n\n</ion-content>\n'/*ion-inline-end:"/Users/maximebartier/Sites/Client/BloshiCorp/Dedale/App/Dedale/src/pages/sign-in/sign-in.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */],
@@ -639,7 +643,7 @@ var MyApp = /** @class */ (function () {
         __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* Nav */])
     ], MyApp.prototype, "nav", void 0);
     MyApp = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({template:/*ion-inline-start:"/Users/maximebartier/Sites/Client/BloshiCrop/Dedale/Dedale/App/Dedale/src/app/app.html"*/'<ion-menu [content]="content">\n\n  <ion-content>\n    <div class="profile">\n      <button class="item-icon-left" no-lines menuClose ion-item (click)="openPage(profile)">\n        <div class="stage up">\n          <ion-avatar item-center>\n            <img src="assets/img/avatar-finn.png" #ficheImg />\n          </ion-avatar>\n        </div>\n        <div class="stage down">\n          <h2 #ficheUser><a href="#">@Finn</a></h2>\n          <h3 #ficheTitle>Don\'t Know What To Do!</h3>\n        </div>\n      </button>\n    </div><!-- .search -->\n    <ion-list no-lines\n      *ngFor="let p of pages"\n      class=\'item-navMenu\'\n      ng-class="{active: isItemActive(p)}"\n    >\n      <button class="item-icon-left nav-btn" menuClose ion-item (click)="openPage(p.component)">\n        <i class="{{ p.icon }}" aria-hidden="true"></i> {{ p.title }}\n      </button>\n    </ion-list>\n  </ion-content>\n\n</ion-menu>\n\n\n<!-- Disable swipe-to-go-back because it\'s poor UX to combine STGB with side menus -->\n<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>\n'/*ion-inline-end:"/Users/maximebartier/Sites/Client/BloshiCrop/Dedale/Dedale/App/Dedale/src/app/app.html"*/
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({template:/*ion-inline-start:"/Users/maximebartier/Sites/Client/BloshiCorp/Dedale/App/Dedale/src/app/app.html"*/'<ion-menu [content]="content">\n\n  <ion-content>\n    <div class="profile">\n      <button class="item-icon-left" no-lines menuClose ion-item (click)="openPage(profile)">\n        <div class="stage up">\n          <ion-avatar item-center>\n            <img src="assets/img/avatar-finn.png" #ficheImg />\n          </ion-avatar>\n        </div>\n        <div class="stage down">\n          <h2 #ficheUser><a href="#">@Finn</a></h2>\n          <h3 #ficheTitle>Don\'t Know What To Do!</h3>\n        </div>\n      </button>\n    </div><!-- .search -->\n    <ion-list no-lines\n      *ngFor="let p of pages"\n      class=\'item-navMenu\'\n      ng-class="{active: isItemActive(p)}"\n    >\n      <button class="item-icon-left nav-btn" menuClose ion-item (click)="openPage(p.component)">\n        <i class="{{ p.icon }}" aria-hidden="true"></i> {{ p.title }}\n      </button>\n    </ion-list>\n  </ion-content>\n\n</ion-menu>\n\n\n<!-- Disable swipe-to-go-back because it\'s poor UX to combine STGB with side menus -->\n<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>\n'/*ion-inline-end:"/Users/maximebartier/Sites/Client/BloshiCorp/Dedale/App/Dedale/src/app/app.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* Platform */],
             __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */],
@@ -687,7 +691,7 @@ var HomePage = /** @class */ (function () {
     };
     HomePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'page-home',template:/*ion-inline-start:"/Users/maximebartier/Sites/Client/BloshiCrop/Dedale/Dedale/App/Dedale/src/pages/home/home.html"*/'<ion-content padding>\n  <h1>Dedal</h1>\n  <h2>Jeux de plateaux</h2>\n\n  <p>Vous n\'êtes pas encore connecté à Dedal</p>\n\n	<div padding>\n    <button ion-button full margin-bottom color=\'primary\' (click)=\'openSignInPage()\'>Sign In</button>\n		<button ion-button full color="default" (click)=\'openSignUpPage()\'>Sign Up</button>\n	</div>\n</ion-content>\n'/*ion-inline-end:"/Users/maximebartier/Sites/Client/BloshiCrop/Dedale/Dedale/App/Dedale/src/pages/home/home.html"*/
+            selector: 'page-home',template:/*ion-inline-start:"/Users/maximebartier/Sites/Client/BloshiCorp/Dedale/App/Dedale/src/pages/home/home.html"*/'<ion-content padding>\n  <h1>Dedal</h1>\n  <h2>Jeux de plateaux</h2>\n\n  <p>Vous n\'êtes pas encore connecté à Dedal</p>\n\n	<div padding>\n    <button ion-button full margin-bottom color=\'primary\' (click)=\'openSignInPage()\'>Sign In</button>\n		<button ion-button full color="default" (click)=\'openSignUpPage()\'>Sign Up</button>\n	</div>\n</ion-content>\n'/*ion-inline-end:"/Users/maximebartier/Sites/Client/BloshiCorp/Dedale/App/Dedale/src/pages/home/home.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */]])
     ], HomePage);
@@ -743,7 +747,7 @@ var ListPage = /** @class */ (function () {
     };
     ListPage = ListPage_1 = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'page-list',template:/*ion-inline-start:"/Users/maximebartier/Sites/Client/BloshiCrop/Dedale/Dedale/App/Dedale/src/pages/list/list.html"*/'<ion-header>\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>List</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n  <ion-list inset>\n    <button ion-item *ngFor="let item of items" (click)="itemTapped($event, item)">\n      <ion-icon [name]="item.icon" item-left></ion-icon>\n      {{item.title}}\n      <div class="item-note" item-right>\n        {{item.note}}\n      </div>\n    </button>\n  </ion-list>\n  <div *ngIf="selectedItem" padding>\n    You navigated here from <b>{{selectedItem.title}}</b>\n  </div>\n</ion-content>\n'/*ion-inline-end:"/Users/maximebartier/Sites/Client/BloshiCrop/Dedale/Dedale/App/Dedale/src/pages/list/list.html"*/
+            selector: 'page-list',template:/*ion-inline-start:"/Users/maximebartier/Sites/Client/BloshiCorp/Dedale/App/Dedale/src/pages/list/list.html"*/'<ion-header>\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>List</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n  <ion-list inset>\n    <button ion-item *ngFor="let item of items" (click)="itemTapped($event, item)">\n      <ion-icon [name]="item.icon" item-left></ion-icon>\n      {{item.title}}\n      <div class="item-note" item-right>\n        {{item.note}}\n      </div>\n    </button>\n  </ion-list>\n  <div *ngIf="selectedItem" padding>\n    You navigated here from <b>{{selectedItem.title}}</b>\n  </div>\n</ion-content>\n'/*ion-inline-end:"/Users/maximebartier/Sites/Client/BloshiCorp/Dedale/App/Dedale/src/pages/list/list.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */]])
     ], ListPage);
@@ -825,7 +829,7 @@ var ActuPage = /** @class */ (function () {
     ActuPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPage */])(),
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'page-actu',template:/*ion-inline-start:"/Users/maximebartier/Sites/Client/BloshiCrop/Dedale/Dedale/App/Dedale/src/pages/actu/actu.html"*/'<!--\n  Generated template for the ActuPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <ion-navbar>\n    <button ion-button menuToggle>\n			<ion-icon name="menu"></ion-icon>\n		</button>\n    <ion-title>File d\'actu</ion-title>\n  </ion-navbar>\n</ion-header>\n\n\n<ion-content>\n\n  <ion-list>\n    <ion-item-sliding *ngFor="let i of items" class="actu_fiche">\n      <ion-item (click)=\'openActuFocusPage()\'>\n        <ion-avatar item-start>\n          <img src="assets/img/avatar-finn.png" #ficheImg />\n        </ion-avatar>\n        <h2 #ficheUser><a href="#">@Finn</a></h2>\n        <h3 #ficheTitle>Don\'t Know What To Do!</h3>\n        <p #ficheDescr>I\'ve had a pretty messed up day. If we just...</p>\n        <small #ficheDate>ajouté il y à 2h</small>\n      </ion-item>\n      <ion-item-options side="left">\n        <button ion-button color="danger">\n          <ion-icon name="trash"></ion-icon>\n          Supprimer\n        </button>\n      </ion-item-options>\n      <ion-item-options side="right">\n        <button ion-button color="dark">\n          <ion-icon name="ios-more"></ion-icon>\n          Plus\n        </button>\n        <button ion-button color="secondary">\n          <ion-icon name="heart"></ion-icon>\n          Suivre\n        </button>\n      </ion-item-options>\n    </ion-item-sliding>\n  </ion-list>\n\n  <ion-infinite-scroll (ionInfinite)="infinteScroll($event)">\n    <ion-infinite-scroll-content></ion-infinite-scroll-content>\n  </ion-infinite-scroll>\n\n</ion-content>\n'/*ion-inline-end:"/Users/maximebartier/Sites/Client/BloshiCrop/Dedale/Dedale/App/Dedale/src/pages/actu/actu.html"*/,
+            selector: 'page-actu',template:/*ion-inline-start:"/Users/maximebartier/Sites/Client/BloshiCorp/Dedale/App/Dedale/src/pages/actu/actu.html"*/'<!--\n  Generated template for the ActuPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <ion-navbar>\n    <button ion-button menuToggle>\n			<ion-icon name="menu"></ion-icon>\n		</button>\n    <ion-title>File d\'actu</ion-title>\n  </ion-navbar>\n</ion-header>\n\n\n<ion-content>\n\n  <ion-list>\n    <ion-item-sliding *ngFor="let i of items" class="actu_fiche">\n      <ion-item (click)=\'openActuFocusPage()\'>\n        <ion-avatar item-start>\n          <img src="assets/img/avatar-finn.png" #ficheImg />\n        </ion-avatar>\n        <h2 #ficheUser><a href="#">@Finn</a></h2>\n        <h3 #ficheTitle>Don\'t Know What To Do!</h3>\n        <p #ficheDescr>I\'ve had a pretty messed up day. If we just...</p>\n        <small #ficheDate>ajouté il y à 2h</small>\n      </ion-item>\n      <ion-item-options side="left">\n        <button ion-button color="danger">\n          <ion-icon name="trash"></ion-icon>\n          Supprimer\n        </button>\n      </ion-item-options>\n      <ion-item-options side="right">\n        <button ion-button color="dark">\n          <ion-icon name="ios-more"></ion-icon>\n          Plus\n        </button>\n        <button ion-button color="secondary">\n          <ion-icon name="heart"></ion-icon>\n          Suivre\n        </button>\n      </ion-item-options>\n    </ion-item-sliding>\n  </ion-list>\n\n  <ion-infinite-scroll (ionInfinite)="infinteScroll($event)">\n    <ion-infinite-scroll-content></ion-infinite-scroll-content>\n  </ion-infinite-scroll>\n\n</ion-content>\n'/*ion-inline-end:"/Users/maximebartier/Sites/Client/BloshiCorp/Dedale/App/Dedale/src/pages/actu/actu.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */],

@@ -24,68 +24,64 @@ declare var google: any;
 export class MapPage {
 
   // récupérer la div #map
+  options: GeolocationOptions;
+  currentPos: Geoposition;
+
   @ViewChild('map') mapRef: ElementRef;
+  map: any;
 
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
     private geo: Geolocation,
-    private platform: Platform) 
-  {
-    this.platform.ready().then( () => {
-
-      // construction de la localisation
-      var options = {
-        timeout: 5000
-      };
-      let currentPos: Geoposition;
-
-      this.geo.getCurrentPosition(options).then( resp => {
-        console.log(resp.coords.latitude);
-        console.log(resp.coords.longitude);
-      }).catch((error) => {
-        console.log('Error getting location', error); 
-      });
-
-    });
-  }
+    private platform: Platform) {}
 
   ionViewDidLoad() {
-    //console.log(this.mapRef);
-    this.showMap();
+    this.getUserPosition();
   }
 
-  showMap() {
-    // Location - lat long
-    const location = new google.maps.LatLng(51.507351, -0.127758);
+  getUserPosition(){
+    this.options = {
+    enableHighAccuracy : false
+    };
+    this.geo.getCurrentPosition(this.options).then((pos : Geoposition) => {
 
-    // Map options 
-    const options = {
-      center: location,
-      zoom: 10,
-      streetViewControl: false,
-      mapTypeId: 'roadmap'
+        this.currentPos = pos;
+        this.addMap(pos.coords.latitude,pos.coords.longitude);
+
+    },(err : PositionError)=> {
+        console.log("error : " + err.message);
+    })
+  }
+
+  addMap(lat, lng) {
+    let latLng = new google.maps.LatLng(lat, lng);
+
+    let mapOptions = {
+      center: latLng,
+      zoom: 15,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
     }
 
-    const map = new google.maps.Map(this.mapRef.nativeElement, options);
-
-    this.addMarker(location, map);
+    this.map = new google.maps.Map(this.mapRef.nativeElement, mapOptions);
+    this.addMarker();
   }
 
-  addMarker(position, map) {
-    return new google.maps.Marker({
-      position,
-      map
+  addMarker() {
+    let marker = new google.maps.Marker({
+      map: this.map,
+      animation: google.maps.Animation.DROP,
+      position: this.map.getCenter()
+    });
+
+    let content = "<p>This is your current position !</p>";          
+    let infoWindow = new google.maps.InfoWindow({
+      content: content
+    });
+
+    google.maps.event.addListener(marker, 'click', () => {
+      infoWindow.open(this.map, marker);
     });
   }
-
-  
-  
-  // let watch = this.geo.watchPosition();
-  // watch.subscribe((data) => {
-  //   // data can be a set of coordinates, or an error (if an error occurred).
-  //   // data.coords.latitude
-  //   // data.coords.longitude
-  // });
 
 }

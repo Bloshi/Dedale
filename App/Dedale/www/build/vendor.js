@@ -357,7 +357,7 @@
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_Subject___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_Subject__);
 
 /**
- * @license Angular v4.4.3
+ * @license Angular v4.4.4
  * (c) 2010-2017 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -1153,7 +1153,7 @@ var Version = (function () {
 /**
  * \@stable
  */
-var VERSION = new Version('4.4.3');
+var VERSION = new Version('4.4.4');
 /**
  * @license
  * Copyright Google Inc. All Rights Reserved.
@@ -12278,33 +12278,19 @@ function viewDef(flags, nodes, updateDirectives, updateRenderer) {
     var /** @type {?} */ viewRootNodeFlags = 0;
     var /** @type {?} */ viewMatchedQueries = 0;
     var /** @type {?} */ currentParent = null;
+    var /** @type {?} */ currentRenderParent = null;
     var /** @type {?} */ currentElementHasPublicProviders = false;
     var /** @type {?} */ currentElementHasPrivateProviders = false;
     var /** @type {?} */ lastRenderRootNode = null;
     for (var /** @type {?} */ i = 0; i < nodes.length; i++) {
-        while (currentParent && i > currentParent.index + currentParent.childCount) {
-            var /** @type {?} */ newParent = currentParent.parent;
-            if (newParent) {
-                newParent.childFlags |= ((currentParent.childFlags));
-                newParent.childMatchedQueries |= currentParent.childMatchedQueries;
-            }
-            currentParent = newParent;
-        }
         var /** @type {?} */ node = nodes[i];
         node.index = i;
         node.parent = currentParent;
         node.bindingIndex = viewBindingCount;
         node.outputIndex = viewDisposableCount;
-        // renderParent needs to account for ng-container!
-        var /** @type {?} */ currentRenderParent = void 0;
-        if (currentParent && currentParent.flags & 1 /* TypeElement */ &&
-            !((currentParent.element)).name) {
-            currentRenderParent = currentParent.renderParent;
-        }
-        else {
-            currentRenderParent = currentParent;
-        }
         node.renderParent = currentRenderParent;
+        viewNodeFlags |= node.flags;
+        viewMatchedQueries |= node.matchedQueryIds;
         if (node.element) {
             var /** @type {?} */ elDef = node.element;
             elDef.publicProviders =
@@ -12313,24 +12299,11 @@ function viewDef(flags, nodes, updateDirectives, updateRenderer) {
             // Note: We assume that all providers of an element are before any child element!
             currentElementHasPublicProviders = false;
             currentElementHasPrivateProviders = false;
-        }
-        validateNode(currentParent, node, nodes.length);
-        viewNodeFlags |= node.flags;
-        viewMatchedQueries |= node.matchedQueryIds;
-        if (node.element && node.element.template) {
-            viewMatchedQueries |= node.element.template.nodeMatchedQueries;
-        }
-        if (currentParent) {
-            currentParent.childFlags |= node.flags;
-            currentParent.directChildFlags |= node.flags;
-            currentParent.childMatchedQueries |= node.matchedQueryIds;
-            if (node.element && node.element.template) {
-                currentParent.childMatchedQueries |= node.element.template.nodeMatchedQueries;
+            if (node.element.template) {
+                viewMatchedQueries |= node.element.template.nodeMatchedQueries;
             }
         }
-        else {
-            viewRootNodeFlags |= node.flags;
-        }
+        validateNode(currentParent, node, nodes.length);
         viewBindingCount += node.bindings.length;
         viewDisposableCount += node.outputs.length;
         if (!currentRenderParent && (node.flags & 3 /* CatRenderNode */)) {
@@ -12354,7 +12327,7 @@ function viewDef(flags, nodes, updateDirectives, updateRenderer) {
                 if (!currentElementHasPrivateProviders) {
                     currentElementHasPrivateProviders = true; /** @type {?} */
                     ((((
-                    // Use protoyypical inheritance to not get O(n^2) complexity...
+                    // Use prototypical inheritance to not get O(n^2) complexity...
                     currentParent)).element)).allProviders =
                         Object.create(/** @type {?} */ ((((currentParent)).element)).publicProviders);
                 } /** @type {?} */
@@ -12364,17 +12337,45 @@ function viewDef(flags, nodes, updateDirectives, updateRenderer) {
                 ((((currentParent)).element)).componentProvider = node;
             }
         }
-        if (node.childCount) {
+        if (currentParent) {
+            currentParent.childFlags |= node.flags;
+            currentParent.directChildFlags |= node.flags;
+            currentParent.childMatchedQueries |= node.matchedQueryIds;
+            if (node.element && node.element.template) {
+                currentParent.childMatchedQueries |= node.element.template.nodeMatchedQueries;
+            }
+        }
+        else {
+            viewRootNodeFlags |= node.flags;
+        }
+        if (node.childCount > 0) {
             currentParent = node;
+            if (!isNgContainer(node)) {
+                currentRenderParent = node;
+            }
         }
-    }
-    while (currentParent) {
-        var /** @type {?} */ newParent = currentParent.parent;
-        if (newParent) {
-            newParent.childFlags |= currentParent.childFlags;
-            newParent.childMatchedQueries |= currentParent.childMatchedQueries;
+        else {
+            // When the current node has no children, check if it is the last children of its parent.
+            // When it is, propagate the flags up.
+            // The loop is required because an element could be the last transitive children of several
+            // elements. We loop to either the root or the highest opened element (= with remaining
+            // children)
+            while (currentParent && i === currentParent.index + currentParent.childCount) {
+                var /** @type {?} */ newParent = currentParent.parent;
+                if (newParent) {
+                    newParent.childFlags |= currentParent.childFlags;
+                    newParent.childMatchedQueries |= currentParent.childMatchedQueries;
+                }
+                currentParent = newParent;
+                // We also need to update the render parent & account for ng-container
+                if (currentParent && isNgContainer(currentParent)) {
+                    currentRenderParent = currentParent.renderParent;
+                }
+                else {
+                    currentRenderParent = currentParent;
+                }
+            }
         }
-        currentParent = newParent;
     }
     var /** @type {?} */ handleEvent = function (view, nodeIndex, eventName, event) { return ((((nodes[nodeIndex].element)).handleEvent))(view, eventName, event); };
     return {
@@ -12385,11 +12386,17 @@ function viewDef(flags, nodes, updateDirectives, updateRenderer) {
         nodeMatchedQueries: viewMatchedQueries, flags: flags,
         nodes: nodes,
         updateDirectives: updateDirectives || NOOP,
-        updateRenderer: updateRenderer || NOOP,
-        handleEvent: handleEvent || NOOP,
+        updateRenderer: updateRenderer || NOOP, handleEvent: handleEvent,
         bindingCount: viewBindingCount,
         outputCount: viewDisposableCount, lastRenderRootNode: lastRenderRootNode
     };
+}
+/**
+ * @param {?} node
+ * @return {?}
+ */
+function isNgContainer(node) {
+    return (node.flags & 1 /* TypeElement */) !== 0 && ((node.element)).name === null;
 }
 /**
  * @param {?} parent
@@ -15298,7 +15305,9 @@ function transition$$1(stateChangeExpr, steps) {
  * | `pickerEnter`            | `string`            | The name of the transition to use while a picker is presented.                                                                                   |
  * | `pickerLeave`            | `string`            | The name of the transition to use while a picker is dismissed.                                                                                   |
  * | `popoverEnter`           | `string`            | The name of the transition to use while a popover is presented.                                                                                  |
- * | `popoverLeave`           | `string`            | The name of the transition to use while a popover is dismissed.                                                                                  |
+ * | `popoverLeave`           | `string`            | The name of the transition to use while a popover is dismissed.
+ * | `scrollAssist`           | `boolean`           | Used to avoid the input to be hidden by the keyboard if it's near the bottom of the page.
+ * | `scrollPadding`          | `boolean`           | Used to remove the extra padding on ion-content when keyboard is displayed.
  * | `spinner`                | `string`            | The default spinner to use when a name is not defined.                                                                                           |
  * | `statusbarPadding`       | `boolean`           | Whether to hide extra padding for statusbar.                                                                                                     |
  * | `swipeBackEnabled`       | `boolean`           | Whether native iOS swipe to go back functionality is enabled.                                                                                    |
@@ -21709,10 +21718,12 @@ var /** @type {?} */ CLS = {
  * import { NavParams } from 'ionic-angular';
  *
  * export class MyClass{
- *  constructor(public navParams: NavParams){
+ *
+ *  constructor(navParams: NavParams){
  *    // userParams is an object we have in our nav-parameters
- *    this.navParams.get('userParams');
+ *    navParams.get('userParams');
  *  }
+ *
  * }
  * ```
  * \@demo /docs/demos/src/nav-params/
@@ -22390,7 +22401,7 @@ function getNavFromTree(nav, id) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_platform_browser__ = __webpack_require__(30);
 
 /**
- * @license Angular v4.4.3
+ * @license Angular v4.4.4
  * (c) 2010-2017 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -28315,7 +28326,7 @@ FormBuilder.ctorParameters = function () { return []; };
 /**
  * \@stable
  */
-var VERSION = new __WEBPACK_IMPORTED_MODULE_1__angular_core__["_13" /* Version */]('4.4.3');
+var VERSION = new __WEBPACK_IMPORTED_MODULE_1__angular_core__["_13" /* Version */]('4.4.4');
 /**
  * @license
  * Copyright Google Inc. All Rights Reserved.
@@ -30122,6 +30133,7 @@ Content.propDecorators = {
     'ionScrollEnd': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["S" /* Output */] },],
     'fullscreen': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */] },],
     'scrollDownOnLoad': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */] },],
+    'resize': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["z" /* HostListener */], args: ['window:resize',] },],
 };
 function Content_tsickle_Closure_declarations() {
     /** @type {?} */
@@ -31622,7 +31634,15 @@ var BaseInput = (function (_super) {
         (void 0) /* console.debug */;
         this._form && this._form.unsetAsFocused(this);
         this._setFocus(false);
+        this._fireTouched();
         this.ionBlur.emit(this);
+    };
+    /**
+     * @hidden
+     * @return {?}
+     */
+    BaseInput.prototype._fireTouched = function () {
+        this._onTouched && this._onTouched();
     };
     /**
      * @hidden
@@ -31647,7 +31667,6 @@ var BaseInput = (function (_super) {
      */
     BaseInput.prototype.onChange = function () {
         this._onChanged && this._onChanged(this._inputNgModelEvent());
-        this._onTouched && this._onTouched();
     };
     /**
      * @hidden
@@ -32791,7 +32810,7 @@ var SafeSubscriber = (function (_super) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(0);
 
 /**
- * @license Angular v4.4.3
+ * @license Angular v4.4.4
  * (c) 2010-2017 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -37198,7 +37217,7 @@ var By = (function () {
 /**
  * \@stable
  */
-var VERSION = new __WEBPACK_IMPORTED_MODULE_2__angular_core__["_13" /* Version */]('4.4.3');
+var VERSION = new __WEBPACK_IMPORTED_MODULE_2__angular_core__["_13" /* Version */]('4.4.4');
 /**
  * @license
  * Copyright Google Inc. All Rights Reserved.
@@ -38201,9 +38220,9 @@ function Button_tsickle_Closure_declarations() {
  * \@usage
  * ```ts
  * export class MyClass {
- *   constructor(public keyboard: Keyboard) {
  *
- *   }
+ *   constructor(public keyboard: Keyboard) { }
+ *
  * }
  * ```
  */
@@ -38531,8 +38550,9 @@ var /** @type {?} */ KEYBOARD_POLLING_CHECKS_MAX = 100;
  *
  * \@usage
  * ```ts
- * export class MyClass{
- *  constructor(haptic: Haptic){
+ * export class MyClass {
+ *
+ *  constructor(haptic: Haptic) {
  *    haptic.selection();
  *  }
  * }
@@ -39400,7 +39420,7 @@ function Navbar_tsickle_Closure_declarations() {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 
 /**
- * @license Angular v4.4.3
+ * @license Angular v4.4.4
  * (c) 2010-2017 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -43367,7 +43387,7 @@ function isPlatformWorkerUi(platformId) {
 /**
  * \@stable
  */
-var VERSION = new __WEBPACK_IMPORTED_MODULE_1__angular_core__["_13" /* Version */]('4.4.3');
+var VERSION = new __WEBPACK_IMPORTED_MODULE_1__angular_core__["_13" /* Version */]('4.4.4');
 /**
  * @license
  * Copyright Google Inc. All Rights Reserved.
@@ -54318,6 +54338,34 @@ var __extends = (this && this.__extends) || (function () {
  * }
  * ```
  *
+ * ### Zooming
+ * If your slides contain images, you can enable zooming on them by setting `zoom="true" and
+ * wrapping each image in a `div` with the class `swiper-zoom-container`. Zoom supports
+ * `img`, `svg`, `canvas`, and `ion-img`.
+ *
+ * ```html
+ * <ion-slidesj zoom="true">
+ *   <ion-slide>
+ *     <div class="swiper-zoom-container">
+ *       <img src="assets/img/dog.jpg">
+ *     </div>
+ *     <ion-label>Woof</ion-label>
+ *   </ion-slide>
+ *   <ion-slide>
+ *     <div class="swiper-zoom-container">
+ *       <img src="assets/img/cat.jpg">
+ *     </div>
+ *     <ion-label>Meow</ion-label>
+ *   </ion-slide>
+ *   <ion-slide>
+ *     <div class="swiper-zoom-container">
+ *       <img src="assets/img/fish.jpg">
+ *     </div>
+ *     <ion-label>Just keep swimming</ion-label>
+ *   </ion-slide>
+ * </ion-slides>
+ * ```
+ *
  * \@advanced
  *
  * There are several options available to create customized slides. Ionic exposes
@@ -58566,10 +58614,10 @@ var /** @type {?} */ POINTER_EVENT_TYPE_TOUCH = 2;
  *
  * export class MyClass{
  *
- *  constructor(public actionSheetCtrl: ActionSheetController) {}
+ *  constructor(public actionSheetCtrl: ActionSheetController) { }
  *
  *  presentActionSheet() {
- *    let actionSheet = this.actionSheetCtrl.create({
+ *    const actionSheet = this.actionSheetCtrl.create({
  *      title: 'Modify your album',
  *      buttons: [
  *        {
@@ -58642,7 +58690,7 @@ var /** @type {?} */ POINTER_EVENT_TYPE_TOUCH = 2;
  * out first, *then* start the next transition.
  *
  * ```ts
- * let actionSheet = this.actionSheetCtrl.create({
+ * const actionSheet = this.actionSheetCtrl.create({
  *   title: 'Hello',
  *   buttons: [{
  *     text: 'Ok',
@@ -58787,12 +58835,10 @@ function ActionSheetController_tsickle_Closure_declarations() {
  * ```ts
  * import { AlertController } from 'ionic-angular';
  *
- * constructor(private alertCtrl: AlertController) {
- *
- * }
+ * constructor(public alertCtrl: AlertController) { }
  *
  * presentAlert() {
- *   let alert = this.alertCtrl.create({
+ *   const alert = this.alertCtrl.create({
  *     title: 'Low battery',
  *     subTitle: '10% of battery remaining',
  *     buttons: ['Dismiss']
@@ -58801,7 +58847,7 @@ function ActionSheetController_tsickle_Closure_declarations() {
  * }
  *
  * presentConfirm() {
- *   let alert = this.alertCtrl.create({
+ *   const alert = this.alertCtrl.create({
  *     title: 'Confirm purchase',
  *     message: 'Do you want to buy this book?',
  *     buttons: [
@@ -58824,7 +58870,7 @@ function ActionSheetController_tsickle_Closure_declarations() {
  * }
  *
  * presentPrompt() {
- *   let alert = this.alertCtrl.create({
+ *   const alert = this.alertCtrl.create({
  *     title: 'Login',
  *     inputs: [
  *       {
@@ -58917,14 +58963,14 @@ function ActionSheetController_tsickle_Closure_declarations() {
  * out first, *then* start the next transition.
  *
  * ```ts
- * let alert = this.alertCtrl.create({
+ * const alert = this.alertCtrl.create({
  *   title: 'Hello',
  *   buttons: [{
  *     text: 'Ok',
  *     handler: () => {
  *       // user has clicked the alert button
  *       // begin the alert's dismiss transition
- *       let navTransition = alert.dismiss();
+ *       const navTransition = alert.dismiss();
  *
  *       // start some async method
  *       someAsyncOperation().then(() => {
@@ -59492,6 +59538,7 @@ var Checkbox = (function (_super) {
         ev.preventDefault();
         ev.stopPropagation();
         this.value = !this.value;
+        this._fireTouched();
     };
     /**
      * @hidden
@@ -60709,7 +60756,7 @@ var DateTime = (function (_super) {
      * @return {?}
      */
     DateTime.prototype._inputNormalize = function (val) {
-        Object(__WEBPACK_IMPORTED_MODULE_8__util_datetime_util__["l" /* updateDate */])(this._value, val);
+        Object(__WEBPACK_IMPORTED_MODULE_8__util_datetime_util__["m" /* updateDate */])(this._value, val);
         return this._value;
     };
     /**
@@ -60740,7 +60787,7 @@ var DateTime = (function (_super) {
      * @return {?}
      */
     DateTime.prototype._inputNgModelEvent = function () {
-        return Object(__WEBPACK_IMPORTED_MODULE_8__util_datetime_util__["a" /* convertDataToISO */])(this.value);
+        return Object(__WEBPACK_IMPORTED_MODULE_8__util_datetime_util__["b" /* convertDataToISO */])(this.value);
     };
     /**
      * @param {?} ev
@@ -60818,10 +60865,10 @@ var DateTime = (function (_super) {
             // make sure no day name replacer is left in the string
             template = template.replace(/{~}/g, '');
             // parse apart the given template into an array of "formats"
-            Object(__WEBPACK_IMPORTED_MODULE_8__util_datetime_util__["i" /* parseTemplate */])(template).forEach(function (format) {
+            Object(__WEBPACK_IMPORTED_MODULE_8__util_datetime_util__["j" /* parseTemplate */])(template).forEach(function (format) {
                 // loop through each format in the template
                 // create a new picker column to build up with data
-                var /** @type {?} */ key = Object(__WEBPACK_IMPORTED_MODULE_8__util_datetime_util__["b" /* convertFormatToKey */])(format);
+                var /** @type {?} */ key = Object(__WEBPACK_IMPORTED_MODULE_8__util_datetime_util__["c" /* convertFormatToKey */])(format);
                 var /** @type {?} */ values;
                 // first see if they have exact values to use for this input
                 if (Object(__WEBPACK_IMPORTED_MODULE_7__util_util__["l" /* isPresent */])(((_this))[key + 'Values'])) {
@@ -60830,7 +60877,7 @@ var DateTime = (function (_super) {
                 }
                 else {
                     // use the default date part values
-                    values = Object(__WEBPACK_IMPORTED_MODULE_8__util_datetime_util__["e" /* dateValueRange */])(format, _this._min, _this._max);
+                    values = Object(__WEBPACK_IMPORTED_MODULE_8__util_datetime_util__["f" /* dateValueRange */])(format, _this._min, _this._max);
                 }
                 var /** @type {?} */ column = {
                     name: key,
@@ -60838,13 +60885,13 @@ var DateTime = (function (_super) {
                     options: values.map(function (val) {
                         return {
                             value: val,
-                            text: Object(__WEBPACK_IMPORTED_MODULE_8__util_datetime_util__["k" /* renderTextFormat */])(format, val, null, _this._locale),
+                            text: Object(__WEBPACK_IMPORTED_MODULE_8__util_datetime_util__["l" /* renderTextFormat */])(format, val, null, _this._locale),
                         };
                     })
                 };
                 // cool, we've loaded up the columns with options
                 // preselect the option for this column
-                var /** @type {?} */ optValue = Object(__WEBPACK_IMPORTED_MODULE_8__util_datetime_util__["g" /* getValueFromFormat */])(_this.getValue(), format);
+                var /** @type {?} */ optValue = Object(__WEBPACK_IMPORTED_MODULE_8__util_datetime_util__["h" /* getValueFromFormat */])(_this.getValueOrDefault(), format);
                 var /** @type {?} */ selectedIndex = column.options.findIndex(function (opt) { return opt.value === optValue; });
                 if (selectedIndex >= 0) {
                     // set the select index for this column's options
@@ -60895,8 +60942,8 @@ var DateTime = (function (_super) {
             ub[index] = opt.value;
             var /** @type {?} */ disabled = opt.disabled = (value < lowerBounds[index] ||
                 value > upperBounds[index] ||
-                Object(__WEBPACK_IMPORTED_MODULE_8__util_datetime_util__["d" /* dateSortValue */])(ub[0], ub[1], ub[2], ub[3], ub[4]) < min ||
-                Object(__WEBPACK_IMPORTED_MODULE_8__util_datetime_util__["d" /* dateSortValue */])(lb[0], lb[1], lb[2], lb[3], lb[4]) > max);
+                Object(__WEBPACK_IMPORTED_MODULE_8__util_datetime_util__["e" /* dateSortValue */])(ub[0], ub[1], ub[2], ub[3], ub[4]) < min ||
+                Object(__WEBPACK_IMPORTED_MODULE_8__util_datetime_util__["e" /* dateSortValue */])(lb[0], lb[1], lb[2], lb[3], lb[4]) > max);
             if (!disabled) {
                 indexMin = Math.min(indexMin, i);
                 indexMax = Math.max(indexMax, i);
@@ -60914,8 +60961,8 @@ var DateTime = (function (_super) {
      */
     DateTime.prototype.validate = function () {
         var /** @type {?} */ today = new Date();
-        var /** @type {?} */ minCompareVal = Object(__WEBPACK_IMPORTED_MODULE_8__util_datetime_util__["c" /* dateDataSortValue */])(this._min);
-        var /** @type {?} */ maxCompareVal = Object(__WEBPACK_IMPORTED_MODULE_8__util_datetime_util__["c" /* dateDataSortValue */])(this._max);
+        var /** @type {?} */ minCompareVal = Object(__WEBPACK_IMPORTED_MODULE_8__util_datetime_util__["d" /* dateDataSortValue */])(this._min);
+        var /** @type {?} */ maxCompareVal = Object(__WEBPACK_IMPORTED_MODULE_8__util_datetime_util__["d" /* dateDataSortValue */])(this._max);
         var /** @type {?} */ yearCol = this._picker.getColumn('year');
         (void 0) /* assert */;
         var /** @type {?} */ selectedYear = today.getFullYear();
@@ -60931,7 +60978,7 @@ var DateTime = (function (_super) {
             }
         }
         var /** @type {?} */ selectedMonth = this.validateColumn('month', 1, minCompareVal, maxCompareVal, [selectedYear, 0, 0, 0, 0], [selectedYear, 12, 31, 23, 59]);
-        var /** @type {?} */ numDaysInMonth = Object(__WEBPACK_IMPORTED_MODULE_8__util_datetime_util__["f" /* daysInMonth */])(selectedMonth, selectedYear);
+        var /** @type {?} */ numDaysInMonth = Object(__WEBPACK_IMPORTED_MODULE_8__util_datetime_util__["g" /* daysInMonth */])(selectedMonth, selectedYear);
         var /** @type {?} */ selectedDay = this.validateColumn('day', 2, minCompareVal, maxCompareVal, [selectedYear, selectedMonth, 0, 0, 0], [selectedYear, selectedMonth, numDaysInMonth, 23, 59]);
         var /** @type {?} */ selectedHour = this.validateColumn('hour', 3, minCompareVal, maxCompareVal, [selectedYear, selectedMonth, selectedDay, 0, 0], [selectedYear, selectedMonth, selectedDay, 23, 59]);
         this.validateColumn('minute', 4, minCompareVal, maxCompareVal, [selectedYear, selectedMonth, selectedDay, selectedHour, 0], [selectedYear, selectedMonth, selectedDay, selectedHour, 59]);
@@ -60976,7 +61023,7 @@ var DateTime = (function (_super) {
     DateTime.prototype.updateText = function () {
         // create the text of the formatted data
         var /** @type {?} */ template = this.displayFormat || this.pickerFormat || DEFAULT_FORMAT;
-        this._text = Object(__WEBPACK_IMPORTED_MODULE_8__util_datetime_util__["j" /* renderDateTime */])(template, this.getValue(), this._locale);
+        this._text = Object(__WEBPACK_IMPORTED_MODULE_8__util_datetime_util__["k" /* renderDateTime */])(template, this.getValue(), this._locale);
     };
     /**
      * @hidden
@@ -60984,6 +61031,47 @@ var DateTime = (function (_super) {
      */
     DateTime.prototype.getValue = function () {
         return this._value;
+    };
+    /**
+     * @hidden
+     * @return {?}
+     */
+    DateTime.prototype.getValueOrDefault = function () {
+        if (this.hasValue()) {
+            return this._value;
+        }
+        var /** @type {?} */ initialDateString = this.getDefaultValueDateString();
+        var /** @type {?} */ _default = {};
+        Object(__WEBPACK_IMPORTED_MODULE_8__util_datetime_util__["m" /* updateDate */])(_default, initialDateString);
+        return _default;
+    };
+    /**
+     * Get the default value as a date string
+     * @hidden
+     * @return {?}
+     */
+    DateTime.prototype.getDefaultValueDateString = function () {
+        if (this.initialValue) {
+            return this.initialValue;
+        }
+        var /** @type {?} */ nowString = (new Date).toISOString();
+        if (this.max) {
+            var /** @type {?} */ now = Object(__WEBPACK_IMPORTED_MODULE_8__util_datetime_util__["i" /* parseDate */])(nowString);
+            var /** @type {?} */ max = Object(__WEBPACK_IMPORTED_MODULE_8__util_datetime_util__["i" /* parseDate */])(this.max);
+            var /** @type {?} */ v = void 0;
+            for (var /** @type {?} */ i in max) {
+                v = ((max))[i];
+                if (v === null) {
+                    ((max))[i] = ((now))[i];
+                }
+            }
+            var /** @type {?} */ diff = Object(__WEBPACK_IMPORTED_MODULE_8__util_datetime_util__["a" /* compareDates */])(now, max);
+            // If max is before current time, return max
+            if (diff > 0) {
+                return this.max;
+            }
+        }
+        return nowString;
     };
     /**
      * @hidden
@@ -61019,8 +61107,8 @@ var DateTime = (function (_super) {
                 this.max = todaysYear.toString();
             }
         }
-        var /** @type {?} */ min = this._min = Object(__WEBPACK_IMPORTED_MODULE_8__util_datetime_util__["h" /* parseDate */])(this.min);
-        var /** @type {?} */ max = this._max = Object(__WEBPACK_IMPORTED_MODULE_8__util_datetime_util__["h" /* parseDate */])(this.max);
+        var /** @type {?} */ min = this._min = Object(__WEBPACK_IMPORTED_MODULE_8__util_datetime_util__["i" /* parseDate */])(this.min);
+        var /** @type {?} */ max = this._max = Object(__WEBPACK_IMPORTED_MODULE_8__util_datetime_util__["i" /* parseDate */])(this.max);
         min.year = min.year || todaysYear;
         max.year = max.year || todaysYear;
         min.month = min.month || 1;
@@ -61087,6 +61175,7 @@ DateTime.propDecorators = {
     'min': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */] },],
     'max': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */] },],
     'displayFormat': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */] },],
+    'initialValue': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */] },],
     'pickerFormat': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */] },],
     'cancelText': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */] },],
     'doneText': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */] },],
@@ -61154,6 +61243,14 @@ function DateTime_tsickle_Closure_declarations() {
      * @type {?}
      */
     DateTime.prototype.displayFormat;
+    /**
+     * \@input {string} The default datetime selected in picker modal if field value is empty.
+     * Value must be a date string following the
+     * [ISO 8601 datetime format standard](https://www.w3.org/TR/NOTE-datetime),
+     * `1996-12-19`.
+     * @type {?}
+     */
+    DateTime.prototype.initialValue;
     /**
      * \@input {string} The format of the date and time picker columns the user selects.
      * A datetime input can have one or many datetime parts, each getting their
@@ -64957,12 +65054,12 @@ function Loading_tsickle_Closure_declarations() {
  *
  * \@usage
  * ```ts
- * constructor(public loadingCtrl: LoadingController) {
+ * import { LoadingController } from 'ionic-angular';
  *
- * }
+ * constructor(public loadingCtrl: LoadingController) { }
  *
  * presentLoadingDefault() {
- *   let loading = this.loadingCtrl.create({
+ *   const loading = this.loadingCtrl.create({
  *     content: 'Please wait...'
  *   });
  *
@@ -64974,7 +65071,7 @@ function Loading_tsickle_Closure_declarations() {
  * }
  *
  * presentLoadingCustom() {
- *   let loading = this.loadingCtrl.create({
+ *   const loading = this.loadingCtrl.create({
  *     spinner: 'hide',
  *     content: `
  *       <div class="custom-spinner-container">
@@ -64991,7 +65088,7 @@ function Loading_tsickle_Closure_declarations() {
  * }
  *
  * presentLoadingText() {
- *   let loading = this.loadingCtrl.create({
+ *   const loading = this.loadingCtrl.create({
  *     spinner: 'hide',
  *     content: 'Loading Please Wait...'
  *   });
@@ -66075,7 +66172,7 @@ function MenuClose_tsickle_Closure_declarations() {
  * \@name MenuToggle
  * \@description
  * The `menuToggle` directive can be placed on any button to toggle a menu open or closed.
- * If it is added to the [NavBar](../../navbar/NavBar) of a page, the button will only appear
+ * If it is added to the [NavBar](../../toolbar/Navbar) of a page, the button will only appear
  * when the page it's in is currently a root page. See the [Menu Navigation Bar Behavior](../Menu#navigation-bar-behavior)
  * docs for more information.
  *
@@ -67073,12 +67170,10 @@ function wrapInstance(pluginObj, methodName, opts) {
  * \@Component(...)
  * class HomePage {
  *
- *  constructor(public modalCtrl: ModalController) {
- *
- *  }
+ *  constructor(public modalCtrl: ModalController) { }
  *
  *  presentProfileModal() {
- *    let profileModal = this.modalCtrl.create(Profile, { userId: 8675309 });
+ *    const profileModal = this.modalCtrl.create(Profile, { userId: 8675309 });
  *    profileModal.present();
  *  }
  *
@@ -69712,7 +69807,10 @@ var Segment = (function (_super) {
         var _this = this;
         this._initialize();
         this._buttons.forEach(function (button) {
-            button.ionSelect.subscribe(function (selectedButton) { return _this.value = selectedButton.value; });
+            button.ionSelect.subscribe(function (selectedButton) {
+                _this.value = selectedButton.value;
+                _this._fireTouched();
+            });
         });
     };
     /**
@@ -71263,8 +71361,8 @@ function resetZoomEvents(s, plt) {
         }
     }
     else if (s._touchEvents.start === 'touchstart') {
-        for (var /** @type {?} */ i_1 = 0; i_1 < slides.length; i_1++) {
-            slide = slides[i_1];
+        for (var /** @type {?} */ i = 0; i < slides.length; i++) {
+            slide = slides[i];
             // touchstart
             plt.registerListener(slide, s._touchEvents.start, function (ev) {
                 onGestureStart(s, plt, ev);
@@ -71284,8 +71382,8 @@ function resetZoomEvents(s, plt) {
         onTouchStart(s, plt, ev);
     });
     unRegs.push(function () { touchStartSub.unsubscribe(); });
-    for (var /** @type {?} */ i_2 = 0; i_2 < slides.length; i_2++) {
-        slide = slides[i_2];
+    for (var /** @type {?} */ i = 0; i < slides.length; i++) {
+        slide = slides[i];
         if (slide.querySelector('.' + __WEBPACK_IMPORTED_MODULE_0__swiper_utils__["a" /* CLS */].zoomContainer)) {
             plt.registerListener(slide, 's.touchEvents.move', function (ev) {
                 onTouchMove(s, plt, ev);
@@ -71825,7 +71923,7 @@ var __extends = (this && this.__extends) || (function () {
  * ```html
  * <ion-tabs>
  *   <ion-tab (ionSelect)="chat()" tabTitle="Show Modal"></ion-tab>
- * </ion-tabs>
+ * </ion-tabs>pop
  * ```
  *
  * ```ts
@@ -72602,12 +72700,10 @@ var /** @type {?} */ TOAST_POSITION_BOTTOM = 'bottom';
  * ```ts
  * import { ToastController } from 'ionic-angular';
  *
- * constructor(private toastCtrl: ToastController) {
- *
- * }
+ * constructor(public toastCtrl: ToastController) { }
  *
  * presentToast() {
- *   let toast = this.toastCtrl.create({
+ *   const toast = this.toastCtrl.create({
  *     message: 'User was added successfully',
  *     duration: 3000,
  *     position: 'top'
@@ -73622,7 +73718,7 @@ function Typography_tsickle_Closure_declarations() {
  * ### Approximate Widths and Heights
  *
  * If the height of items in the virtual scroll are not close to the
- * default size of 40px, it is extremely important to provide an value for
+ * default size of 40px, it is extremely important to provide a value for
  * approxItemHeight height. An exact pixel-perfect size is not necessary,
  * but without an estimate the virtual scroll will not render correctly.
  *
@@ -75106,7 +75202,8 @@ function isActivatedDisabled(ev, activatableEle) {
  * import { Events } from 'ionic-angular';
  *
  * // first page (publish an event when a user is created)
- * constructor(public events: Events) {}
+ * constructor(public events: Events) { }
+ *
  * createUser(user) {
  *   console.log('User created!')
  *   this.events.publish('user:created', user, Date.now());
@@ -76074,7 +76171,7 @@ SplashScreen = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_platform_browser__ = __webpack_require__(30);
 
 /**
- * @license Angular v4.4.3
+ * @license Angular v4.4.4
  * (c) 2010-2017 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -76207,7 +76304,7 @@ var CachedResourceLoader = (function (_super) {
 /**
  * @stable
  */
-var VERSION = new __WEBPACK_IMPORTED_MODULE_2__angular_core__["_13" /* Version */]('4.4.3');
+var VERSION = new __WEBPACK_IMPORTED_MODULE_2__angular_core__["_13" /* Version */]('4.4.4');
 /**
  * @license
  * Copyright Google Inc. All Rights Reserved.
@@ -76477,7 +76574,7 @@ var platformBrowserDynamic = Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__[
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 
 /**
- * @license Angular v4.4.3
+ * @license Angular v4.4.4
  * (c) 2010-2017 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -76497,7 +76594,7 @@ var platformBrowserDynamic = Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__[
 /**
  * \@stable
  */
-var VERSION = new __WEBPACK_IMPORTED_MODULE_1__angular_core__["_13" /* Version */]('4.4.3');
+var VERSION = new __WEBPACK_IMPORTED_MODULE_1__angular_core__["_13" /* Version */]('4.4.4');
 /**
  * @license
  * Copyright Google Inc. All Rights Reserved.
@@ -87650,6 +87747,11 @@ function createTokenForExternalReference(reflector, reference) {
  */
 var PRESERVE_WS_ATTR_NAME = 'ngPreserveWhitespaces';
 var SKIP_WS_TRIM_TAGS = new Set(['pre', 'template', 'textarea', 'script', 'style']);
+// Equivalent to \s with \u00a0 (non-breaking space) excluded.
+// Based on https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp
+var WS_CHARS = ' \f\n\r\t\v\u1680\u180e\u2000-\u200a\u2028\u2029\u202f\u205f\u3000\ufeff';
+var NO_WS_REGEXP = new RegExp("[^" + WS_CHARS + "]");
+var WS_REPLACE_REGEXP = new RegExp("[" + WS_CHARS + "]{2,}", 'g');
 /**
  * @param {?} attrs
  * @return {?}
@@ -87713,9 +87815,9 @@ var WhitespaceVisitor = (function () {
      * @return {?}
      */
     WhitespaceVisitor.prototype.visitText = function (text, context) {
-        var /** @type {?} */ isBlank = text.value.trim().length === 0;
-        if (!isBlank) {
-            return new Text(replaceNgsp(text.value).replace(/\s\s+/g, ' '), text.sourceSpan);
+        var /** @type {?} */ isNotBlank = text.value.match(NO_WS_REGEXP);
+        if (isNotBlank) {
+            return new Text(replaceNgsp(text.value).replace(WS_REPLACE_REGEXP, ' '), text.sourceSpan);
         }
         return null;
     };
@@ -95583,7 +95685,7 @@ var EmitterVisitorContext = (function () {
     EmitterVisitorContext.prototype.spanOf = function (line, column) {
         var /** @type {?} */ emittedLine = this._lines[line - this._preambleLineCount];
         if (emittedLine) {
-            var /** @type {?} */ columnsLeft = column - emittedLine.indent;
+            var /** @type {?} */ columnsLeft = column - _createIndent(emittedLine.indent).length;
             for (var /** @type {?} */ partIndex = 0; partIndex < emittedLine.parts.length; partIndex++) {
                 var /** @type {?} */ part = emittedLine.parts[partIndex];
                 if (part.length > columnsLeft) {
@@ -101337,7 +101439,9 @@ var StaticReflector = (function () {
                         var item = _a[_i];
                         // Check for a spread expression
                         if (item && item.__symbolic === 'spread') {
-                            var /** @type {?} */ spreadArray = simplify(item.expression);
+                            // We call with references as 0 because we require the actual value and cannot
+                            // tolerate a reference here.
+                            var /** @type {?} */ spreadArray = simplifyInContext(context, item.expression, depth, 0);
                             if (Array.isArray(spreadArray)) {
                                 for (var _b = 0, spreadArray_1 = spreadArray; _b < spreadArray_1.length; _b++) {
                                     var spreadItem = spreadArray_1[_b];
@@ -101357,7 +101461,7 @@ var StaticReflector = (function () {
                 if (expression instanceof StaticSymbol) {
                     // Stop simplification at builtin symbols or if we are in a reference context
                     if (expression === self.injectionToken || expression === self.opaqueToken ||
-                        self.conversionMap.has(expression) || references > 0) {
+                        self.conversionMap.has(expression) || (references > 0 && !expression.members.length)) {
                         return expression;
                     }
                     else {
@@ -106805,19 +106909,20 @@ var PickerSlideOut = (function (_super) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (immutable) */ __webpack_exports__["j"] = renderDateTime;
-/* harmony export (immutable) */ __webpack_exports__["k"] = renderTextFormat;
-/* harmony export (immutable) */ __webpack_exports__["e"] = dateValueRange;
-/* harmony export (immutable) */ __webpack_exports__["d"] = dateSortValue;
-/* harmony export (immutable) */ __webpack_exports__["c"] = dateDataSortValue;
-/* harmony export (immutable) */ __webpack_exports__["f"] = daysInMonth;
+/* harmony export (immutable) */ __webpack_exports__["k"] = renderDateTime;
+/* harmony export (immutable) */ __webpack_exports__["l"] = renderTextFormat;
+/* harmony export (immutable) */ __webpack_exports__["f"] = dateValueRange;
+/* harmony export (immutable) */ __webpack_exports__["e"] = dateSortValue;
+/* harmony export (immutable) */ __webpack_exports__["d"] = dateDataSortValue;
+/* harmony export (immutable) */ __webpack_exports__["g"] = daysInMonth;
 /* unused harmony export isLeapYear */
-/* harmony export (immutable) */ __webpack_exports__["h"] = parseDate;
-/* harmony export (immutable) */ __webpack_exports__["l"] = updateDate;
-/* harmony export (immutable) */ __webpack_exports__["i"] = parseTemplate;
-/* harmony export (immutable) */ __webpack_exports__["g"] = getValueFromFormat;
-/* harmony export (immutable) */ __webpack_exports__["b"] = convertFormatToKey;
-/* harmony export (immutable) */ __webpack_exports__["a"] = convertDataToISO;
+/* harmony export (immutable) */ __webpack_exports__["i"] = parseDate;
+/* harmony export (immutable) */ __webpack_exports__["a"] = compareDates;
+/* harmony export (immutable) */ __webpack_exports__["m"] = updateDate;
+/* harmony export (immutable) */ __webpack_exports__["j"] = parseTemplate;
+/* harmony export (immutable) */ __webpack_exports__["h"] = getValueFromFormat;
+/* harmony export (immutable) */ __webpack_exports__["c"] = convertFormatToKey;
+/* harmony export (immutable) */ __webpack_exports__["b"] = convertDataToISO;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__util__ = __webpack_require__(2);
 
 /**
@@ -107053,6 +107158,16 @@ function parseDate(val) {
         millisecond: parse[7],
         tzOffset: tzOffset,
     };
+}
+/**
+ * @param {?} d1
+ * @param {?} d2
+ * @return {?}
+ */
+function compareDates(d1, d2) {
+    var /** @type {?} */ date1 = new Date(d1.year, d1.month, d1.day, d1.hour, d1.minute, d1.second);
+    var /** @type {?} */ date2 = new Date(d2.year, d2.month, d2.day, d2.hour, d2.minute, d2.second);
+    return date1.getTime() - date2.getTime();
 }
 /**
  * @param {?} existingData
@@ -114251,13 +114366,13 @@ var __extends = (this && this.__extends) || (function () {
  * ### IonicErrorHandler Example
  *
  * ```typescript
- * import { NgModule, ErrorHandler } from '\@angular/core';
+ * import { ErrorHandler, NgModule } from '\@angular/core';
  * import { IonicErrorHandler } from 'ionic-angular';
  *
  * \@NgModule({
  *   providers: [{ provide: ErrorHandler, useClass: IonicErrorHandler }]
  * })
- * class AppModule {}
+ * class AppModule { }
  * ```
  *
  *
@@ -114276,7 +114391,7 @@ var __extends = (this && this.__extends) || (function () {
  * \@NgModule({
  *   providers: [{ provide: ErrorHandler, useClass: MyErrorHandler }]
  * })
- * class AppModule {}
+ * class AppModule { }
  * ```
  *
  * More information about Angular's [`ErrorHandler`](https://angular.io/docs/ts/latest/api/core/index/ErrorHandler-class.html).
