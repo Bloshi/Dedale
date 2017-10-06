@@ -1,5 +1,23 @@
 page-tools {
 	ion-content {
-		h3 { text-align: center; }
+		h2 { text-align: center; }
+	
+		ul.toolsList { @include size(f, auto); padding: 10px 1%;
+			display: flex; flex-flow: row wrap; justify-content: space-around;
+			align-items: center; list-style: none; position: relative;
+			li { @include size(46%, 180px); 
+				flex-grow: 1; box-sizing: border-box; margin:10px 1% 0 1%;
+				button { @include size(f);  
+					border-radius: 5px; background-color: transparent; 
+					border: 1px solid map-get($colors, light);
+
+					i, span { text-align: center; display: block; color: map-get($colors, light); }
+					i {  @include size(100px); margin: 20px auto;
+						@include fZ(100); @include lH(100); 
+					}
+					span { @include fZ(28); @include lH(30); @include size(f, auto); }
+				}
+			}
+		}
 	}
 }
