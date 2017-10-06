@@ -127,12 +127,11 @@ var ToolsPage = /** @class */ (function () {
     ToolsPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPage */])(),
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'page-tools',template:/*ion-inline-start:"/Users/maximebartier/Sites/Client/BloshiCorp/Dedale/App/Dedale/src/pages/tools/tools.html"*/'<!--\n  Generated template for the ToolsPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n  	<button ion-button menuToggle>\n		<ion-icon name="menu"></ion-icon>\n	</button>\n    <ion-title>ToolsPage</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n	<h3>Liste d\'outils pour le jeu</h3>\n</ion-content>\n'/*ion-inline-end:"/Users/maximebartier/Sites/Client/BloshiCorp/Dedale/App/Dedale/src/pages/tools/tools.html"*/,
+            selector: 'page-tools',template:/*ion-inline-start:"/Users/maximebartier/Sites/Client/BloshiCorp/Dedale/App/Dedale/src/pages/tools/tools.html"*/'<!--\n  Generated template for the ToolsPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n  	<button ion-button menuToggle>\n		<ion-icon name="menu"></ion-icon>\n	</button>\n    <ion-title>ToolsPage</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n	<h2>Liste d\'outils pour le jeu</h2>\n\n	<ul class="toolsList">\n		<li>\n			<button (click)=\'lauchToolsDes()\'>\n				<i class="fa fa-scissors" aria-hidden="true"></i>\n				<span>Dés</span>\n			</button>\n		</li>\n		<li>\n			<button (click)=\'lauchToolsClock()\'>\n				<i class="fa fa-clock-o" aria-hidden="true"></i>\n				<span>Chrono</span>\n			</button>\n		</li>\n		<li>\n			<button (click)=\'lauchTools()\'>\n				<i class="fa fa-scissors" aria-hidden="true"></i>\n				<span>Dés</span>\n			</button>	\n		</li>\n	</ul>\n</ion-content>\n'/*ion-inline-end:"/Users/maximebartier/Sites/Client/BloshiCorp/Dedale/App/Dedale/src/pages/tools/tools.html"*/,
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */]) === "function" && _b || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */]])
     ], ToolsPage);
     return ToolsPage;
-    var _a, _b;
 }());
 
 //# sourceMappingURL=tools.js.map
@@ -214,17 +213,19 @@ var MapPage = /** @class */ (function () {
     };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_14" /* ViewChild */])('map'),
-        __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["u" /* ElementRef */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["u" /* ElementRef */]) === "function" && _a || Object)
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["u" /* ElementRef */])
     ], MapPage.prototype, "mapRef", void 0);
     MapPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPage */])(),
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
             selector: 'page-map',template:/*ion-inline-start:"/Users/maximebartier/Sites/Client/BloshiCorp/Dedale/App/Dedale/src/pages/map/map.html"*/'<!--\n  Generated template for the MapPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n  	<button ion-button menuToggle>\n		<ion-icon name="menu"></ion-icon>\n	</button>\n    <ion-title>MapPage</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n  <div id="map" #map></div>\n</ion-content>\n'/*ion-inline-end:"/Users/maximebartier/Sites/Client/BloshiCorp/Dedale/App/Dedale/src/pages/map/map.html"*/,
         }),
-        __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2__ionic_native_geolocation__["a" /* Geolocation */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__ionic_native_geolocation__["a" /* Geolocation */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* Platform */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* Platform */]) === "function" && _e || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_2__ionic_native_geolocation__["a" /* Geolocation */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* Platform */]])
     ], MapPage);
     return MapPage;
-    var _a, _b, _c, _d, _e;
 }());
 
 //# sourceMappingURL=map.js.map

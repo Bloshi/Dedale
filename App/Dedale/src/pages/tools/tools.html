@@ -17,5 +17,26 @@
 
 
 <ion-content>
-	<h3>Liste d'outils pour le jeu</h3>
+	<h2>Liste d'outils pour le jeu</h2>
+
+	<ul class="toolsList">
+		<li>
+			<button (click)='lauchToolsDes()'>
+				<i class="fa fa-scissors" aria-hidden="true"></i>
+				<span>Dés</span>
+			</button>
+		</li>
+		<li>
+			<button (click)='lauchToolsClock()'>
+				<i class="fa fa-clock-o" aria-hidden="true"></i>
+				<span>Chrono</span>
+			</button>
+		</li>
+		<li>
+			<button (click)='lauchTools()'>
+				<i class="fa fa-scissors" aria-hidden="true"></i>
+				<span>Dés</span>
+			</button>	
+		</li>
+	</ul>
 </ion-content>
