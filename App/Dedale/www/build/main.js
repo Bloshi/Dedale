@@ -99,6 +99,7 @@ var SearchPage = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ToolsPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__tools_dice_tools_dice__ = __webpack_require__(279);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -108,6 +109,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 
 /**
@@ -124,15 +126,18 @@ var ToolsPage = /** @class */ (function () {
     ToolsPage.prototype.ionViewDidLoad = function () {
         console.log('ionViewDidLoad ToolsPage');
     };
+    ToolsPage.prototype.lauchToolsDice = function () {
+        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_2__tools_dice_tools_dice__["a" /* ToolsDicePage */]);
+    };
     ToolsPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPage */])(),
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'page-tools',template:/*ion-inline-start:"/Users/maximebartier/Sites/Client/BloshiCrop/Dedale/App/Dedale/src/pages/tools/tools.html"*/'<!--\n  Generated template for the ToolsPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n  	<button ion-button menuToggle>\n		<ion-icon name="menu"></ion-icon>\n	</button>\n    <ion-title>ToolsPage</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n	<h2>Liste d\'outils pour le jeu</h2>\n\n	<ul class="toolsList">\n		<li>\n			<button (click)=\'lauchToolsDes()\'>\n				<i class="fa fa-scissors" aria-hidden="true"></i>\n				<span>Dés</span>\n			</button>\n		</li>\n		<li>\n			<button (click)=\'lauchToolsClock()\'>\n				<i class="fa fa-clock-o" aria-hidden="true"></i>\n				<span>Chrono</span>\n			</button>\n		</li>\n		<li>\n			<button (click)=\'lauchTools()\'>\n				<i class="fa fa-scissors" aria-hidden="true"></i>\n				<span>Dés</span>\n			</button>	\n		</li>\n	</ul>\n</ion-content>\n'/*ion-inline-end:"/Users/maximebartier/Sites/Client/BloshiCrop/Dedale/App/Dedale/src/pages/tools/tools.html"*/,
+            selector: 'page-tools',template:/*ion-inline-start:"/Users/maximebartier/Sites/Client/BloshiCrop/Dedale/App/Dedale/src/pages/tools/tools.html"*/'<!--\n  Generated template for the ToolsPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n  	<button ion-button menuToggle>\n		<ion-icon name="menu"></ion-icon>\n	</button>\n    <ion-title>ToolsPage</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n	<h2>Liste d\'outils pour le jeu</h2>\n\n	<ul class="toolsList">\n		<li>\n			<button (click)=\'lauchToolsDice()\'>\n				<i class="fa fa-scissors" aria-hidden="true"></i>\n				<span>Dés</span>\n			</button>\n		</li>\n		<li>\n			<button (click)=\'lauchToolsClock()\'>\n				<i class="fa fa-clock-o" aria-hidden="true"></i>\n				<span>Chrono</span>\n			</button>\n		</li>\n		<li>\n			<button (click)=\'lauchTools()\'>\n				<i class="fa fa-scissors" aria-hidden="true"></i>\n				<span>Dés</span>\n			</button>\n		</li>\n	</ul>\n</ion-content>\n'/*ion-inline-end:"/Users/maximebartier/Sites/Client/BloshiCrop/Dedale/App/Dedale/src/pages/tools/tools.html"*/,
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */]) === "function" && _b || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */]])
     ], ToolsPage);
     return ToolsPage;
-    var _a, _b;
 }());
 
 //# sourceMappingURL=tools.js.map
@@ -214,19 +219,17 @@ var MapPage = /** @class */ (function () {
     };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_14" /* ViewChild */])('map'),
-        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["u" /* ElementRef */])
+        __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["u" /* ElementRef */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["u" /* ElementRef */]) === "function" && _a || Object)
     ], MapPage.prototype, "mapRef", void 0);
     MapPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPage */])(),
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
             selector: 'page-map',template:/*ion-inline-start:"/Users/maximebartier/Sites/Client/BloshiCrop/Dedale/App/Dedale/src/pages/map/map.html"*/'<!--\n  Generated template for the MapPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n  	<button ion-button menuToggle>\n		<ion-icon name="menu"></ion-icon>\n	</button>\n    <ion-title>MapPage</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n  <div id="map" #map></div>\n</ion-content>\n'/*ion-inline-end:"/Users/maximebartier/Sites/Client/BloshiCrop/Dedale/App/Dedale/src/pages/map/map.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_2__ionic_native_geolocation__["a" /* Geolocation */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* Platform */]])
+        __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2__ionic_native_geolocation__["a" /* Geolocation */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__ionic_native_geolocation__["a" /* Geolocation */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* Platform */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* Platform */]) === "function" && _e || Object])
     ], MapPage);
     return MapPage;
+    var _a, _b, _c, _d, _e;
 }());
 
 //# sourceMappingURL=map.js.map
@@ -407,31 +410,35 @@ webpackEmptyAsyncContext.id = 115;
 var map = {
 	"../pages/actu-focus/actu-focus.module": [
 		271,
-		6
+		16
 	],
 	"../pages/actu/actu.module": [
 		272,
-		5
+		15
 	],
 	"../pages/map/map.module": [
 		275,
-		4
+		14
 	],
 	"../pages/search/search.module": [
 		273,
-		3
+		13
 	],
 	"../pages/sign-in/sign-in.module": [
 		277,
-		2
+		12
 	],
 	"../pages/sign-up/sign-up.module": [
 		276,
-		1
+		11
+	],
+	"../pages/tools-dice/tools-dice.module": [
+		278,
+		9
 	],
 	"../pages/tools/tools.module": [
 		274,
-		0
+		10
 	]
 };
 function webpackAsyncContext(req) {
@@ -482,15 +489,17 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_actu_focus_actu_focus__ = __webpack_require__(101);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__pages_search_search__ = __webpack_require__(102);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__pages_tools_tools__ = __webpack_require__(103);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_map_map__ = __webpack_require__(104);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__ionic_native_status_bar__ = __webpack_require__(198);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__ionic_native_splash_screen__ = __webpack_require__(199);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_tools_dice_tools_dice__ = __webpack_require__(279);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__pages_map_map__ = __webpack_require__(104);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__ionic_native_status_bar__ = __webpack_require__(198);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__ionic_native_splash_screen__ = __webpack_require__(199);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -522,21 +531,12 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_10__pages_actu_focus_actu_focus__["a" /* ActuFocusPage */],
                 __WEBPACK_IMPORTED_MODULE_11__pages_search_search__["a" /* SearchPage */],
                 __WEBPACK_IMPORTED_MODULE_12__pages_tools_tools__["a" /* ToolsPage */],
-                __WEBPACK_IMPORTED_MODULE_13__pages_map_map__["a" /* MapPage */]
+                __WEBPACK_IMPORTED_MODULE_13__pages_tools_dice_tools_dice__["a" /* ToolsDicePage */],
+                __WEBPACK_IMPORTED_MODULE_14__pages_map_map__["a" /* MapPage */]
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
-                __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["d" /* IonicModule */].forRoot(__WEBPACK_IMPORTED_MODULE_4__app_component__["a" /* MyApp */], {}, {
-                    links: [
-                        { loadChildren: '../pages/actu-focus/actu-focus.module#ActuFocusPageModule', name: 'ActuFocusPage', segment: 'actu-focus', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/actu/actu.module#ActuPageModule', name: 'ActuPage', segment: 'actu', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/search/search.module#SearchPageModule', name: 'SearchPage', segment: 'search', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/tools/tools.module#ToolsPageModule', name: 'ToolsPage', segment: 'tools', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/map/map.module#MapPageModule', name: 'MapPage', segment: 'map', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/sign-up/sign-up.module#SignUpPageModule', name: 'SignUpPage', segment: 'sign-up', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/sign-in/sign-in.module#SignInPageModule', name: 'SignInPage', segment: 'sign-in', priority: 'low', defaultHistory: [] }
-                    ]
-                }),
+                __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["d" /* IonicModule */].forRoot(__WEBPACK_IMPORTED_MODULE_4__app_component__["a" /* MyApp */]),
             ],
             bootstrap: [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["b" /* IonicApp */]],
             entryComponents: [
@@ -549,11 +549,12 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_10__pages_actu_focus_actu_focus__["a" /* ActuFocusPage */],
                 __WEBPACK_IMPORTED_MODULE_11__pages_search_search__["a" /* SearchPage */],
                 __WEBPACK_IMPORTED_MODULE_12__pages_tools_tools__["a" /* ToolsPage */],
-                __WEBPACK_IMPORTED_MODULE_13__pages_map_map__["a" /* MapPage */]
+                __WEBPACK_IMPORTED_MODULE_13__pages_tools_dice_tools_dice__["a" /* ToolsDicePage */],
+                __WEBPACK_IMPORTED_MODULE_14__pages_map_map__["a" /* MapPage */]
             ],
             providers: [
-                __WEBPACK_IMPORTED_MODULE_14__ionic_native_status_bar__["a" /* StatusBar */],
-                __WEBPACK_IMPORTED_MODULE_15__ionic_native_splash_screen__["a" /* SplashScreen */],
+                __WEBPACK_IMPORTED_MODULE_15__ionic_native_status_bar__["a" /* StatusBar */],
+                __WEBPACK_IMPORTED_MODULE_16__ionic_native_splash_screen__["a" /* SplashScreen */],
                 __WEBPACK_IMPORTED_MODULE_3__ionic_native_geolocation__["a" /* Geolocation */],
                 { provide: __WEBPACK_IMPORTED_MODULE_1__angular_core__["v" /* ErrorHandler */], useClass: __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["c" /* IonicErrorHandler */] }
             ]
@@ -611,14 +612,14 @@ var MyApp = /** @class */ (function () {
         // si loggé
         this.rootPage = __WEBPACK_IMPORTED_MODULE_4__pages_actu_actu__["a" /* ActuPage */];
         this.initializeApp();
-        // used for an example of ngFor and navigation 
+        // used for an example of ngFor and navigation
         this.pages = [
             { title: 'Rechercher', component: __WEBPACK_IMPORTED_MODULE_5__pages_search_search__["a" /* SearchPage */], icon: 'fa fa-search' },
             { title: 'Actualité', component: __WEBPACK_IMPORTED_MODULE_4__pages_actu_actu__["a" /* ActuPage */], icon: 'fa fa-coffee' },
             { title: 'Jeux', component: __WEBPACK_IMPORTED_MODULE_4__pages_actu_actu__["a" /* ActuPage */], icon: 'fa fa-gamepad' },
             { title: 'Carte événement', component: __WEBPACK_IMPORTED_MODULE_7__pages_map_map__["a" /* MapPage */], icon: 'fa fa-map-o' },
             { title: 'Profil', component: __WEBPACK_IMPORTED_MODULE_4__pages_actu_actu__["a" /* ActuPage */], icon: 'fa fa-user-o' },
-            { title: 'Outils', component: __WEBPACK_IMPORTED_MODULE_6__pages_tools_tools__["a" /* ToolsPage */], icon: 'fa fa-cog' },
+            { title: 'Outils', component: __WEBPACK_IMPORTED_MODULE_6__pages_tools_tools__["a" /* ToolsPage */], icon: 'fa fa-cog' }
         ];
     }
     MyApp.prototype.initializeApp = function () {
@@ -758,6 +759,67 @@ var ListPage = /** @class */ (function () {
 }());
 
 //# sourceMappingURL=list.js.map
+
+/***/ }),
+
+/***/ 279:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ToolsDicePage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(13);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+/**
+ * Generated class for the ToolsDicePage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+var ToolsDicePage = /** @class */ (function () {
+    function ToolsDicePage(navCtrl, navParams) {
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+    }
+    ToolsDicePage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad ToolsDicePage');
+    };
+    ToolsDicePage.prototype.lauchToolsDice = function () {
+        var diceSide1 = document.getElementById('dice-side-1');
+        var diceSide2 = document.getElementById('dice-side-2');
+        var status = document.getElementById('status');
+        var side1 = Math.floor(Math.random() * 6) + 1;
+        var side2 = Math.floor(Math.random() * 6) + 1;
+        var diceTotal = side1 + side2;
+        diceSide1.innerHTML = side1;
+        diceSide2.innerHTML = side2;
+        status.innerHTML = 'You rolled ' + diceTotal + '.';
+        if (side1 === side2) {
+            status.innerHTML += ' Doubles! You get a free turn!';
+        }
+    };
+    ToolsDicePage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPage */])(),
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+            selector: 'page-tools-dice',template:/*ion-inline-start:"/Users/maximebartier/Sites/Client/BloshiCrop/Dedale/App/Dedale/src/pages/tools-dice/tools-dice.html"*/'<!--\n  Generated template for the ToolsDicePage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Dés</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n\n  <div #dice-side-1 class="dice">0</div>\n  <div #dice-side-2 class="dice">0</div>\n\n  <button type="button" (click)=\'lauchToolsDice()\' class="dice-roll">roll dice</button>\n  <h2 #status></h2>\n\n</ion-content>\n'/*ion-inline-end:"/Users/maximebartier/Sites/Client/BloshiCrop/Dedale/App/Dedale/src/pages/tools-dice/tools-dice.html"*/,
+        }),
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */]) === "function" && _b || Object])
+    ], ToolsDicePage);
+    return ToolsDicePage;
+    var _a, _b;
+}());
+
+//# sourceMappingURL=tools-dice.js.map
 
 /***/ }),
 

@@ -42,7 +42,7 @@ export class MapPage {
 
   getUserPosition(){
     this.options = {
-    enableHighAccuracy : false
+      enableHighAccuracy : false
     };
     this.geo.getCurrentPosition(this.options).then((pos : Geoposition) => {
 

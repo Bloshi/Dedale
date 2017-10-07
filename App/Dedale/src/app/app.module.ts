@@ -13,6 +13,7 @@ import { ActuFocusPage } from '../pages/actu-focus/actu-focus';
 
 import { SearchPage } from '../pages/search/search';
 import { ToolsPage } from '../pages/tools/tools';
+import { ToolsDicePage } from '../pages/tools-dice/tools-dice';
 import { MapPage } from '../pages/map/map';
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -31,6 +32,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
     SearchPage,
     ToolsPage,
+    ToolsDicePage,
     MapPage
   ],
   imports: [
@@ -50,6 +52,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
     SearchPage,
     ToolsPage,
+    ToolsDicePage,
     MapPage
   ],
   providers: [

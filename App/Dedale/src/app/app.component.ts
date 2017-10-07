@@ -7,7 +7,10 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { ActuPage } from '../pages/actu/actu';
 import { SearchPage } from '../pages/search/search';
 import { ToolsPage } from '../pages/tools/tools';
+import { ToolsDicePage } from '../pages/tools-dice/tools-dice';
+
 import { MapPage } from '../pages/map/map';
+
 
 @Component({
   templateUrl: 'app.html'
@@ -27,22 +30,22 @@ export class MyApp {
 
   pages: Array<{ title: string, component: any, icon: string}>;
 
-  constructor(
-      public platform: Platform, 
-      public statusBar: StatusBar, 
-      public splashScreen: SplashScreen) {
+  constructor (
+    public platform: Platform,
+    public statusBar: StatusBar,
+    public splashScreen: SplashScreen
+  ) {
     this.initializeApp();
 
-    // used for an example of ngFor and navigation 
+    // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Rechercher', component: SearchPage, icon: 'fa fa-search' },
       { title: 'Actualité', component: ActuPage, icon: 'fa fa-coffee' },
       { title: 'Jeux', component: ActuPage, icon: 'fa fa-gamepad' },
       { title: 'Carte événement', component: MapPage, icon: 'fa fa-map-o' },
       { title: 'Profil', component: ActuPage, icon: 'fa fa-user-o' },
-      { title: 'Outils', component: ToolsPage, icon: 'fa fa-cog' },
+      { title: 'Outils', component: ToolsPage, icon: 'fa fa-cog' }
     ];
-
   }
 
   initializeApp() {

@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
+// link page
+import { SignUpPage } from '../sign-up/sign-up';
+import { ToolsDicePage } from '../tools-dice/tools-dice';
+
 /**
  * Generated class for the ToolsPage page.
  *
@@ -24,5 +28,8 @@ export class ToolsPage {
     console.log('ionViewDidLoad ToolsPage');
   }
 
+  lauchToolsDice() {
+    this.navCtrl.push(ToolsDicePage);
+  }
+
 }
- 
