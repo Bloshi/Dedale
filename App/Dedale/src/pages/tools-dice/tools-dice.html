@@ -15,10 +15,10 @@
 
 <ion-content>
 
-  <div #dice-side-1 class="dice">0</div>
-  <div #dice-side-2 class="dice">0</div>
+  <div #diceSide1 class="dice">{{ diceSide1 }}</div>
+  <div #diceSide2 class="dice">{{ diceSide2 }}</div>
 
   <button type="button" (click)='lauchToolsDice()' class="dice-roll">roll dice</button>
-  <h2 #status></h2>
+  <h2 #status>{{ status }}</h2>
 
 </ion-content>

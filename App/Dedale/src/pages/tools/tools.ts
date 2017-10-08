@@ -19,17 +19,25 @@ import { ToolsDicePage } from '../tools-dice/tools-dice';
 })
 export class ToolsPage {
 
+  tools: Array<{ title: string, component: any, icon: string }>;
+
   constructor(
       public navCtrl: NavController,
       public navParams: NavParams
-  ) {}
+  ) {
+    this.tools = [
+      { title: 'Dés', component: ToolsDicePage, icon: 'fa fa-scissors' },
+      { title: 'Chrono', component: ToolsDicePage, icon: 'fa fa-clock-o' },
+      { title: 'Musique', component: ToolsDicePage, icon: 'fa fa-scissors' }
+    ];
+  }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ToolsPage');
   }
 
-  lauchToolsDice() {
-    this.navCtrl.push(ToolsDicePage);
+  openTools(page) {
+    this.navCtrl.push(page);
   }
 
 }

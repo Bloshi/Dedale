@@ -15,9 +15,9 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class ToolsDicePage {
 
-  @ViewChild('dice-side-1')
-  @ViewChild('dice-side-2')
-  @ViewChild('status')
+  @ViewChild('diceSide1') diceSide1: any;
+  @ViewChild('diceSide2') diceSide2: any;
+  @ViewChild('status') status: any;
   
   constructor (
     public navCtrl: NavController, 
@@ -25,26 +25,24 @@ export class ToolsDicePage {
   ) {}
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ToolsDicePage');
+    this.diceSide1 = 0;
+    this.diceSide2 = 0;
+    this.status = '';
   }
 
   lauchToolsDice() {
-
-    const diceSide1 = document.getElementById('dice-side-1');
-    const diceSide2 = document.getElementById('dice-side-2');
-    const status = document.getElementById('status');
   
     const side1 = Math.floor(Math.random() * 6) + 1;
     const side2 = Math.floor(Math.random() * 6) + 1;
     const diceTotal = side1 + side2;
   
-    diceSide1.innerHTML = side1;
-    diceSide2.innerHTML = side2;
+    this.diceSide1 = side1;
+    this.diceSide2 = side2;
   
-    status.innerHTML = 'You rolled ' + diceTotal + '.';
+    this.status = 'You rolled ' + diceTotal + '.';
   
     if (side1 === side2) {
-      status.innerHTML += ' Doubles! You get a free turn!';
+      this.status += ' Doubles! You get a free turn!';
     }
   }
 

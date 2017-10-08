@@ -23,9 +23,7 @@ export class MyApp {
     * ici placer la condition de connection ou non
     *
   **/
-  // si non loggé
   //rootPage: any = HomePage;
-  // si loggé
   rootPage: any = ActuPage;
 
   pages: Array<{ title: string, component: any, icon: string}>;
