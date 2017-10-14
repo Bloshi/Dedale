@@ -1,13 +1,6 @@
 <template>
-  <div class="feed_game">
-    <ul class="filter">
-      <li><a href="#">filtre</a></li>
-      <li><a href="#">filtre</a></li>
-      <li><a href="#">filtre</a></li>
-    </ul>
-
-    <ul class="ui grid">
-      <li v-for="game in games" class="ui card sixteen wide column">
+  <ul id="list_article">
+      <li v-for="game in games" class="ui card">
         <div class="content">
           <div class="right floated meta">14h</div>
           <img class="ui avatar image" src="/images/avatar/large/elliot.jpg"> Elliot
@@ -33,7 +26,6 @@
         </div>
       </li>
     </ul>
-  </div>
 </template>
 <script>
   export default {
@@ -51,5 +43,15 @@
   }
 </script>
 <style lang='scss'>
-  .feed_game ul { width: 100%; height: auto; }
+  .feed_game ul#list_article { width: 100%; height: auto;
+    column-count: 3; column-gap: 2px; column-fill: auto;
+    column-width: 33.3333%; -webkit-padding-start: 0;
+    &.ui.grid { margin: 0; }
+
+    li { display: inline-block; margin: 1em;
+      column-break-inside: avoid; opacity: 1;
+      transition: all .2s ease; display: inline-block;
+      width: calc(100% - 2em); height: auto;
+    }
+  }
 </style>

@@ -3,7 +3,7 @@ import Router from 'vue-router'
 //
 import SignIn from '@/components/auth/SignIn'
 import SignUp from '@/components/auth/SignUp'
-import Feed from '@/components/pages/Feed'
+import Feed from '@/components/Feed'
 
 Vue.use(Router)
 
@@ -33,5 +33,7 @@ export default new Router({
         forAuth: true
       }
     }
-  ]
+  ],
+  linkActiveClass: 'active',
+  mode: 'history'
 })
