@@ -14,6 +14,9 @@ Vue.use(SuiVue)
 Vue.use(VueResource)
 Vue.use(Auth)
 
+Vue.http.options.root = 'http://localhost:8000'
+Vue.http.headers.common['Authorization'] = 'Bearer ' + Vue.auth.getToken()
+
 Vue.config.productionTip = false
 
 Routes.beforeEach(

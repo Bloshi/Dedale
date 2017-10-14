@@ -40,7 +40,7 @@
                 password: this.password
             }
 
-            this.$http.post('http://localhost:8000/oauth/token', data)
+            this.$http.post('oauth/token', data)
                 .then(res => {
                     this.$auth.setToken(res.body.access_token, res.body.expires_in + Date.now())
                     this.$router.push('/feed')
