@@ -1,4 +1,4 @@
-# front_dedale
+# dedale
 
 > A Vue.js project
 

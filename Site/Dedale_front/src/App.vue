@@ -1,18 +1,16 @@
 <template>
-  <div id="app">
+  <div id="app" class="ui container">
     <navbar></navbar>
-    <sign-in></sign-in>  
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
   import Navbar from '@/components/Navbar'
-  import SignIn from '@/components/auth/SignIn'
 
   export default {
     components: {
-      'navbar': Navbar,
-      'sign-in': SignIn
+      'navbar': Navbar
     }
   }
 </script>
