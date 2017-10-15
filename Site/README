@@ -1,0 +1,7 @@
+# laravel command 
+	$ npm i 
+	$ composer install
+	$ php artisan db:seed
+	$ php artisan passport:install
+	// si des tables son déjà présente
+	$ php artisan migrate:refresh --seed

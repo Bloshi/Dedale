@@ -4,7 +4,7 @@
 
     use Illuminate\Database\Eloquent\Model;
 
-    class Games extends Model
+    class Achievement extends Model
     {
         //
     }

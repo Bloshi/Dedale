@@ -33,9 +33,9 @@
         <textarea id="descr_game" v-model='game.description'></textarea>
       </div><!-- .field -->
 
-      <input type="number" v-model="game.note" placeholder="0" />
+      <input type="hidden" v-model="game.note" value='0' />
 
-      <button type='button' class="ui primary button" tabindex="0"
+      <button class="ui primary button" tabindex="0"
         v-show="game.name && game.description"
         @click="create"
       >Ajouter le jeu</button>

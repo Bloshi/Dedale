@@ -14,7 +14,7 @@
             <input type="password" v-model="password" placeholder="Password">
           </div>
         </div>
-        <button type="button" @click="signin" class="ui fluid large teal submit button">Login</button>
+        <button @click="signin" class="ui fluid large teal submit button">Login</button>
       </div>
 
       <div class="ui error message"></div>
@@ -34,7 +34,7 @@
         signin() {
             var data = {
                 client_id: 2,
-                client_secret: 'N0is0pVFQw9k0gKWpLmgAHnRCyHgK2nYwGQlgTH1',
+                client_secret: 'ZRLaSEAY9FdyRNdb4MPUMSu9B4X3xSvxFbjQiq7Y',
                 grant_type: 'password',
                 username: this.email,
                 password: this.password
@@ -42,9 +42,8 @@
 
             this.$http.post('oauth/token', data)
                 .then(res => {
-                    console.log(res)
                     this.$auth.setToken(res.body.access_token, res.body.expires_in + Date.now())
-                    //this.$router.push('/feed')
+                    this.$router.push('/feed')
                 })
         }
     }
