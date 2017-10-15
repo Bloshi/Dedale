@@ -5,61 +5,73 @@
       <h4 class="ui dividing header">Ajouter un jeu</h4>
       <div class="field">
         <label for="title_game">Nom</label>
-        <input id="title_game" type="text" v-model="name" placeholder="Jeu de l'oie">
+        <input id="title_game" type="text" v-model="game.name" placeholder="Jeu de l'oie">
       </div><!-- .field -->
 
       <div class="field">
-        <div class="ui sub header">Search Selection</div>
-        <div class="ui fluid multiple search normal selection dropdown">
-          <input type="hidden">
+        <div class="ui fluid multiple search selection dropdown">
+          <input type="hidden" name="country">
           <i class="dropdown icon"></i>
-          <div class="default text">Sélectionnez un tag</div>
+          <div class="default text">Select Country</div>
           <div class="menu">
-            <div class="item" data-value="af"><i class="af flag"></i>Afghanistan</div>
-            <div class="item" data-value="ax"><i class="ax flag"></i>Aland Islands</div>
-            <div class="item" data-value="al"><i class="al flag"></i>Albania</div>
-            <div class="item" data-value="dz"><i class="dz flag"></i>Algeria</div>
-            <div class="item" data-value="as"><i class="as flag"></i>American Samoa</div>
-            <div class="item" data-value="ad"><i class="ad flag"></i>Andorra</div>
+            <!-- <div v-for="DropTag in DropTags" class="item" :data-value='DropTag.icon'>
+              <i :class="DropTag.icon"></i>{{ DropTag.name }}
+            </div> -->
           </div>
         </div>
       </div><!-- .field -->
 
       <div class="field">
-        <div class="ui toggle checkbox">
-          <input type="checkbox">
-          <label>Vous n'avez pas trouvez de tags pour votre jeu ? Proposez en un</label>
+        <div class="ui checkbox">
+          <input id='addtags_game' type="checkbox">
+          <label for="addtags_game">Vous n'avez pas trouvez de tags pour votre jeu ? Proposez en un</label>
         </div>
       </div>
 
       <div class="field">
         <label for="descr_game">Description du jeu</label>
-        <textarea id="descr_game" v-model='description'></textarea>
+        <textarea id="descr_game" v-model='game.description'></textarea>
       </div><!-- .field -->
 
-      <input type="hidden" v-model="note" value='0' />
+      <input type="number" v-model="game.note" placeholder="0" />
 
-      <div class="ui button" tabindex="0">Ajouter le jeu</div>
+      <button type='button' class="ui primary button" tabindex="0"
+        v-show="game.name && game.description"
+        @click="create"
+      >Ajouter le jeu</button>
     </form>
 
   </div>
 </template>
 
 <script>
+//   DropTags: [
+//   { value: 'af', icon: 'af flag', name: 'Afghanistan' },
+//   { value: 'tj', icon: 'tj flag', name: 'Tajikistan' },
+//   { value: 'tz', icon: 'tz flag', name: 'Tanzania' }
+// ],
+
   export default {
     data () {
       return {
-        name: '',
-        description: '',
-        note: 0
+        game: {
+          name: '',
+          description: '',
+          note: 0
+        }
+      }
+    },
+    methods: {
+      create () {
+        this.$http.post('api/games', this.game)
+            .then(res => {
+              console.log(res)
+            })
       }
     },
     mounted () {
       this.$nextTick(() => {
-        $('.ui.dropdown')
-          .dropdown({
-            useLabels: false
-          })
+        jQuery('.ui.dropdown').dropdown({ useLabels: true })
       })
     }
   }

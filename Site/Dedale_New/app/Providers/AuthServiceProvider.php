@@ -25,7 +25,6 @@
         public function boot()
         {
             $this->registerPolicies();
-
             Passport::routes();
         }
     }

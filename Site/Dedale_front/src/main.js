@@ -9,7 +9,6 @@ import VueResource from 'vue-resource'
 import Auth from '@/packages/auth/Auth.js'
 // semantic
 global.jQuery = jQuery
-global.$ = jQuery
 import SuiVue from 'semantic-ui-vue'
 import 'semantic-ui-css/semantic.min.css'
 import 'semantic-ui-css/semantic.min.js'
@@ -20,6 +19,7 @@ Vue.use(Auth)
 
 Vue.http.options.root = 'http://localhost:8000'
 Vue.http.headers.common['Authorization'] = 'Bearer ' + Vue.auth.getToken()
+// Vue.http.headers.common['Access-Control-Allow-Origin'] = "*"
 
 Vue.config.productionTip = false
 

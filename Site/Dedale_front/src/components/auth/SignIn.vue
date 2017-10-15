@@ -14,7 +14,7 @@
             <input type="password" v-model="password" placeholder="Password">
           </div>
         </div>
-        <button @click="signin" class="ui fluid large teal submit button">Login</button>
+        <button type="button" @click="signin" class="ui fluid large teal submit button">Login</button>
       </div>
 
       <div class="ui error message"></div>
@@ -42,8 +42,9 @@
 
             this.$http.post('oauth/token', data)
                 .then(res => {
+                    console.log(res)
                     this.$auth.setToken(res.body.access_token, res.body.expires_in + Date.now())
-                    this.$router.push('/feed')
+                    //this.$router.push('/feed')
                 })
         }
     }
