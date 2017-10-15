@@ -2,13 +2,17 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import App from '@/App'
+import jQuery from 'jquery'
 import Routes from '@/router/index'
 
 import VueResource from 'vue-resource'
 import Auth from '@/packages/auth/Auth.js'
 // semantic
+global.jQuery = jQuery
+global.$ = jQuery
 import SuiVue from 'semantic-ui-vue'
 import 'semantic-ui-css/semantic.min.css'
+import 'semantic-ui-css/semantic.min.js'
 
 Vue.use(SuiVue)
 Vue.use(VueResource)

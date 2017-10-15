@@ -11,4 +11,9 @@
         {
             return Games::all();
         }
+
+        public function store(Request $req)
+        {
+            return $req;
+        }
     }
