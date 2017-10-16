@@ -20,6 +20,7 @@ $factory->define(User::class, function (Faker $faker) {
 
 $factory->define(Games::class, function (Faker $faker) {
     return [
+        'user_id' => User::all()->random()->id,
         'name' => $faker->word,
         'description' => $faker->paragraph(random_int(1, 10)),
         'note' => $faker->randomDigit

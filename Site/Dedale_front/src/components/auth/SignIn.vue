@@ -14,7 +14,7 @@
             <input type="password" v-model="password" placeholder="Password">
           </div>
         </div>
-        <button @click="signin" class="ui fluid large teal submit button">Login</button>
+        <button type="button" @click="signin" class="ui fluid large teal submit button">Login</button>
       </div>
 
       <div class="ui error message"></div>
@@ -34,7 +34,7 @@
         signin() {
             var data = {
                 client_id: 2,
-                client_secret: 'ZRLaSEAY9FdyRNdb4MPUMSu9B4X3xSvxFbjQiq7Y',
+                client_secret: 'M8crlyewOhrjDYdxuCodmmNHaASPl0JM7qgj197o',
                 grant_type: 'password',
                 username: this.email,
                 password: this.password

@@ -1,7 +1,11 @@
 <template>
   <ul id="list_article">
-      <li v-for="game in games" class="ui card">
+      <li v-for="game in games" class="ui card"
+        :authenticatedUser="authenticatedUser"
+      >
         <div class="content">
+          {{ game.user_id }}
+          {{ game.id }}
           <div class="right floated meta">14h</div>
           <img class="ui avatar image" src="/images/avatar/large/elliot.jpg"> Elliot
         </div>
@@ -24,14 +28,26 @@
             <input type="text" placeholder="Add Comment...">
           </div>
         </div>
+        <div class="extra content" v-if="game.user_id == authenticatedUser.id">
+          <a href="#" class="ui negative basic button"
+            @click="deleteGame"
+          >Supprimer</a>
+        </div>
       </li>
     </ul>
 </template>
 <script>
+  import swal from 'sweetalert';
+
   export default {
     data () {
       return {
         games: []
+      }
+    },
+    computed: {
+      authenticatedUser () {
+        return this.$auth.getAuthenticatedUser()
       }
     },
     created () {
@@ -39,6 +55,31 @@
           .then(res => {
             this.games = res.body
           })
+    },
+    methods: {
+      deleteGame () {
+        swal({
+          title: "Etes vous sûre ?",
+          text: "Une foi supprimé vous ne pourrez pas retrouver votre article",
+          icon: "warning",
+          buttons: true,
+          dangerMode: true,
+        })
+          .then((willDelete) => {
+            if (willDelete) {
+              this.$http.delete('api/user/' + this.games.id)
+                  .then(res => {
+                    console.log(res)
+
+                    swal("Poof! Votre article a été supprimé!", {
+                      icon: "success",
+                    })
+                  })
+            } else {
+              swal("Votre article est sauf!")
+            }
+          })
+      }
     }
   }
 </script>

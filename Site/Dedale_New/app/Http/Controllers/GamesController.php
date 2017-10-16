@@ -9,11 +9,22 @@
     {
         public function index()
         {
-            return Games::all();
+            return Games::orderBy('created_at', 'desc')->get();
         }
 
         public function store(Request $req)
         {
-            return $req->all();
+            $game = Games::create($req->all());
+            return $game;
+        }
+
+        public function destroy($id)
+        {
+            try {
+                Games::destroy($id);
+                return response([], 204);
+            } catch (\Exeption $e) {
+                return response(['Problème suppression jeu', 500]);
+            }
         }
     }

@@ -6,5 +6,7 @@
 
     class Games extends Model
     {
-        //
+        protected $fillable = [
+            'name', 'note', 'description'
+        ];
     }

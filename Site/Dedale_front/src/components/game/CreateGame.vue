@@ -1,5 +1,6 @@
 <template>
-  <div>
+  <div :authenticatedUser="authenticatedUser">
+    {{authenticatedUser.id}}
 
     <form class="ui form">
       <h4 class="ui dividing header">Ajouter un jeu</h4>
@@ -14,9 +15,9 @@
           <i class="dropdown icon"></i>
           <div class="default text">Select Country</div>
           <div class="menu">
-            <!-- <div v-for="DropTag in DropTags" class="item" :data-value='DropTag.icon'>
+            <div v-for="DropTag in DropTags" class="item" :data-value='DropTag.icon'>
               <i :class="DropTag.icon"></i>{{ DropTag.name }}
-            </div> -->
+            </div>
           </div>
         </div>
       </div><!-- .field -->
@@ -37,7 +38,7 @@
 
       <button class="ui primary button" tabindex="0"
         v-show="game.name && game.description"
-        @click="create"
+        @click="create" type='button'
       >Ajouter le jeu</button>
     </form>
 
@@ -45,28 +46,33 @@
 </template>
 
 <script>
-//   DropTags: [
-//   { value: 'af', icon: 'af flag', name: 'Afghanistan' },
-//   { value: 'tj', icon: 'tj flag', name: 'Tajikistan' },
-//   { value: 'tz', icon: 'tz flag', name: 'Tanzania' }
-// ],
-
   export default {
     data () {
       return {
         game: {
           name: '',
           description: '',
-          note: 0
-        }
+          note: 0,
+          user_id: 0
+        },
+        DropTags: [
+          { value: 'af', icon: 'af flag', name: 'Afghanistan' },
+          { value: 'tj', icon: 'tj flag', name: 'Tajikistan' },
+          { value: 'tz', icon: 'tz flag', name: 'Tanzania' }
+        ],
       }
     },
     methods: {
       create () {
         this.$http.post('api/games', this.game)
             .then(res => {
-              console.log(res)
+              this.$router.push('/feed')
             })
+      }
+    },
+    computed: {
+      authenticatedUser() {
+        return this.$auth.getAuthenticatedUser()
       }
     },
     mounted () {
