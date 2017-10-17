@@ -1,6 +1,6 @@
 <template>
   <div :authenticatedUser="authenticatedUser">
-    {{authenticatedUser.id}}
+    {{ authenticatedUser.id }}
 
     <form class="ui form">
       <h4 class="ui dividing header">Ajouter un jeu</h4>

@@ -32,7 +32,7 @@
     },
     methods: {
         signin() {
-            var data = {
+            let data = {
                 client_id: 2,
                 client_secret: 'M8crlyewOhrjDYdxuCodmmNHaASPl0JM7qgj197o',
                 grant_type: 'password',

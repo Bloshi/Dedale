@@ -30,7 +30,7 @@
         </div>
         <div class="extra content" v-if="game.user_id == authenticatedUser.id">
           <a href="#" class="ui negative basic button"
-            @click="deleteGame"
+            @click="deleteGame(game.id)"
           >Supprimer</a>
         </div>
       </li>
@@ -57,7 +57,7 @@
           })
     },
     methods: {
-      deleteGame () {
+      deleteGame (id) {
         swal({
           title: "Etes vous sûre ?",
           text: "Une foi supprimé vous ne pourrez pas retrouver votre article",
@@ -67,7 +67,7 @@
         })
           .then((willDelete) => {
             if (willDelete) {
-              this.$http.delete('api/user/' + this.games.id)
+              this.$http.delete('api/games/' + id)
                   .then(res => {
                     console.log(res)
 
