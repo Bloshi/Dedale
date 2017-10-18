@@ -26,6 +26,6 @@ Route::get('/test', function() {
 });
 
 Route::group(['middleware' => 'auth:api'], function () {
-    Route::resource('games', 'GamesController');
-    Route::resource('tags', 'TagsController');
+    Route::resource('games', 'Api\GamesController');
+    Route::resource('tags', 'Api\TagsController');
 });

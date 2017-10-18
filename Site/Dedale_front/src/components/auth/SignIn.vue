@@ -15,6 +15,8 @@
           </div>
         </div>
         <button type="button" @click="signin" class="ui fluid large teal submit button">Login</button>
+
+        <small>Vous n'avez pas encore de compte ? <router-link to="/enregistrement">S'enregistrer</router-link></small>
       </div>
 
       <div class="ui error message"></div>

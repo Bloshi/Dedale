@@ -18,7 +18,7 @@
         [
             'as' => 'admin.',
             'prefix' => 'admin',
-            'namespave' => 'Admin',
+            'namespace' => 'Admin',
             'middleware' => 'is-admin'
         ], function () {
             Route::get('/admin/ajouter/un/jeu', 'Admin\AddGameAdminController@addGame')->name('addGame');

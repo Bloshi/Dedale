@@ -30,8 +30,9 @@
         </div>
         <div class="extra content" v-if="game.user_id == authenticatedUser.id">
           <a href="#" class="ui negative basic button"
-            @click="deleteGame(game.id)"
+            @click="deleteGame(game)"
           >Supprimer</a>
+          <router-link :to="`/games/update/${ game.id }`" class="ui primary basic button">Editer</router-link>
         </div>
       </li>
     </ul>
@@ -57,7 +58,8 @@
           })
     },
     methods: {
-      deleteGame (id) {
+      deleteGame (game) {
+        console.log(game)
         swal({
           title: "Etes vous sûre ?",
           text: "Une foi supprimé vous ne pourrez pas retrouver votre article",
@@ -67,9 +69,10 @@
         })
           .then((willDelete) => {
             if (willDelete) {
-              this.$http.delete('api/games/' + id)
+              this.$http.delete('api/games/' + game.id)
                   .then(res => {
-                    console.log(res)
+                    let index = this.games.indexOf(game)
+                    this.games.splice(index, 1)
 
                     swal("Poof! Votre article a été supprimé!", {
                       icon: "success",

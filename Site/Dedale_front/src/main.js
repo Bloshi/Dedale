@@ -19,7 +19,14 @@ Vue.use(Auth)
 
 Vue.http.options.root = 'http://localhost:8000'
 Vue.http.headers.common['Authorization'] = 'Bearer ' + Vue.auth.getToken()
-// Vue.http.headers.common['Access-Control-Allow-Origin'] = "*"
+Vue.http.interceptors.push( (request, next) => {
+  next(response => {
+    if(response.status == 404)
+      swal(response.status.toString(), response.body.error, "error")
+    else if(response.status == 500)
+      swal(response.status.toString(), "Il semble y avoir un problème dans nos serveur nos équipes y travail", "error")
+  })
+})
 
 Vue.config.productionTip = false
 

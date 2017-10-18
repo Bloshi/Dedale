@@ -21,6 +21,7 @@
           </div>
         </div>
         <div class="ui fluid large teal submit button">Register</div>
+        <small>Vous avez déjà un compte ? <router-link to="/connection">Se connecter</router-link></small>
       </div>
 
       <div class="ui error message"></div>

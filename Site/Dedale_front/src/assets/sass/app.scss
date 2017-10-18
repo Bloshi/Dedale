@@ -1,0 +1,3 @@
+@import "tools/mixins";
+
+.form_block { @include size(600px, auto); }

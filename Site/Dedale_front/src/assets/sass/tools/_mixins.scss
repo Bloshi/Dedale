@@ -1,0 +1,52 @@
+@mixin size($width, $height: $width) {
+  @if $width == f { $width: 100%; }
+  @if $height == f { $height: 100%; }
+
+  width: $width; height: $height;
+}
+@mixin pos($pos, $t, $r:$t, $b:$t, $l:$r){
+  @if $pos == 'a' {
+    position: absolute;
+  } @elseif $pos == 'r' {
+    position: relative;
+  } @elseif $pos == 'f' {
+    position: fixed;
+  }
+  top: $t; right: $r; bottom: $b; left: $l;
+}
+@mixin opacity($opacity) {
+  opacity: $opacity;
+  $opacity-ie: $opacity * 100;
+  filter: alpha(opacity=$opacity-ie); //IE8
+}
+
+@mixin clearfix { clear: both; zoom: 1;
+  &:before, &:after { content: " "; display: table; }
+  &:after { clear: both; line-height: 0; visibility: hidden; }
+}
+
+// font
+@mixin fZ($size) {
+  font-size: #{ $size }px;
+  font-size: #{ $size /16 }rem;
+}
+@mixin lH($heightValue: 12 ){
+  line-height: #{ $heightValue }px; //fallback for old browsers
+  line-height: #{ $heightValue / 16 }rem;
+}
+@mixin FS($size, $paragraphe: false) {
+  $rem: $size / 16;
+
+  font-size: $size + px;
+  font-size: $rem + rem;
+  line-height: $size + px;
+  line-height: $rem + rem;
+
+  @if $paragraphe == true {
+    $px: $size * 30;
+    $pxRem: $px / 16;
+    max-width: $px + px;
+    max-width: $pxRem + rem;
+  }
+}
+

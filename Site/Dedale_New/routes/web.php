@@ -11,6 +11,16 @@
 |
 */
 
-Route::get('/', function () {
-        return view('welcome');
-});
+Route::get('/', 'HomeController@index')->name('home');
+
+Route::group(
+    [
+        'as' => 'admin.',
+        'prefix' => 'admin',
+        'namespace' => 'Admin',
+        'middleware' => 'isAdminLogged'
+    ], 
+    function () {
+        Route::get('/admin/home', 'AdminHomeController@index')->name('home');
+    }
+);

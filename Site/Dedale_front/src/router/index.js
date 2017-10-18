@@ -5,6 +5,7 @@ import SignIn from '@/components/auth/SignIn'
 import SignUp from '@/components/auth/SignUp'
 import Feed from '@/components/Feed'
 import CreateGame from '@/components/game/CreateGame'
+import UpdateGame from '@/components/game/UpdateGame'
 
 Vue.use(Router)
 
@@ -38,6 +39,14 @@ export default new Router({
       path: '/games/create',
       name: 'Ajouter un jeu',
       component: CreateGame,
+      meta: {
+        forAuth: true
+      }
+    },
+    {
+      path: '/games/update/:game',
+      name: 'Editer un jeu',
+      component: UpdateGame,
       meta: {
         forAuth: true
       }
