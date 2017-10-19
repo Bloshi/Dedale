@@ -32,7 +32,7 @@
           <a href="#" class="ui negative basic button"
             @click="deleteGame(game)"
           >Supprimer</a>
-          <router-link :to="`/games/update/${ game.id }`" class="ui primary basic button">Editer</router-link>
+          <router-link :to="`/games/update/${ game.id }`" class="ui primary basic button right">Editer</router-link>
         </div>
       </li>
     </ul>

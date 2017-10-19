@@ -3,9 +3,25 @@
 
     <form class="ui form">
       <h4 class="ui dividing header">Ajouter un jeu</h4>
-      <div class="field">
-        <label for="title_game">Nom</label>
-        <input id="title_game" type="text" v-model="game.name" placeholder="Jeu de l'oie">
+      <div :class="{'field error': errors.has('name'), 'field': !errors.has('name')}">
+        <label for="title_game">Titre</label>
+        <input id="title_game" type="text" placeholder="Jeu de l'oie"
+          name="name" v-validate="'required'" v-model="game.name"
+          autofocus
+        />
+        <span class="ui visible red mini message" v-show="errors.has('name')">
+          {{ errors.first('name') }}
+        </span>
+      </div><!-- .field -->
+
+      <div :class="{'field error': errors.has('description'), 'field': !errors.has('description')}">
+        <label for="descr_game">Description du jeu</label>
+        <textarea name='description' id="descr_game" v-model='game.description'
+          v-validate="'required'"
+        ></textarea>
+        <span class="ui visible red mini message" v-show="errors.has('description')">
+          {{ errors.first('description') }}
+        </span>
       </div><!-- .field -->
 
       <div class="field">
@@ -27,11 +43,6 @@
           <label for="addtags_game">Vous n'avez pas trouvez de tags pour votre jeu ? Proposez en un</label>
         </div>
       </div>
-
-      <div class="field">
-        <label for="descr_game">Description du jeu</label>
-        <textarea id="descr_game" v-model='game.description'></textarea>
-      </div><!-- .field -->
 
       <input type="hidden" v-model="game.note" value='0' />
 

@@ -3,6 +3,7 @@ import Router from 'vue-router'
 //
 import SignIn from '@/components/auth/SignIn'
 import SignUp from '@/components/auth/SignUp'
+import Profil from '@/components/profil/Profil'
 import Feed from '@/components/Feed'
 import CreateGame from '@/components/game/CreateGame'
 import UpdateGame from '@/components/game/UpdateGame'
@@ -25,6 +26,14 @@ export default new Router({
       component: SignUp,
       meta: {
         forVisitors: true
+      }
+    },
+    {
+      path: '/profil',
+      name: 'Profil',
+      component: Feed,
+      meta: {
+        forAuth: true
       }
     },
     {

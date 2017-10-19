@@ -1,11 +1,17 @@
 <template>
   <div class="ui container">
-    <form class="ui large form">
+    <div class="ui attached message">
+      <div class="header">
+        Bienvenue sur <b>PlayPal</b>
+      </div>
+      <p>Remplisser le formulaire pour vous connecter</p>
+    </div>
+    <form class="ui form attached fluid segment">
       <div class="ui stacked segment">
         <div class="field">
           <div class="ui left icon input">
             <i class="user icon"></i>
-            <input type="text" v-model="email" placeholder="E-mail address">
+            <input type="text" v-model="email" placeholder="E-mail address" autofocus>
           </div>
         </div>
         <div class="field">
@@ -15,13 +21,15 @@
           </div>
         </div>
         <button type="button" @click="signin" class="ui fluid large teal submit button">Login</button>
-
-        <small>Vous n'avez pas encore de compte ? <router-link to="/enregistrement">S'enregistrer</router-link></small>
       </div>
 
       <div class="ui error message"></div>
 
     </form>
+    <div class="ui bottom attached warning message">
+      <i class="icon help"></i>
+      Vous n'avez pas encore de compte ? <router-link to="/enregistrement">S'enregistrer</router-link>
+    </div>
   </div>
 </template>
 <script>
