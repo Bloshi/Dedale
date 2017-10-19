@@ -7,24 +7,19 @@
       <p>Remplisser le formulaire pour vous connecter</p>
     </div>
     <form class="ui form attached fluid segment">
-      <div class="ui stacked segment">
-        <div class="field">
-          <div class="ui left icon input">
-            <i class="user icon"></i>
-            <input type="text" v-model="email" placeholder="E-mail address" autofocus>
-          </div>
+      <div class="field">
+        <div class="ui left icon input">
+          <i class="user icon"></i>
+          <input type="text" v-model="email" placeholder="E-mail address" autofocus>
         </div>
-        <div class="field">
-          <div class="ui left icon input">
-            <i class="lock icon"></i>
-            <input type="password" v-model="password" placeholder="Password">
-          </div>
-        </div>
-        <button type="button" @click="signin" class="ui fluid large teal submit button">Login</button>
       </div>
-
-      <div class="ui error message"></div>
-
+      <div class="field">
+        <div class="ui left icon input">
+          <i class="lock icon"></i>
+          <input type="password" v-model="password" placeholder="Password">
+        </div>
+      </div>
+      <button type="button" @click="signin" class="ui fluid large teal submit button">Login</button>
     </form>
     <div class="ui bottom attached warning message">
       <i class="icon help"></i>

@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 //
+import Home from '@/components/home/Home'
 import SignIn from '@/components/auth/SignIn'
 import SignUp from '@/components/auth/SignUp'
 import Profil from '@/components/profil/Profil'
@@ -12,6 +13,14 @@ Vue.use(Router)
 
 export default new Router({
   routes: [
+    {
+      path: '/',
+      name: 'Home',
+      component: Home,
+      meta: {
+        forVisitors: true
+      }
+    },
     {
       path: '/connection',
       name: 'Se connecter',

@@ -7,30 +7,25 @@
       <p>Remplisser le formulaire pour vous enregeristrer</p>
     </div>
     <form class="ui form attached fluid segment">
-      <div class="ui stacked segment">
-        <div class="field">
-          <div class="ui left icon input">
-            <i class="user icon"></i>
-            <input type="text" v-model="pseudo" placeholder="Pseudo" autofocus>
-          </div>
+      <div class="field">
+        <div class="ui left icon input">
+          <i class="user icon"></i>
+          <input type="text" v-model="pseudo" placeholder="Pseudo" autofocus>
         </div>
-        <div class="field">
-          <div class="ui left icon input">
-            <i class="user icon"></i>
-            <input type="text" v-model="email" placeholder="E-mail address">
-          </div>
-        </div>
-        <div class="field">
-          <div class="ui left icon input">
-            <i class="lock icon"></i>
-            <input type="password" v-model="password" placeholder="Password">
-          </div>
-        </div>
-        <div class="ui fluid large teal submit button">Register</div>
       </div>
-
-      <div class="ui error message"></div>
-
+      <div class="field">
+        <div class="ui left icon input">
+          <i class="user icon"></i>
+          <input type="text" v-model="email" placeholder="E-mail address">
+        </div>
+      </div>
+      <div class="field">
+        <div class="ui left icon input">
+          <i class="lock icon"></i>
+          <input type="password" v-model="password" placeholder="Password">
+        </div>
+      </div>
+      <div class="ui fluid large teal submit button">Register</div>
     </form>
     <div class="ui bottom attached warning message">
       <i class="icon help"></i>

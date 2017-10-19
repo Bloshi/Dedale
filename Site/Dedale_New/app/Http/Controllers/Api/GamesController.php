@@ -16,7 +16,21 @@
 
         public function store(Request $req)
         {
-            $game = Games::create($req->all() + ['user_id' => Auth::id()]);
+            // traitement de l'image
+            $exploded = explode(',', $req->image);
+            $decoded = base64_decode($exploded[1]);
+
+            if (str_contains($exploded[0], 'jpeg')) {
+                $ext = 'jpg';
+            } else {
+                $ext = 'png';
+            }
+            $fileName = $str_random().'.'. $ext;
+            $path = public_path().'/images/games/'.$fileName;
+            file_put_contents($path, $decoded);
+
+            // incrémentation dans la base de donnée
+            $game = Games::create($req->exept('image') + ['user_id' => Auth::id()]);
             return $game;
         }
 

@@ -1,11 +1,11 @@
 <template>
   <div class="ui secondary pointing menu">
-    <i class="user circle outline"></i>
+    <router-link class="item" to='/'>Home</router-link>
     <router-link class="item" to='/feed' v-if="isAuth">Feed</router-link>
     <div class="right menu">
-      <div class="item" :class="{ ' active': Searching }">
+      <div class="item">
         <div class="ui transparent icon input">
-          <input type="text" placeholder="Recherche" @click="activeSearch" />
+          <input type="text" placeholder="Recherche" />
           <i class="search link icon"></i>
         </div>
       </div><!-- .item -->
@@ -30,8 +30,7 @@
   export default {
     data () {
       return {
-        isAuth: null,
-        Searching: false
+        isAuth: null
       }
     },
     created () {
@@ -45,9 +44,6 @@
               this.$auth.setAuthenticatedUser(res.body)
               console.log(this.$auth.getAuthenticatedUser())
             })
-      },
-      activeSearch () {
-        this.Searching = !this.Searching
       }
     },
     mounted() {

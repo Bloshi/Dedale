@@ -1,7 +1,7 @@
 <template>
   <div>
 
-    <form class="ui form">
+    <form class="ui form" @submit.prevent="create">
       <h4 class="ui dividing header">Ajouter un jeu</h4>
       <div :class="{'field error': errors.has('name'), 'field': !errors.has('name')}">
         <label for="title_game">Titre</label>
@@ -22,6 +22,15 @@
         <span class="ui visible red mini message" v-show="errors.has('description')">
           {{ errors.first('description') }}
         </span>
+      </div><!-- .field -->
+
+      <div class="field">
+        <label for="image_game" class="ui icon blue basic button">
+          <i class="file icon"></i> Open File
+        </label>
+        <input id="image_game" type="file" placeholder="Jeu de l'oie"
+          name="image" @change="imageChanged" style="display:none"
+        />
       </div><!-- .field -->
 
       <div class="field">
@@ -46,10 +55,7 @@
 
       <input type="hidden" v-model="game.note" value='0' />
 
-      <button class="ui primary button" tabindex="0"
-        v-show="game.name && game.description"
-        @click="create" type='button'
-      >Ajouter le jeu</button>
+      <button class="ui primary button" tabindex="0" type='submit'>Ajouter le jeu</button>
     </form>
 
   </div>
@@ -62,7 +68,8 @@
         game: {
           name: '',
           description: '',
-          note: 0
+          note: 0,
+          image: ''
         },
         DropTags: [
           { value: 'af', icon: 'af flag', name: 'Afghanistan' },
@@ -72,11 +79,34 @@
       }
     },
     methods: {
+      imageChanged (e) {
+        console.log(e.target.files[0])
+        let fileReader = new FileReader()
+
+        fileReader.readAsDataURL(e.target.files[0])
+
+        fileReader.onload = (e) => {
+          this.game.image = e.target.result
+        }
+
+        console.log(this.game)
+      },
       create () {
-        this.$http.post('api/games', this.game)
+        this.$validator.updateDictionary({
+          'fr': {
+            attributes: {
+              name: 'nom'
+            }
+          }
+        })
+        this.$validator.setLocale('fr')
+
+        this.$validator.validateAll().then( () => {
+          this.$http.post('api/games', this.game)
             .then(res => {
               this.$router.push('/feed')
             })
+        })
       }
     },
     mounted () {
