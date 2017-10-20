@@ -1,16 +1,14 @@
 <template>
   <ul id="list_article">
-      <li v-for="game in games" class="ui card"
+      <li v-for="game in $store.state.games" class="ui card"
         :authenticatedUser="authenticatedUser"
       >
         <div class="content">
-          {{ game.user_id }}
-          {{ game.id }}
           <div class="right floated meta">14h</div>
           <img class="ui avatar image" src="/images/avatar/large/elliot.jpg"> Elliot
         </div>
         <div class="image">
-          <img />
+          <img :src="`http://localhost:8000/images/games/${ game.image }`" />
         </div>
         <div class="content">
           <h4>{{ game.name }}</h4>
@@ -38,28 +36,23 @@
     </ul>
 </template>
 <script>
+  import { mapState } from 'vuex'
   import swal from 'sweetalert';
 
   export default {
-    data () {
-      return {
-        games: []
-      }
-    },
     computed: {
-      authenticatedUser () {
+      ...mapState({
+        games: state => state.games
+      }),
+      authenticatedUser() {
         return this.$auth.getAuthenticatedUser()
       }
     },
     created () {
-      this.$http.get('api/games')
-          .then(res => {
-            this.games = res.body
-          })
+      this.$store.dispatch('getGames')
     },
     methods: {
       deleteGame (game) {
-        console.log(game)
         swal({
           title: "Etes vous sûre ?",
           text: "Une foi supprimé vous ne pourrez pas retrouver votre article",
@@ -69,15 +62,10 @@
         })
           .then((willDelete) => {
             if (willDelete) {
-              this.$http.delete('api/games/' + game.id)
-                  .then(res => {
-                    let index = this.games.indexOf(game)
-                    this.games.splice(index, 1)
-
-                    swal("Poof! Votre article a été supprimé!", {
-                      icon: "success",
-                    })
-                  })
+              this.$store.dispatch('deleteGames(game)')
+              swal("Poof! Votre article a été supprimé!", {
+                icon: "success",
+              })
             } else {
               swal("Votre article est sauf!")
             }

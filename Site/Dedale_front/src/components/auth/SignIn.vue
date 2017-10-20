@@ -6,7 +6,7 @@
       </div>
       <p>Remplisser le formulaire pour vous connecter</p>
     </div>
-    <form class="ui form attached fluid segment">
+    <form class="ui form attached fluid segment" @submit.prevent="signin">
       <div class="field">
         <div class="ui left icon input">
           <i class="user icon"></i>
@@ -19,7 +19,7 @@
           <input type="password" v-model="password" placeholder="Password">
         </div>
       </div>
-      <button type="button" @click="signin" class="ui fluid large teal submit button">Login</button>
+      <button type="submit" class="ui fluid large teal submit button">Login</button>
     </form>
     <div class="ui bottom attached warning message">
       <i class="icon help"></i>
@@ -39,7 +39,7 @@
         signin() {
             let data = {
                 client_id: 2,
-                client_secret: 'M8crlyewOhrjDYdxuCodmmNHaASPl0JM7qgj197o',
+                client_secret: 'AE0YoAb0YjQsSIXdJPgm64kLuVHGuDkZ7WWH3CJ4',
                 grant_type: 'password',
                 username: this.email,
                 password: this.password

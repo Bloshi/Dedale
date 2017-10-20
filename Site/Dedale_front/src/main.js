@@ -2,6 +2,7 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import App from '@/App'
+import store from '@/store'
 import jQuery from 'jquery'
 import Routes from '@/router/index'
 
@@ -22,12 +23,12 @@ Vue.use(VeeValidate)
 
 Vue.http.options.root = 'http://localhost:8000'
 Vue.http.headers.common['Authorization'] = 'Bearer ' + Vue.auth.getToken()
-Vue.http.interceptors.push( (request, next) => {
-  next(response => {
-    if(response.status == 404)
-      swal(response.status.toString(), response.body.error, "error")
-    else if(response.status == 500)
-      swal(response.status.toString(), "Il semble y avoir un problème dans nos serveur nos équipes y travail", "error")
+Vue.http.interceptors.push( (req, next) => {
+  next(res => {
+    if(res.status == 404)
+      swal(res.status.toString(), res.body.error, "error")
+    else if(res.status == 500)
+      swal(res.status.toString(), "Il semble y avoir un problème dans nos serveur nos équipes y travail", "error")
   })
 })
 
@@ -53,6 +54,7 @@ Routes.beforeEach(
 
 new Vue({
   el: '#app',
+  store,
   template: '<App/>',
   components: {
     App

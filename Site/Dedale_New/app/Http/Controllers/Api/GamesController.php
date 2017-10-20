@@ -25,12 +25,17 @@
             } else {
                 $ext = 'png';
             }
-            $fileName = $str_random().'.'. $ext;
+            $fileName = str_random().'.'. $ext;
             $path = public_path().'/images/games/'.$fileName;
             file_put_contents($path, $decoded);
 
             // incrémentation dans la base de donnée
-            $game = Games::create($req->exept('image') + ['user_id' => Auth::id()]);
+            $game = Games::create( $req->except('image') + 
+                [
+                    'user_id' => Auth::id(),
+                    'image' => $fileName
+                ]
+            );
             return $game;
         }
 
@@ -38,8 +43,9 @@
         {
             $game = Games::find($id);
             
-            if(count($game) > 0)
+            if (count($game) > 0) {
                 return response()->json($game);
+            }
                 
             return response()->json(['error' => 'Resource not found!'], 404);
         }

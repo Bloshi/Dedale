@@ -17,6 +17,7 @@ class CreateGamesTable extends Migration
             $table->increments('id');
             $table->integer('user_id');
             $table->string('name');
+            $table->string('image')->nullable();
             $table->text('description');
             $table->integer('note');
             $table->timestamps();

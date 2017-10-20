@@ -7,6 +7,6 @@
     class Games extends Model
     {
         protected $fillable = [
-            'user_id', 'name', 'note', 'description'
+            'user_id', 'name', 'note', 'description', 'image'
         ];
     }
