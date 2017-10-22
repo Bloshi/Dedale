@@ -4,7 +4,6 @@ use Faker\Generator as Faker;
 use App\Models\User;
 use App\Models\Games;
 use App\Models\Tags;
-use App\Models\Achievement;
 use App\Models\Events;
 use App\Models\Comments;
 
@@ -51,15 +50,6 @@ $factory->define(Games::class, function (Faker $faker) {
 $factory->define(Tags::class, function (Faker $faker) {
     return [
         'name' => $faker->word
-    ];
-});
-
-$factory->define(Achievement::class, function (Faker $faker) {
-    return [
-        'name' => $faker->word,
-        'action' => $faker->word,
-        'description' => $faker->paragraph(random_int(1, 10)),
-        'action_count' => $faker->randomDigit
     ];
 });
 

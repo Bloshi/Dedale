@@ -1,16 +1,20 @@
-@font-face {
-  font-family: 'Icons';
-  src: url(/fonts/icons.eot?674f50d287a8c48dc19ba404d20fe713);
-  src: url(/fonts/icons.eot?674f50d287a8c48dc19ba404d20fe713?#iefix) format("embedded-opentype"), url(/fonts/icons.woff2?af7ae505a9eed503f8b8e6982036873e) format("woff2"), url(/fonts/icons.woff?fee66e712a8a08eef5805a46892932ad) format("woff"), url(/fonts/icons.ttf?b06871f281fee6b241d60582ae9369b9) format("truetype"), url(/fonts/icons.svg?912ec66d7572ff821749319396470bde#latobold) format("svg");
-  font-weight: normal;
-  font-style: normal;
-}
-
 /* resolution */
 
-._trs {
+._trs,
+ul.games_list_container li.ui.card {
   -webkit-transition: all 200ms ease-in-out;
   transition: all 200ms ease-in-out;
+}
+
+.form_container {
+  margin: 40px auto;
+  max-width: 600px;
+}
+
+._trs,
+ul.games_list_container li.ui.card {
+  -webkit-transition: all .2s ease;
+  transition: all .2s ease;
 }
 
 a.logo_nav {
@@ -25,8 +29,57 @@ a.logo_nav img {
   height: 100%;
 }
 
-.form_container {
-  margin: 40px auto;
-  max-width: 600px;
+nav.ui.menu {
+  margin-bottom: 20px;
+  padding-top: 10px;
+}
+
+.ui.card > .content .star.icon:hover,
+.ui.cards > .card > .content .star.icon:hover,
+.ui.star.rating .active.icon,
+.ui.card > .content .active.star.icon,
+.ui.cards > .card > .content .active.star.icon {
+  color: #ffb70a !important;
+}
+
+ul.games_list_container {
+  width: f;
+  height: auto;
+  -webkit-column-count: 3;
+          column-count: 3;
+  -webkit-column-gap: 2px;
+          column-gap: 2px;
+  -webkit-column-fill: auto;
+          column-fill: auto;
+  -webkit-column-width: 33.3333%;
+          column-width: 33.3333%;
+  -webkit-padding-start: 0;
+  clear: both;
+  zoom: 1;
+}
+
+ul.games_list_container:before,
+ul.games_list_container:after {
+  content: " ";
+  display: table;
+}
+
+ul.games_list_container:after {
+  clear: both;
+  line-height: 0;
+  visibility: hidden;
+}
+
+ul.games_list_container li.ui.card {
+  display: inline-block;
+  column-break-inside: avoid;
+  opacity: 1;
+  display: inline-block;
+  width: calc(100% - 2em);
+  height: auto;
+  margin-top: 1em !important;
+  margin-right: 1em !important;
+  margin-bottom: 1em !important;
+  margin-left: 1em !important;
 }
 

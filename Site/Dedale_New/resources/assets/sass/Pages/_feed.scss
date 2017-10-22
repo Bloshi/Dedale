@@ -1,0 +1,10 @@
+ul.games_list_container { @include size(f, auto);
+    column-count: 3; column-gap: 2px; column-fill: auto;
+    column-width: 33.3333%; -webkit-padding-start: 0;
+    @include clearfix;
+
+    li.ui.card { display: inline-block; @extend ._trs;
+      column-break-inside: avoid; opacity: 1; display: inline-block;
+      @include size(calc(100% - 2em), auto); @include margin(1em !important);
+    }
+  }

@@ -78,7 +78,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'fr',
 
     /*
     |--------------------------------------------------------------------------
@@ -91,7 +91,7 @@ return [
     |
     */
 
-    'fallback_locale' => 'en',
+    'fallback_locale' => 'fr',
 
     /*
     |--------------------------------------------------------------------------
@@ -188,8 +188,25 @@ return [
         Laracasts\Flash\FlashServiceProvider::class,
         /*
          * Carbon and Date
+         * https://github.com/jenssegers/date
          */
-        Jenssegers\Date\DateServiceProvider::class
+        Jenssegers\Date\DateServiceProvider::class,
+        /*
+         * https://github.com/overtrue/laravel-follow
+         * Like | Follow | Subscribe | Favorite
+         */
+        Overtrue\LaravelFollow\FollowServiceProvider::class,
+        /*
+         * https://github.com/Trexology/laravel-reviewRateable
+         * ReviewRateable system for laravel 5
+         */
+        Trexology\ReviewRateable\ReviewRateableServiceProvider::class,
+        /*
+         * composer require gstt/laravel-achievements
+         * https://packagist.org/packages/gstt/laravel-achievements
+         * Gabriel Simonetti <simonettigo@gmail.com>
+         */
+        Gstt\Achievements\AchievementsServiceProvider::class,
     ],
 
     /*

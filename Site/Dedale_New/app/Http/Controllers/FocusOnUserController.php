@@ -4,9 +4,10 @@
 
     use Illuminate\Http\Request;
 
+    use App\Models\User;
     use App\Models\Games;
 
-    class FeedController extends Controller
+    class FocusOnUserController extends Controller
     {
         /**
          * Create a new controller instance.
@@ -18,16 +19,12 @@
             $this->middleware('auth');
         }
 
-        public function index($param)
+        public function profilUser($id)
         {
-            $data = [];
-
-            if ($param === 'game') {
-                $data['games'] = Games::all();
-            } else {
-                $data['events'] = Games::all();
-            }
-
-            return view('feed/feed', $data);
+            $data = [
+                'user' => User::findOrFail($id),
+                'games' => Games::where('user_id', $id)->get()
+            ];
+            return view('user/profil', $data);
         }
     }

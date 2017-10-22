@@ -1,7 +1,15 @@
-@import "tools/fonts";
 @import "tools/mixins";
 @import "tools/base";
 
 a.logo_nav { @include size(40px, f); display: block; margin-right: 10px;
     img { display: block; height: 100%; }
 }
+
+nav.ui.menu { margin-bottom: 20px; padding-top: 10px; }
+
+
+// semantic ui - corrective
+.ui.card>.content .star.icon:hover, .ui.cards>.card>.content .star.icon:hover, .ui.star.rating .active.icon, 
+.ui.card>.content .active.star.icon, .ui.cards>.card>.content .active.star.icon { color: #ffb70a !important; }
+
+@import "pages/feed";

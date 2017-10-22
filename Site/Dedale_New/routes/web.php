@@ -16,6 +16,7 @@ Route::get('/admin', 'AdminUserController@index')->name('test');
 Route::get('/pro', 'ProUserController@index')->name('pro');
 
 Route::get('/feed/{param}', 'FeedController@index')->name('feed');
+Route::get('/profil/user/{id}', 'FocusOnUserController@profilUser')->name('focus_user');
 
 
 
