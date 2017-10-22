@@ -178,6 +178,18 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        /*
+         * Laravel Collective
+         */
+        Collective\Html\HtmlServiceProvider::class,
+        /*
+         * Flash
+         */
+        Laracasts\Flash\FlashServiceProvider::class,
+        /*
+         * Carbon and Date
+         */
+        Jenssegers\Date\DateServiceProvider::class
     ],
 
     /*
@@ -227,6 +239,14 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
+        /*
+         * Laravel Collective + Carbon and Date
+         */
+        'Form' => Collective\Html\FormFacade::class,
+        'Html' => Collective\Html\HtmlFacade::class,
+        'Input' => Illuminate\Support\Facades\Input::class,
+        'Carbon' => Carbon\Carbon::class,
+        'Date' => Jenssegers\Date\Date::class
     ],
 
 ];

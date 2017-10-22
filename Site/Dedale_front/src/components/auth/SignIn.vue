@@ -10,13 +10,13 @@
       <div class="field">
         <div class="ui left icon input">
           <i class="user icon"></i>
-          <input type="text" v-model="email" placeholder="E-mail address" autofocus>
+          <input type="text" v-model="email" placeholder="E-mail address" autofocus />
         </div>
       </div>
       <div class="field">
         <div class="ui left icon input">
           <i class="lock icon"></i>
-          <input type="password" v-model="password" placeholder="Password">
+          <input type="password" v-model="password" placeholder="Password" />
         </div>
       </div>
       <button type="submit" class="ui fluid large teal submit button">Login</button>
@@ -28,6 +28,8 @@
   </div>
 </template>
 <script>
+  import { mapGetters } from 'vuex'
+
   export default {
     data() {
       return {
@@ -36,21 +38,14 @@
       }
     },
     methods: {
-        signin() {
-            let data = {
-                client_id: 2,
-                client_secret: 'AE0YoAb0YjQsSIXdJPgm64kLuVHGuDkZ7WWH3CJ4',
-                grant_type: 'password',
-                username: this.email,
-                password: this.password
-            }
-
-            this.$http.post('oauth/token', data)
-                .then(res => {
-                    this.$auth.setToken(res.body.access_token, res.body.expires_in + Date.now())
-                    this.$router.push('/feed')
-                })
-        }
+      signin () {
+        this.$store.dispatch('setSignInUser', {
+          email: this.email,
+          password: this.password
+        }).then( () => {
+          this.$router.push("/feed")
+        })
+      }
     }
   }
 </script>

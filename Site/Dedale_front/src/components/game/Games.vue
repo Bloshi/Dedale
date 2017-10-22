@@ -1,6 +1,6 @@
 <template>
   <ul id="list_article">
-      <li v-for="game in $store.state.games" class="ui card"
+      <li v-for="game in games" class="ui card"
         :authenticatedUser="authenticatedUser"
       >
         <div class="content">
@@ -36,14 +36,13 @@
     </ul>
 </template>
 <script>
-  import { mapState } from 'vuex'
-  import swal from 'sweetalert';
+  import swal from 'sweetalert'
 
   export default {
     computed: {
-      ...mapState({
-        games: state => state.games
-      }),
+      games () {
+        return this.$store.getters.getGames
+      },
       authenticatedUser() {
         return this.$auth.getAuthenticatedUser()
       }

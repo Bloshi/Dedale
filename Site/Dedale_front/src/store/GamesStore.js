@@ -14,6 +14,12 @@ const mutations = {
   }
 }
 
+const getters = {
+  getGames (state) {
+    return state.games
+  }
+}
+
 const actions = {
   getGames: ({ commit }) => {
     Vue.http.get('api/games')
@@ -30,5 +36,5 @@ const actions = {
 }
 
 export default {
-  state, mutations, actions
+  state, mutations, getters, actions
 }

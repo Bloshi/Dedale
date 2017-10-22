@@ -1,9 +1,7 @@
+@import "tools/fonts";
+@import "tools/mixins";
+@import "tools/base";
 
-// Fonts
-@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
-
-// Variables
-@import "variables";
-
-// Bootstrap
-@import "~bootstrap-sass/assets/stylesheets/bootstrap";
+a.logo_nav { @include size(40px, f); display: block; margin-right: 10px;
+    img { display: block; height: 100%; }
+}

@@ -1,10 +1,14 @@
 <?php
 
-    namespace App\Models;
+    namespace App\Models; 
 
     use Illuminate\Notifications\Notifiable;
     use Illuminate\Foundation\Auth\User as Authenticatable;
     use Laravel\Passport\HasApiTokens;
+
+    use App\Models\Events;
+    use App\Models\Achievement;
+    use App\Models\Comments;
 
     class User extends Authenticatable
     {
@@ -16,7 +20,8 @@
          * @var array
          */
         protected $fillable = [
-            'name', 'email', 'password',
+            'email', 'password', 'gender', 'firstName', 
+            'lastName', 'birthday', 'address', 'type'
         ];
 
         /**
@@ -27,4 +32,19 @@
         protected $hidden = [
             'password', 'remember_token',
         ];
+
+        public function events()
+        {
+            return $this->belongsToMany(Events::class, 'event_user');
+        }
+
+        public function achievement()
+        {
+            return $this->belongsToMany(Achievement::class, 'achievement_user');
+        }
+
+        public function comments()
+        {
+            return $this->hasMany(Comments::class);
+        }
     }

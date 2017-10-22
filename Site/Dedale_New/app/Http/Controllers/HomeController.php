@@ -1,13 +1,21 @@
 <?php
 
-namespace App\Http\Controllers;
+    namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+    use Illuminate\Http\Request;
 
-class HomeController extends Controller
-{
-    public function index()
+    use App\Models\Games;
+
+    class HomeController extends Controller
     {
-        return view('welcome');
+        /**
+         * Show the application dashboard.
+         *
+         * @return \Illuminate\Http\Response
+         */
+        public function index()
+        {
+            $data = [];
+            return view('home/home', $data);
+        }
     }
-}

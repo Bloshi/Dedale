@@ -5,6 +5,8 @@
     use App\Models\Games;
     use App\Models\Tags;
     use App\Models\Achievement;
+    use App\Models\Events;
+    use App\Models\Comments;
 
     class DatabaseSeeder extends Seeder
     {
@@ -19,5 +21,6 @@
             factory(Games::class, 10)->create();
             factory(Tags::class, 10)->create();
             factory(Achievement::class, 10)->create();
+            factory(Comments::class, 10)->create();
         }
     }

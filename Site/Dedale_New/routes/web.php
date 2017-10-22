@@ -12,7 +12,15 @@
 */
 
 Route::get('/', 'HomeController@index')->name('home');
+Route::get('/admin', 'AdminUserController@index')->name('test');
+Route::get('/pro', 'ProUserController@index')->name('pro');
 
+Route::get('/feed/{param}', 'FeedController@index')->name('feed');
+
+
+
+
+// Super Admin
 Route::group(
     [
         'as' => 'admin.',
@@ -24,3 +32,4 @@ Route::group(
         Route::get('/admin/home', 'AdminHomeController@index')->name('home');
     }
 );
+Auth::routes();
