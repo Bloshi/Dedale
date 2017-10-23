@@ -1,7 +1,20 @@
 @extends('layout')
 
 @section('content')
-    
+
+    <center>
+        <div class="ui compact menu">
+            <a class="item">
+                <i class="gamepad icon"></i>
+                Jeux
+            </a>
+            <a class="item">
+                <i class="video camera icon"></i>
+                Evévénements
+            </a>
+        </div>
+    </center>
+
     <ul class='games_list_container'>
         @foreach($games as $game)
             <li class="ui card">

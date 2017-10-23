@@ -4,7 +4,6 @@
     use App\Models\User;
     use App\Models\Games;
     use App\Models\Tags;
-    use App\Models\Achievement;
     use App\Models\Events;
     use App\Models\Comments;
 
@@ -20,7 +19,6 @@
             factory(User::class, 10)->create();
             factory(Games::class, 10)->create();
             factory(Tags::class, 10)->create();
-            factory(Achievement::class, 10)->create();
             factory(Comments::class, 10)->create();
         }
     }

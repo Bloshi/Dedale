@@ -1,6 +1,6 @@
 <?php
 
-    namespace App\Models; 
+    namespace App\Models;
 
     use Illuminate\Notifications\Notifiable;
     use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -30,7 +30,7 @@
          * @var array
          */
         protected $fillable = [
-            'email', 'password', 'gender', 'firstName', 
+            'email', 'password', 'gender', 'firstName',
             'lastName', 'birthday', 'address', 'type', 'image'
         ];
 
@@ -80,5 +80,21 @@
                 }
             }
             return $img;
+        }
+
+        public function userType()
+        {
+            $type = $this->type;
+            switch ($type) {
+                case 1:
+                    return 'Administrateur';
+                    break;
+                case 2:
+                    return 'Pro';
+                    break;
+                default:
+                    return 'Testeur';
+                    break;
+            }
         }
     }

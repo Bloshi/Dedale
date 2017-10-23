@@ -106,5 +106,18 @@ ul.feed_game_user_page {
 ul.feed_game_user_page li.ui.card {
   float: left;
   margin-right: 2em;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.item.link_auth_focus_user a img {
+  margin: 5px auto;
+}
+
+.item.link_auth_focus_user a span {
+  display: inline-block;
+  width: 100%;
+  height: auto;
+  padding-top: 5px;
 }
 

@@ -3,5 +3,12 @@
 }
 
 ul.feed_game_user_page { @include size(f, auto); -webkit-margin-before: 0;
-    li.ui.card { float: left; margin-right: 2em; }
+    li.ui.card { float: left; margin-right: 2em; margin-top: 0; margin-bottom: 0; }
+}
+
+.item.link_auth_focus_user {
+    a {
+        img { margin: 5px auto; }
+        span { display: inline-block; @include size(f, auto); padding-top: 5px; }
+    }
 }
