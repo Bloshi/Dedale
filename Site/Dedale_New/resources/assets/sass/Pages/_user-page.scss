@@ -1,0 +1,7 @@
+.user_header { height: auto; padding: 40px 0; margin-bottom: 40px;
+    @include clearfix;
+}
+
+ul.feed_game_user_page { @include size(f, auto); -webkit-margin-before: 0;
+    li.ui.card { float: left; margin-right: 2em; }
+}

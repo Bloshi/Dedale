@@ -1,11 +1,5 @@
 /* resolution */
 
-._trs,
-ul.games_list_container li.ui.card {
-  -webkit-transition: all 200ms ease-in-out;
-  transition: all 200ms ease-in-out;
-}
-
 .form_container {
   margin: 40px auto;
   max-width: 600px;
@@ -19,7 +13,7 @@ ul.games_list_container li.ui.card {
 
 a.logo_nav {
   width: 40px;
-  height: f;
+  height: 100%;
   display: block;
   margin-right: 10px;
 }
@@ -43,7 +37,7 @@ nav.ui.menu {
 }
 
 ul.games_list_container {
-  width: f;
+  width: 100%;
   height: auto;
   -webkit-column-count: 3;
           column-count: 3;
@@ -81,5 +75,36 @@ ul.games_list_container li.ui.card {
   margin-right: 1em !important;
   margin-bottom: 1em !important;
   margin-left: 1em !important;
+}
+
+.user_header {
+  height: auto;
+  padding: 40px 0;
+  margin-bottom: 40px;
+  clear: both;
+  zoom: 1;
+}
+
+.user_header:before,
+.user_header:after {
+  content: " ";
+  display: table;
+}
+
+.user_header:after {
+  clear: both;
+  line-height: 0;
+  visibility: hidden;
+}
+
+ul.feed_game_user_page {
+  width: 100%;
+  height: auto;
+  -webkit-margin-before: 0;
+}
+
+ul.feed_game_user_page li.ui.card {
+  float: left;
+  margin-right: 2em;
 }
 

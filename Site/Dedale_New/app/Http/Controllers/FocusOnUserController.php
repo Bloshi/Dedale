@@ -6,6 +6,7 @@
 
     use App\Models\User;
     use App\Models\Games;
+    use App\Models\Events;
 
     class FocusOnUserController extends Controller
     {
@@ -21,9 +22,16 @@
 
         public function profilUser($id)
         {
+            $games = Games::where('user_id', $id)->take(3)->get();
+            if (count($games) == 0) { $games = NULL; }
+
+            $events = Events::where('user_id', $id)->take(3)->get();
+            if (count($events) == 0) { $events = NULL; }
+
             $data = [
                 'user' => User::findOrFail($id),
-                'games' => Games::where('user_id', $id)->get()
+                'games' => $games,
+                'events' => $events
             ];
             return view('user/profil', $data);
         }

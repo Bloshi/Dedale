@@ -18,4 +18,12 @@
         {
             return $this->belongsToMany(User::class, 'event_user');
         }
+
+        // MadeHome function
+        public function whenCreatedForHuman()
+        {
+            $created_at = $this->created_at;
+            $date = new Date($created_at, 'Europe/Brussels');
+            return $date->ago();
+        }
     }
