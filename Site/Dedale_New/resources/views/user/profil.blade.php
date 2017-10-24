@@ -5,7 +5,7 @@
     <div class="user_header ui grid">
         <div class="four wide column">
             <center>
-                <img class="ui small circular image" 
+                <img class="ui small circular image"
                     src="{{ asset('images/users/'. $user->userPic()) }}"
                     alt="{{ $user->firstName }} {{ $user->lastName }} | Playpal"
                 />
@@ -13,14 +13,60 @@
                 <a href="mailto:{{ $user->email }}">{{ $user->email }}</a>
             </center>
         </div>
-        <div class="twelve wide column">
+        <dv class="twelve wide column">
+            <div class="ui statistics">
+                <a href='#' class="statistic">
+                    <div class="label">Badges</div>
+                    <div class="value">22</div>
+                </a>
+                <a href='#' class="statistic">
+                    <div class="label">Likes</div>
+                    <div class="value">31,200</div>
+                </a>
+                <a href='#' onclick="event.preventDefault();
+                        $('.open_followers_list').modal('show');"  
+                    class="statistic">
+                    <div class="label">Abo.</div>
+                    <div class="value">{{ $howManyFollowers }}</div>
+                </a>
+                <a href='#' class="statistic">
+                    <div class="label">Posts</div>
+                    <div class="value">22</div>
+                </a>
+            </div><!-- .ui.statistics -->
+
+            @if (!$isAuthUserPage)
+                @if (!$isFollowing)
+                    <div
+                        onclick="location.href = '{{ route('follow_this_user', ['id' => $user->id]) }}'"
+                        class="ui labeled button" tabindex="0">
+                        <div class="ui primary button">
+                            <i class="add user icon"></i> Suivre
+                        </div>
+                @else
+                    <div 
+                        onclick="location.href = '{{ route('follow_this_user', ['id' => $user->id, 'type' => 'cancel']) }}'"
+                        class="ui labeled button" tabindex="0">
+                        <div class="ui red button">
+                            <i class="add user icon"></i> Ne plus suivre
+                        </div>
+                @endif
+                        <a class="ui basic left pointing label {{ !$isFollowing ? 'primary' : 'red' }}">
+                            {{ $howManyFollowers }}
+                        </a>
+                    </div>
+            @else
+                <a href="{{ route('auth.edit_profil') }}" class="ui labeled icon button">
+                    <i class="edit icon"></i> Editer votre profil
+                </a>
+            @endif
             
-        </div>
+
+        </dv>
     </div>
 
     @if($games != null)
         <h4 class="ui horizontal divider">Dernier(s) jeu(x) posté</h4>
-
         <ul class='feed_game_user_page'>
             @foreach($games as $game)
                 <li class="ui card">
@@ -50,8 +96,7 @@
     @endif
 
     @if($events != null)
-        <h4 class="ui horizontal divider">Ses Jeux</h4>
-
+        <h4 class="ui horizontal divider">Ses Evénements</h4>
         <ul class='feed_event_user_page ui feed'>
             @foreach($events as $event)
                 <li class="event">
@@ -79,8 +124,9 @@
                 </li>
             @endforeach
         </ul>
-    @endif 
+    @endif
 
-
+    {{--  Modals  --}}
+    @include('user/followers')
 
 @endsection

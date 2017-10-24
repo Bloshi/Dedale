@@ -9,6 +9,9 @@ ul.feed_game_user_page { @include size(f, auto); -webkit-margin-before: 0;
 .item.link_auth_focus_user {
     a {
         img { margin: 5px auto; }
-        span { display: inline-block; @include size(f, auto); padding-top: 5px; }
+        span { display: inline-block; @include size(f, auto); padding-top: 5px; text-align: center; }
     }
+    &.logout_btn { width: 100%; }
 }
+
+.list_follower .item .content a { @include lH(28.8); padding-left: 10px; }

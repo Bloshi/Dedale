@@ -5,6 +5,7 @@
     use Illuminate\Http\Request;
 
     use App\Models\Games;
+    use App\Models\Events;
 
     class FeedController extends Controller
     {
@@ -18,14 +19,16 @@
             $this->middleware('auth');
         }
 
-        public function index($param)
+        public function index($type)
         {
-            $data = [];
+            $data = [
+                'whatFeed' => $type
+            ];
 
-            if ($param === 'game') {
-                $data['games'] = Games::all();
-            } else {
-                $data['events'] = Games::all();
+            if ($type === 'game') {
+                $data['games'] = Games::orderBy('created_at')->get();
+            } elseif ($type === 'event') {
+                $data['events'] = Events::orderBy('created_at')->get();
             }
 
             return view('feed/feed', $data);

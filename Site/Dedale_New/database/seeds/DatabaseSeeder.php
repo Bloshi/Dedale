@@ -6,6 +6,7 @@
     use App\Models\Tags;
     use App\Models\Events;
     use App\Models\Comments;
+    use App\Models\EventUser;
 
     class DatabaseSeeder extends Seeder
     {
@@ -20,5 +21,7 @@
             factory(Games::class, 10)->create();
             factory(Tags::class, 10)->create();
             factory(Comments::class, 10)->create();
+            factory(Events::class, 10)->create();
+            factory(EventUser::class, 10)->create();
         }
     }

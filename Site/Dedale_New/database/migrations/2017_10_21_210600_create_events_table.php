@@ -18,11 +18,13 @@ class CreateEventsTable extends Migration
             $table->string('title');
             $table->string('image')->nullable();
             $table->string('place');
-            $table->string('description');
+            $table->text('description');
+            $table->tinyInteger('public')->unsigned(); // 0-false 1-true
             $table->dateTime('date_start');
             $table->dateTime('date_end');
             $table->integer('game_id')->unsigned();
-            $table->integer('user_id')->unsigned();
+            $table->integer('creator_id')->unsigned();
+            $table->foreign('creator_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('organisation');
             $table->timestamps();
         });

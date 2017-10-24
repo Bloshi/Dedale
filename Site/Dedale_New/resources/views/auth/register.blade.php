@@ -96,7 +96,7 @@
 
             {!! Form::hidden('type', 0) !!}
 
-            <button class="ui submit button">Se connecter</button>
+            <button class="ui submit primary button">Se connecter</button>
         {!! Form::close() !!}
         
         <div class="ui bottom attached warning message">

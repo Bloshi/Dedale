@@ -6,6 +6,7 @@
 
     @auth
         <a class="item" href="{{ route('feed', ['param' => 'game']) }}">File d'acutalité</a>
+        <a class="item" href="{{ route('map') }}">Map</a>
     @endauth
 
     <div class="right menu">
@@ -29,10 +30,15 @@
                         </a>
                     </div>
                     @if( Auth::user()->type != 2 )
-                        <div class='item'><a href='#'>Devenir pro</a></div>
+                        <div class='item'>
+                            <div class="ui animated fade button fluid" tabindex="0">
+                                <div class="visible content">Devenir pro</div>
+                                <div class="hidden content">20€ par mois</div>
+                            </div>
+                        </div>
                     @endif
                     <div class='item'>
-                        <a href="{{ route('logout') }}"
+                        <a href="{{ route('logout') }}" class='ui negative basic button fluid'
                             onclick="event.preventDefault();
                                         document.getElementById('logout-form').submit();">
                             Logout

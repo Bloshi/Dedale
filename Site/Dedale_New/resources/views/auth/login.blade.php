@@ -30,7 +30,7 @@
                 </div>
             @endif
 
-            <button class="ui submit button">Se connecter</button>
+            <button class="ui submit primary button">Se connecter</button>
 
             <a class="btn btn-link" href="{{ route('password.request') }}">Mot de passe oublié ?</a>
         {!! Form::close() !!}

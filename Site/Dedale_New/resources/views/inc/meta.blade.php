@@ -6,6 +6,17 @@
 
     <title>Playpal</title>
 
+    <!--
+        tu es curieux ? - playpal.be/unlock/achievement/curiosity
+
+        Team : BloshiCorp -  http://bloshicorp.be
+        Developer : Maxime Bartier -  http://bartier-maxime.be <poulycroc.studio@gmail.com>
+        
+        Framework css : Semantic ui - https://semantic-ui.com
+        Framework php : Laravel - https://laravel.com/
+        Image user source : Anna Litviniuk - https://www.iconfinder.com/Naf_Naf 
+    -->
+
     <link rel="stylesheet" href="{{ asset('css/semantic.min.css') }}" />
     <style>
         @font-face {

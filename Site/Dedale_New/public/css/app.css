@@ -1,3 +1,7 @@
+* {
+  outline: none;
+}
+
 /* resolution */
 
 .form_container {
@@ -119,5 +123,16 @@ ul.feed_game_user_page li.ui.card {
   width: 100%;
   height: auto;
   padding-top: 5px;
+  text-align: center;
+}
+
+.item.link_auth_focus_user.logout_btn {
+  width: 100%;
+}
+
+.list_follower .item .content a {
+  line-height: 28.8px;
+  line-height: 1.8rem;
+  padding-left: 10px;
 }
 

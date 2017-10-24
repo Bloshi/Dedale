@@ -15,8 +15,8 @@ class CreateEventUserPivotTable extends Migration
     {
         Schema::create('event_user', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('event_id')->unsigned();
-            $table->foreign('event_id')->references('id')->on('events')->onDelete('cascade');
+            $table->integer('events_id')->unsigned();
+            $table->foreign('events_id')->references('id')->on('events')->onDelete('cascade');
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->tinyInteger('accepted')->unsigned(); // 0-false 1-true

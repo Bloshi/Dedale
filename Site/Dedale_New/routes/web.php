@@ -12,14 +12,23 @@
 */
 
 Route::get('/', 'HomeController@index')->name('home');
-Route::get('/admin', 'AdminUserController@index')->name('test');
-Route::get('/pro', 'ProUserController@index')->name('pro');
 
-Route::get('/feed/{param}', 'FeedController@index')->name('feed');
+Route::get('/feed/{type}', 'FeedController@index')->name('feed');
 Route::get('/profil/user/{id}', 'FocusOnUserController@profilUser')->name('focus_user');
 
+Route::get('/map', 'MapController@index')->name('map');
 
 
+// user action
+Route::get('/follow/this/user/{id}/{type?}', 'UserActionController@followUser')->name('follow_this_user');
+Route::get('/like/event/{id}/{type?}', 'UserActionController@likeEvent')->name('like_this_event');
+
+Route::get('/unlock/achievement/curiosity', 'UserActionController@unlockCuriosity');
+
+
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/edtit/profil/', 'Auth\EditProfilController@index')->name('auth.edit_profil');
+});
 
 // Super Admin
 Route::group(
@@ -28,7 +37,7 @@ Route::group(
         'prefix' => 'admin',
         'namespace' => 'Admin',
         'middleware' => 'isAdminLogged'
-    ], 
+    ],
     function () {
         Route::get('/admin/home', 'AdminHomeController@index')->name('home');
     }

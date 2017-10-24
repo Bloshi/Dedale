@@ -6,6 +6,15 @@ use App\Models\Games;
 use App\Models\Tags;
 use App\Models\Events;
 use App\Models\Comments;
+use App\Models\EventUser;
+
+$factory->define(EventUser::class, function(Faker $faker) {
+    return [
+        'events_id' => Events::all()->random()->id,
+        'user_id' => User::all()->random()->id,
+        'accepted' => 0
+    ];
+});
 
 $factory->define(User::class, function (Faker $faker) {
     static $password;
@@ -30,11 +39,12 @@ $factory->define(Events::class, function (Faker $faker) {
         'title' => $faker->catchPhrase,
         'place' => $faker->address,
         'description' => $faker->paragraph(random_int(1, 10)),
+        'public' => 1,
         'date_start' => $faker->dateTime,
         'date_end' => $faker->dateTime,
         'game_id' => Games::all()->random()->id,
-        'user_id' => User::all()->random()->id,
-        'organisation' => $faker->word,
+        'creator_id' => User::all()->random()->id,
+        'organisation' => '1,4,6,8,9',
     ];
 });
 

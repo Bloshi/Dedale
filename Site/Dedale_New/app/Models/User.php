@@ -9,6 +9,7 @@
     // overtrue/laravel-follow package - https://github.com/overtrue/laravel-follow
     use Overtrue\LaravelFollow\Traits\CanFollow;
     use Overtrue\LaravelFollow\Traits\CanBeFollowed;
+    use Overtrue\LaravelFollow\Traits\CanLike;
 
     // gstt/laravel-achievements package - https://packagist.org/packages/gstt/laravel-achievements
     use Gstt\Achievements\Achiever;
@@ -21,7 +22,7 @@
     class User extends Authenticatable
     {
         use HasApiTokens, Notifiable;
-        use CanFollow, CanBeFollowed;
+        use CanFollow, CanBeFollowed, CanLike;
         use Achiever;
 
         /**
@@ -65,7 +66,6 @@
         public function userPic()
         {
             $img = $this->image;
-
             if ($img == NULL) {
                 switch ( $this->gender ) {
                     case 1:
@@ -81,7 +81,6 @@
             }
             return $img;
         }
-
         public function userType()
         {
             $type = $this->type;
@@ -93,7 +92,7 @@
                     return 'Pro';
                     break;
                 default:
-                    return 'Testeur';
+                    return $this->gender == 2 ? 'Testeuse' : 'Testeur';
                     break;
             }
         }
