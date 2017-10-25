@@ -101,15 +101,31 @@ ul.games_list_container li.ui.card {
 }
 
 a.logo_nav {
-  width: 40px;
+  width: 90px;
   height: 100%;
   display: block;
   margin-right: 10px;
 }
 
-a.logo_nav img {
+a.logo_nav svg {
   display: block;
   height: 100%;
+}
+
+a.logo_nav svg path {
+  fill: #2BCCC1;
+}
+
+.mainlogo_homepage {
+  width: 200px;
+  height: auto;
+  margin: 40px auto;
+}
+
+.mainlogo_homepage svg {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 nav.ui.menu {

@@ -3,7 +3,7 @@
 @section('content')
 
    <h2>Ajouter un jeu</h2>
-   
+    
     {!! Form::open(
         ['url' => route('pro.post_game'), 'class' => 'ui form',
         'enctype' => 'multipart/form-data', 'files' => true

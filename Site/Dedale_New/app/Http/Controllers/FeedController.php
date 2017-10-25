@@ -23,9 +23,9 @@
         {
             $data = [ 'whatFeed' => $type ];
             if ($type === 'game') {
-                $data['games'] = Games::orderBy('created_at')->get();
+                $data['games'] = Games::orderBy('created_at', 'DESC')->get();
             } elseif ($type === 'event') {
-                $data['events'] = Events::orderBy('created_at')->get();
+                $data['events'] = Events::orderBy('created_at', 'DESC')->get();
             }
             return view('feed/feed', $data);
         }

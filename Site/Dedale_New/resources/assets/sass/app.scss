@@ -7,8 +7,25 @@
 // 
 @import "tools/date";
 
-a.logo_nav { @include size(40px, f); display: block; margin-right: 10px;
-    img { display: block; height: 100%; }
+$colors: (
+  primary :   #2BCCC1,
+  secondary : #58D0CB,
+  danger :    #F72E43,
+  dangerS :   #F84B52,
+  light :     #fefefe,
+  default :   #E3F5F6,
+  dark :      #432A39,
+  bg :        #4C3441,
+  facebook :  #3B5998
+);
+
+a.logo_nav { @include size(90px, f); display: block; margin-right: 10px;
+    svg { display: block; height: 100%; 
+        path { fill: map-get($colors, primary) }
+    }
+}
+.mainlogo_homepage { @include size(200px, auto); margin: 40px auto; 
+    svg { display: block; @include size(f, auto); }
 }
 
 nav.ui.menu { margin-bottom: 20px; padding-top: 10px; }

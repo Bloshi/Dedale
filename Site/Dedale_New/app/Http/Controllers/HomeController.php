@@ -5,6 +5,7 @@
     use Illuminate\Http\Request;
 
     use App\Models\Games;
+    use Auth;
 
     class HomeController extends Controller
     {

@@ -20,12 +20,14 @@ class CreateEventsTable extends Migration
             $table->string('place');
             $table->text('description');
             $table->tinyInteger('public')->unsigned(); // 0-false 1-true
-            $table->dateTime('date_start');
-            $table->dateTime('date_end');
+            $table->dateTime('date_start')->nullable();
+            $table->dateTime('date_end')->nullable();
+            $table->dateTime('hour_start')->nullable();
+            $table->dateTime('hour_end')->nullable();
             $table->integer('game_id')->unsigned();
             $table->integer('creator_id')->unsigned();
             $table->foreign('creator_id')->references('id')->on('users')->onDelete('cascade');
-            $table->string('organisation');
+            $table->string('organisation')->nullable();
             $table->timestamps();
         });
     }

@@ -17,8 +17,8 @@ class CreateGameimgsTable extends Migration
             $table->increments('id');
             $table->string('url');
             $table->string('alt')->nullable();
-            $table->integer('game_id')->unsigned();
-            $table->foreign('game_id')->references('id')->on('games')->onDelete('cascade');
+            $table->integer('games_id')->unsigned();
+            $table->foreign('games_id')->references('id')->on('games')->onDelete('cascade');
             $table->timestamps();
         });
     }

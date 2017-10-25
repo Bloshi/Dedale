@@ -16,6 +16,7 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::get('/feed/{type}', 'FeedController@index')->name('feed');
 Route::get('/profil/user/{id}', 'FocusOnUserController@profilUser')->name('focus_user');
 Route::get('/event/{id}', 'FeedController@focusEvent')->name('focus_event');
+Route::get('/game/{id}', 'FeedController@focusGame')->name('focus_game');
 
 Route::get('/map', 'MapController@index')->name('map');
 
@@ -32,10 +33,11 @@ Route::group(['middleware' => 'auth'], function () {
 });
 
 Route::group(['middleware' => 'isPro'], function () {
-    Route::get('/add/jeu/', 'Pro\ProActionController@addGame')->name('pro.add_game');
-    Route::post('/add/jeu/post', 'Pro\ProActionController@postAddGame')->name('pro.post_game');
+    Route::get('/add/jeu/', 'Pro\GameController@addGame')->name('pro.add_game');
+    Route::post('/add/jeu/post', 'Pro\GameController@postAddGame')->name('pro.post_game');
 
-    Route::get('/add/event/', 'Pro\ProActionController@addEvent')->name('pro.add_event');
+    Route::get('/add/event/', 'Pro\EventController@addEvent')->name('pro.add_event');
+    Route::post('/add/event/post', 'Pro\EventController@postAddEvent')->name('pro.post_event');
 });
 
 

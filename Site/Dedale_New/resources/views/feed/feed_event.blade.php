@@ -18,7 +18,10 @@
                     </div>
                 </div>
                 <div class="image four wide column">
-                    <img />
+                    <img src="{{ asset('images/events/'. $event->image) }}" 
+                        alt="{{ $event->title }} | Evénement | PlayPal"
+                        style='max-width:100%'
+                    />
                 </div>
                 <div class="content ten wide column">
                     <a href="{{ route('focus_event', ['id' => $event->id]) }}" class="header">{{ $event->title }}</a>
@@ -29,8 +32,15 @@
                         <p>{{ $event->description }}</p>
                     </div>
                     <div class="extra">
-                        Organisation: orga
+                        <br/>
+                        <h4>En compagnie du jeu <a href="{{ route('focus_game', ['id' => $event->game_id]) }}">
+                            {{ $event->gameInfo($event->game_id)->name }}
+                        </a></h4>
+                        <p>{{ $event->gameInfo($event->game_id)->description }}</p>
                     </div>
+                    {{--  <div class="extra">
+                        Organisation: orga
+                    </div>  --}}
                 </div>
             </div>
 

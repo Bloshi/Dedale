@@ -11,6 +11,7 @@
     use Jenssegers\Date\Date;
 
     use App\Models\User;
+    use App\Models\Games;
     use Auth;
 
     class Events extends Model
@@ -43,5 +44,9 @@
         public function AuthHasLiked()
         {
             return Auth::user()->hasLiked( $this );
+        }
+        public function gameInfo($id) 
+        {
+            return Games::findOrFail($id);
         }
     }

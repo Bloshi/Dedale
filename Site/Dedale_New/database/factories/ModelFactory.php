@@ -42,6 +42,8 @@ $factory->define(Events::class, function (Faker $faker) {
         'public' => 1,
         'date_start' => $faker->dateTime,
         'date_end' => $faker->dateTime,
+        'date_start' => $faker->dateTime,
+        'date_end' => $faker->dateTime,
         'game_id' => Games::all()->random()->id,
         'creator_id' => User::all()->random()->id,
         'organisation' => '1,4,6,8,9',

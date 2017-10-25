@@ -1,8 +1,7 @@
 <nav class="ui secondary pointing menu">
     <a class='logo_nav' href="{{ route('home') }}">
-        <img src="{{ asset('logo/logo2.svg') }}" />
+        @include('inc/navlogo')
     </a>
-    <a class="item" href="{{ route('home') }}">Accueil</a>
 
     @auth
         <a class="item" href="{{ route('feed', ['param' => 'game']) }}">File d'acutalité</a>
@@ -41,7 +40,7 @@
                             <a href="{{ route('pro.add_game') }}" class='ui button fluid'>Ajouter un jeu</a>
                         </div>
                         <div class="item">
-                            <a href="#" class='ui button fluid'>Ajouter un événement</a>
+                            <a href="{{ route('pro.add_event') }}" class='ui button fluid'>Ajouter un événement</a>
                         </div>
                     @endif
                     <div class='item'>

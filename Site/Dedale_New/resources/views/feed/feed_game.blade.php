@@ -1,6 +1,7 @@
 <ul class='games_list_container'>
-        @foreach($games as $game)
-            <li class="ui card">
+    @foreach($games as $game)
+        <li class="ui card">
+            <a href="{{ route('focus_game', ['id' => $game->id]) }}">
                 <div class="content">
                     <div class="right floated meta" style='padding-top:3px'>{{ $game->whenCreatedForHuman() }}</div>
                     <img class="ui avatar image" src="{{ asset('images/users/'. $game->user->userPic()) }}" />
@@ -12,9 +13,7 @@
                     <div class="header">{{ $game->name }}</div>
                 </div>
                 <div class="image">
-                    {{--  @foreach($game->gameimg as $img)
-                        <img src="{{ asset('images/games/'. $game->gameimg->url) }}" />
-                    @endforeach  --}}
+                    <img src="{{ asset('images/games/'. $game->gameimg->first()['url']) }}" />
                 </div>
                 <div class='content'>{{ $game->description }}</div>
                 <div class="content">
@@ -36,6 +35,7 @@
                         <input type="text" placeholder="Add Comment...">
                     </div>
                 </div>  --}}
-            </li>
-        @endforeach
-    </ul>
+            </a>
+        </li>
+    @endforeach
+</ul>
