@@ -4,6 +4,8 @@
 @import "tools/media-queries";
 @import "tools/function";
 @import "tools/base";
+// 
+@import "tools/date";
 
 a.logo_nav { @include size(40px, f); display: block; margin-right: 10px;
     img { display: block; height: 100%; }
@@ -18,3 +20,9 @@ nav.ui.menu { margin-bottom: 20px; padding-top: 10px; }
 
 @import "pages/feed";
 @import "pages/user-page";
+
+span.sexy_date_event { @include size(f, auto); @include lH(28); text-align: justify;
+    text-justify: inter-word;
+    .day_mount { @include fZ(21) }
+    .year { @include fZ(26) }
+}

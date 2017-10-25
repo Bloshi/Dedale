@@ -44,8 +44,4 @@
         {
             return Auth::user()->hasLiked( $this );
         }
-        public function likers()
-        {
-            return 3;
-        }
     }

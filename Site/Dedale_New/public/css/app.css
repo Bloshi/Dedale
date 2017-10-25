@@ -15,6 +15,91 @@ ul.games_list_container li.ui.card {
   transition: all .2s ease;
 }
 
+/*
+    code from https: //codepen.io/PoulyCroc/pen/VMJxBb
+
+    customed by Maxime Bartier <poulycroc.studio@gmail.com>
+    */
+
+.sexy_date {
+  color: #ffffff;
+  font-size: 12px;
+  width: 90px;
+  height: 90px;
+  position: relative;
+  float: left;
+  background: #23b49a;
+  border: 8px solid #ffffff;
+  border-radius: 20px;
+  -webkit-box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.8), 0 10px 40px 0 rgba(0, 0, 0, 0.1);
+          box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.8), 0 10px 40px 0 rgba(0, 0, 0, 0.1);
+}
+
+.sexy_date:before,
+.sexy_date:after {
+  content: " ";
+  position: absolute;
+  width: 3px;
+  height: 10px;
+  background: #ffffff;
+  -webkit-box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.8);
+          box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.8);
+  top: -5px;
+  margin-top: 50%;
+}
+
+.sexy_date:after {
+  right: 0;
+}
+
+.sexy_date span {
+  position: absolute;
+  text-align: center;
+  width: 74px;
+  top: 8px;
+  line-height: 10px;
+  line-height: 0.625rem;
+}
+
+.sexy_date span:first-of-type:after {
+  content: " ";
+  width: 100%;
+  height: 40px;
+  position: absolute;
+  z-index: 2;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 10px 10px 0 0;
+  top: -9px;
+  left: 0px;
+  border-top: 3px solid #148d70;
+}
+
+.sexy_date span.date {
+  font-size: 36px;
+  font-weight: bold;
+  line-height: 36px;
+  height: 36px;
+  text-align: center;
+  padding: 0;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+}
+
+.sexy_date span.hour {
+  position: absolute;
+  top: auto;
+  right: 0;
+  bottom: -8px;
+  left: 0;
+  margin: auto;
+  width: 100%;
+  height: 20px;
+}
+
 a.logo_nav {
   width: 40px;
   height: 100%;
@@ -134,5 +219,24 @@ ul.feed_game_user_page li.ui.card {
   line-height: 28.8px;
   line-height: 1.8rem;
   padding-left: 10px;
+}
+
+span.sexy_date_event {
+  width: 100%;
+  height: auto;
+  line-height: 28px;
+  line-height: 1.75rem;
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+span.sexy_date_event .day_mount {
+  font-size: 21px;
+  font-size: 1.3125rem;
+}
+
+span.sexy_date_event .year {
+  font-size: 26px;
+  font-size: 1.625rem;
 }
 

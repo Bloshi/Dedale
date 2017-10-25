@@ -1,0 +1,58 @@
+/*
+    code from https: //codepen.io/PoulyCroc/pen/VMJxBb
+
+    customed by Maxime Bartier <poulycroc.studio@gmail.com>
+    */
+$size: 90;
+
+.sexy_date {
+    color:#ffffff; font-size:12px; @include size(#{ $size }px);
+    position: relative; 
+    float: left; background: #23b49a;
+    border: 8px solid #ffffff; border-radius: 20px;
+    box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.8), 0 10px 40px 0 rgba(0, 0, 0, 0.1);
+
+    &:before, &:after {
+        content: " ";
+        position: absolute;
+        width: 3px;
+        height: 10px;
+        background: #ffffff;
+        box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.8);
+        top: -5px;
+        margin-top: 50%;
+    }
+    &:after {
+        right: 0;
+    }
+
+    span {
+        position: absolute; text-align: center;
+        width: #{ $size - 16}px; top: 8px; @include lH(10);
+        &:first-of-type:after {
+            content: " ";
+            width: 100%;
+            height: #{ ($size / 2) - 5 }px;
+            position: absolute;
+            z-index: 2;
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 10px 10px 0 0;
+            top: -9px;
+            left: 0px;
+            border-top: 3px solid #148d70;
+        }
+        &.date {
+            font-size: #{ $size * .4 }px;
+            font-weight: bold;
+            line-height: #{ $size * .4 }px;
+            height: #{ $size * .4 }px;
+            text-align: center;
+            padding: 0;
+            @include pos(a,0); margin: auto;
+        }
+        &.hour { @include pos(a,auto,0,-8px,0); margin: auto; @include size(f,20px); }
+    }
+}
+
+
+

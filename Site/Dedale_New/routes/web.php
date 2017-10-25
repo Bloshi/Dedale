@@ -15,6 +15,7 @@ Route::get('/', 'HomeController@index')->name('home');
 
 Route::get('/feed/{type}', 'FeedController@index')->name('feed');
 Route::get('/profil/user/{id}', 'FocusOnUserController@profilUser')->name('focus_user');
+Route::get('/event/{id}', 'FeedController@focusEvent')->name('focus_event');
 
 Route::get('/map', 'MapController@index')->name('map');
 
