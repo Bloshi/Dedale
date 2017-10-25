@@ -36,6 +36,13 @@
                                 <div class="hidden content">20€ par mois</div>
                             </div>
                         </div>
+                    @else 
+                        <div class="item">
+                            <a href="{{ route('pro.add_game') }}" class='ui button fluid'>Ajouter un jeu</a>
+                        </div>
+                        <div class="item">
+                            <a href="#" class='ui button fluid'>Ajouter un événement</a>
+                        </div>
                     @endif
                     <div class='item'>
                         <a href="{{ route('logout') }}" class='ui negative basic button fluid'

@@ -10,7 +10,10 @@
             <p>Remplisser le formulaire pour vous enregistrer</p>
         </div>
         
-        {!! Form::open(['url' => route('register'), 'class' => 'ui form attached fluid segment']) !!}
+        {!! Form::open(['url' => route('register'), 
+            'enctype' => 'multipart/form-data', 'files' => true,
+            'class' => 'ui form attached fluid segment'
+        ]) !!}
             <label>Nom</label>
             <div class="fields">
                 <div class="eight wide field{{ $errors->has('firstName') ? ' error' : '' }}">
@@ -18,14 +21,14 @@
                         'placeholder' => 'Prénom', 'required' => 'required'
                     ]) !!}
                 </div>
-                <div class="eight wide field{{ $errors->has('lastName') ? ' error' : '' }}">
+                <div class="seven wide field{{ $errors->has('lastName') ? ' error' : '' }}">
                     {!! Form::text('lastName', old('lastName'), [
                         'placeholder' => 'Nom de famille', 'required' => 'required'
                     ]) !!}
                 </div>
-                <div class="four wide field{{ $errors->has('birthday') ? ' error' : '' }}">
+                <div class="five wide field{{ $errors->has('birthday') ? ' error' : '' }}">
                     {!! Form::text('birthday', old('birthday'), [
-                        'placeholder' => '16', 'required' => 'required'
+                        'placeholder' => '20/11/1990', 'required' => 'required'
                     ]) !!}
                 </div>
             </div>
@@ -49,7 +52,7 @@
             
             <div class="field{{ $errors->has('address') ? ' error' : '' }}">
                 <label for='sign_address'>Votre adresse complète</label>
-                {!! Form::text('address', old('address'), ['id' => 'sign_address', 'required' => 'required']) !!}
+                {!! Form::text('address', old('address'), ['id' => 'sign_address']) !!}
             </div>
             @if ($errors->has('address'))
                 <div class="ui error message">
@@ -92,6 +95,11 @@
                         <label>Féminin</label>
                     </div>
                 </div>
+            </div>
+
+            <div class="field">
+                <label for="image_user">Ajouter une photo ?</label>
+                {!! Form::file('image', ['id' => 'image_user']) !!}
             </div>
 
             {!! Form::hidden('type', 0) !!}

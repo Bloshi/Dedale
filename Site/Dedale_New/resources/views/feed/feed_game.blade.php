@@ -12,7 +12,9 @@
                     <div class="header">{{ $game->name }}</div>
                 </div>
                 <div class="image">
-                    <img src="{{ asset('images/games/'. $game->image) }}" />
+                    {{--  @foreach($game->gameimg as $img)
+                        <img src="{{ asset('images/games/'. $game->gameimg->url) }}" />
+                    @endforeach  --}}
                 </div>
                 <div class='content'>{{ $game->description }}</div>
                 <div class="content">

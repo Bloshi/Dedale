@@ -31,6 +31,14 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/edtit/profil/', 'Auth\EditProfilController@index')->name('auth.edit_profil');
 });
 
+Route::group(['middleware' => 'isPro'], function () {
+    Route::get('/add/jeu/', 'Pro\ProActionController@addGame')->name('pro.add_game');
+    Route::post('/add/jeu/post', 'Pro\ProActionController@postAddGame')->name('pro.post_game');
+
+    Route::get('/add/event/', 'Pro\ProActionController@addEvent')->name('pro.add_event');
+});
+
+
 // Super Admin
 Route::group(
     [
