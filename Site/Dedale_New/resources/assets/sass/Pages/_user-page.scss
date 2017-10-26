@@ -1,5 +1,14 @@
-.user_header { height: auto; padding: 40px 0; margin-bottom: 40px;
-    @include clearfix;
+.ui.grid.user_header { height: auto; padding: 40px 0 !important; margin-bottom: 40px;
+    @include margin(0); @include clearfix; 
+    background-color: map-get($colors, bg); color: map-get($colors, default);
+
+    .ui.statistics, .content._btn { justify-content: center; display: flex; }
+
+    .ui.statistics a.statistic { 
+        .label { color: map-get($colors, default) !important; }
+        .value { color: map-get($colors, primary) !important; }
+    }
+    .content._btn { padding-top: 40px; a { margin: 0 auto; } }
 }
 
 ul.feed_game_user_page { @include size(f, auto); -webkit-margin-before: 0;
@@ -15,3 +24,6 @@ ul.feed_game_user_page { @include size(f, auto); -webkit-margin-before: 0;
 }
 
 .list_follower .item .content a { @include lH(28.8); padding-left: 10px; }
+section.content { margin: 40px 0; 
+    &:first-child { margin-top: 0; } &:last-child { margin-bottom: 0; }
+}

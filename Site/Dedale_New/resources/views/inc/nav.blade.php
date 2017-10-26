@@ -30,10 +30,11 @@
                     </div>
                     @if( Auth::user()->type != 2 )
                         <div class='item'>
-                            <div class="ui animated fade button fluid" tabindex="0">
+                            <a  href="{{ route('become.pro') }}"
+                                class="ui animated fade button fluid" tabindex="0">
                                 <div class="visible content">Devenir pro</div>
                                 <div class="hidden content">20€ par mois</div>
-                            </div>
+                            </a>
                         </div>
                     @else 
                         <div class="item">

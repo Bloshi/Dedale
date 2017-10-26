@@ -100,6 +100,11 @@ ul.games_list_container li.ui.card {
   height: 20px;
 }
 
+.drop_shadow {
+  -webkit-box-shadow: 4px 7px 28px -9px rgba(0, 0, 0, 0.75);
+          box-shadow: 4px 7px 28px -9px rgba(0, 0, 0, 0.75);
+}
+
 a.logo_nav {
   width: 90px;
   height: 100%;
@@ -182,24 +187,56 @@ ul.games_list_container li.ui.card {
   margin-left: 1em !important;
 }
 
-.user_header {
+.ui.grid.user_header {
   height: auto;
-  padding: 40px 0;
+  padding: 40px 0 !important;
   margin-bottom: 40px;
+  margin-top: 0;
+  margin-right: 0;
+  margin-bottom: 0;
+  margin-left: 0;
   clear: both;
   zoom: 1;
+  background-color: #4C3441;
+  color: #E3F5F6;
 }
 
-.user_header:before,
-.user_header:after {
+.ui.grid.user_header:before,
+.ui.grid.user_header:after {
   content: " ";
   display: table;
 }
 
-.user_header:after {
+.ui.grid.user_header:after {
   clear: both;
   line-height: 0;
   visibility: hidden;
+}
+
+.ui.grid.user_header .ui.statistics,
+.ui.grid.user_header .content._btn {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.ui.grid.user_header .ui.statistics a.statistic .label {
+  color: #E3F5F6 !important;
+}
+
+.ui.grid.user_header .ui.statistics a.statistic .value {
+  color: #2BCCC1 !important;
+}
+
+.ui.grid.user_header .content._btn {
+  padding-top: 40px;
+}
+
+.ui.grid.user_header .content._btn a {
+  margin: 0 auto;
 }
 
 ul.feed_game_user_page {
@@ -237,6 +274,18 @@ ul.feed_game_user_page li.ui.card {
   padding-left: 10px;
 }
 
+section.content {
+  margin: 40px 0;
+}
+
+section.content:first-child {
+  margin-top: 0;
+}
+
+section.content:last-child {
+  margin-bottom: 0;
+}
+
 span.sexy_date_event {
   width: 100%;
   height: auto;
@@ -254,5 +303,17 @@ span.sexy_date_event .day_mount {
 span.sexy_date_event .year {
   font-size: 26px;
   font-size: 1.625rem;
+}
+
+.block_step_order {
+  margin: 40px auto;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 

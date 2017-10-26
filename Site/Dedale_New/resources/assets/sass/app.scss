@@ -18,7 +18,7 @@ $colors: (
   bg :        #4C3441,
   facebook :  #3B5998
 );
-
+.drop_shadow { box-shadow: 4px 7px 28px -9px rgba(0,0,0,0.75); }
 a.logo_nav { @include size(90px, f); display: block; margin-right: 10px;
     svg { display: block; height: 100%; 
         path { fill: map-get($colors, primary) }
@@ -43,3 +43,5 @@ span.sexy_date_event { @include size(f, auto); @include lH(28); text-align: just
     .day_mount { @include fZ(21) }
     .year { @include fZ(26) }
 }
+
+@import "pages/become_pro";

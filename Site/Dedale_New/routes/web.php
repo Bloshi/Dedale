@@ -20,6 +20,7 @@ Route::get('/game/{id}', 'FeedController@focusGame')->name('focus_game');
 
 Route::get('/map', 'MapController@index')->name('map');
 
+Route::get('/become/pro/user', 'ProAccountController@index')->name('become.pro');
 
 // user action
 Route::get('/follow/this/user/{id}/{type?}', 'UserActionController@followUser')->name('follow_this_user');

@@ -2,8 +2,6 @@
 
 @section('content')
 
-    <center>
-        <h1>MAP en développement</h1>
-    </center>
-    
+    <center><p>Page en construction</p></center>
+
 @endsection

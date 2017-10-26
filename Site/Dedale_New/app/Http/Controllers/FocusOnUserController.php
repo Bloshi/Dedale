@@ -8,6 +8,7 @@
     use App\Models\User;
     use App\Models\Games;
     use App\Models\Events;
+    use Illuminate\Support\Facades\DB;
 
     class FocusOnUserController extends Controller
     {
@@ -26,7 +27,7 @@
             $games = Games::where('user_id', $id)->take(3)->get();
             if (count($games) == 0) { $games = NULL; }
 
-            $events = Events::where('user_id', $id)->take(3)->get();
+            $events = Events::where('creator_id', $id)->take(3)->get();
             if (count($events) == 0) { $events = NULL; }
 
             // check if Auth::user() follow this user
@@ -39,13 +40,21 @@
             $isAuthUserPage = $id == Auth::user()->id ? true : false;
 
             $howManyFollowers = count(User::findOrFail($id)->followings()->get());
+            $howManyPosts = count(Games::where('user_id', $id)->get()) + count(Events::where('creator_id', $id)->get());
+            $howManyAchievements = count(DB::table('achievement_progress')->where('achiever_id', $id));
+            $howManyLikes = count(User::findOrFail($id)->likes()->get());
 
-            $data = [
+            $data = [ 
                 'user' => User::findOrFail($id),
                 'games' => $games,
                 'events' => $events,
                 'isFollowing' => $isFollowing,
+
                 'howManyFollowers' => $howManyFollowers,
+                'howManyPosts' => $howManyPosts,
+                'howManyAchievements' => $howManyAchievements,
+                'howManyLikes' => $howManyLikes,
+                
                 'isAuthUserPage' => $isAuthUserPage,
                 'followers' => User::findOrFail($id)->followings()->get()
             ];

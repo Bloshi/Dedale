@@ -100,6 +100,7 @@
             <div class="field">
                 <label for="image_user">Ajouter une photo ?</label>
                 {!! Form::file('image', ['id' => 'image_user']) !!}
+                <small>Il est préférable de mettre une photo de vous carrée</small>
             </div>
 
             {!! Form::hidden('type', 0) !!}
