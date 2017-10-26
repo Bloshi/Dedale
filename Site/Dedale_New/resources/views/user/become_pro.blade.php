@@ -3,10 +3,11 @@
 @section('content')
 
     <div class="block_step_order">
-        <div class="screen_order_step _option">
-    
-            cette page est en contruction
-        
+        <div class="screen_order_step _option" style='width:100%'>
+            <br/>
+            <center>cette page est en contruction</center>
+            <br/>
+            <br/>
         </div>
 
         <div class="ui steps">

@@ -70,6 +70,8 @@ class RegisterController extends Controller
             $basename = basename($file->getClientOriginalName(), $ext);
             $fileName = str_random().'.'. $ext;
             $file->move(public_path('/images/users/'), $fileName);
+        } else {
+            $fileName = null;
         }
 
         return User::create([

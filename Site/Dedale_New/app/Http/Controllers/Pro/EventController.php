@@ -29,6 +29,8 @@
                 $basename = basename($file->getClientOriginalName(), $ext);
                 $fileName = str_random().'.'. $ext;
                 $file->move(public_path('/images/events/'), $fileName);
+            } else {
+                $fileName = null;
             }
             
             $event = new Events;
